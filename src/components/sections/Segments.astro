@@ -1,0 +1,114 @@
+---
+const segments = [
+  {
+    icon: "🏢",
+    tag: "Para Mayoristas",
+    title: "Controlá tu red de minoristas",
+    desc: "Centralizá tus paquetes, dale acceso a precios actualizados, y controlá cupos y comisiones sin errores.",
+    features: [
+      "Catálogo centralizado para tu red",
+      "Control automático de cupos",
+      "Comisiones calculadas al instante",
+      "Web de paquetes automática"
+    ],
+    cta: "Ver demo para mayoristas →",
+    tag2: "Enterprise"
+  },
+  {
+    icon: "⚡",
+    tag: "Para Agencias",
+    title: "Cotizá más en menos tiempo",
+    desc: "Importá PNR de Amadeus, generá PDFs profesionales en minutos y organizá tu negocio sin Excel.",
+    features: [
+      "Cotizaciones en 3 minutos",
+      "PDFs con tu marca",
+      "CRM de clientes integrado",
+      "Web propia lista en minutos"
+    ],
+    cta: "Ver demo para agencias →",
+    tag2: "SaaS"
+  }
+];
+---
+
+<section class="section-padding bg-white">
+  <div class="container-custom">
+
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <h2 class="heading-lg text-slate-900 mb-4">
+        ¿Cómo usan Quotix las agencias como la tuya?
+      </h2>
+    </div>
+
+    <!-- Segment cards -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+      {segments.map((seg, i) => (
+        <div class="seg-card group p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-slate-200/60 hover:border-[#bf3480]/20 transition-all duration-300" style={`opacity:0; transform: translateY(40px); transition-delay: ${i * 0.15}s;`}>
+          <!-- Header -->
+          <div class="flex items-start gap-4 mb-6">
+            <div class="w-14 h-14 rounded-2xl bg-[#0f172a] flex items-center justify-center text-2xl transition-transform duration-300 group-hover:rotate-6 flex-shrink-0">
+              {seg.icon}
+            </div>
+            <div>
+              <div class="text-xs font-bold text-[#bf3480] uppercase tracking-widest">{seg.tag2}</div>
+              <h3 class="heading-md text-slate-900">{seg.tag}</h3>
+            </div>
+          </div>
+          <!-- Title + Desc -->
+          <p class="font-semibold text-slate-800 text-lg mb-2">{seg.title}</p>
+          <p class="text-slate-600 body-sm mb-6 leading-relaxed">{seg.desc}</p>
+          <!-- Features -->
+          <ul class="space-y-3 mb-8">
+            {seg.features.map(f => (
+              <li class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-[#d4f542] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="text-sm text-slate-700">{f}</span>
+              </li>
+            ))}
+          </ul>
+          <!-- CTA -->
+          <a href="#demo" class="btn-primary btn-filled-dark text-sm w-full">{seg.cta}</a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom note -->
+    <div class="text-center reveal">
+      <p class="text-slate-500 text-sm">
+        ¿No sabés cuál sos? <a href="#demo" class="text-[#bf3480] font-semibold hover:underline">Agendá una demo y te ayudamos a identificarlo.</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+.seg-card { transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s, border 0.3s, box-shadow 0.3s; }
+.seg-card.active { opacity: 1 !important; transform: translateY(0) !important; }
+</style>
+
+<script>
+  (function() {
+    const cards = document.querySelectorAll('.seg-card');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const idx = Array.from(cards).indexOf(e.target);
+          setTimeout(() => e.target.classList.add('active'), idx * 150);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(c => obs.observe(c));
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      el.style.opacity = '0'; el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) { el.style.opacity = '1'; el.style.transform = 'none'; }
+      }, { threshold: 0.3 }).observe(el);
+    });
+  })();
+</script>

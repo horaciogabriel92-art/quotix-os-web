@@ -1,0 +1,22 @@
+---
+interface Props {
+  variant: 'blanco' | 'magenta';
+  width?: number;
+  class?: string;
+}
+
+const { 
+  variant,
+  width = 120,
+  class: className = ''
+} = Astro.props;
+
+const logoSrc = `/images/logo-${variant}.png`;
+---
+
+<img 
+  src={logoSrc} 
+  alt="Quotix" 
+  width={width}
+  class={`h-auto object-contain ${className}`}
+/>

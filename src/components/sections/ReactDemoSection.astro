@@ -1,0 +1,793 @@
+---
+// No React dependency - pure Astro + Vanilla JS
+---
+
+<section class="section-padding bg-[#0f1523] border-t border-slate-800/50 overflow-hidden relative">
+  <div class="container-custom">
+    <div class="text-center max-w-3xl mx-auto mb-16 relative z-10">
+      <h2 class="heading-lg text-white mb-4">
+        Cotizaciones en PDF en segundos
+      </h2>
+      <p class="body-md text-slate-400">
+        Simplemente pega tu código de PNR de Amadeus y nuestro motor inteligente construirá una cotización en PDF lista para enviar, detectando fechas, horas y aerolíneas.
+      </p>
+    </div>
+
+    <div class="flex justify-center relative z-10">
+      <div id="demo-animation-root" class="demo-app-wrapper">
+        <!-- Explanation Bubbles -->
+        <div id="bubble-phase1" class="demo-bubble bubble-bottom" style="top:150px;left:50%;transform:translateX(-50%);">
+          <span class="bubble-icon">✦</span>
+          Pegas el PNR en crudo desde tu GDS (Amadeus, Sabre o Galileo).
+        </div>
+        <div id="bubble-phase2" class="demo-bubble bubble-right" style="top:350px;left:120px;display:none;">
+          <span class="bubble-icon">✈</span>
+          El sistema lee y estructura al instante los vuelos, fechas, escalas y horarios. ¡Sin cargarlos a mano!
+        </div>
+
+        <!-- Main Frame -->
+        <div id="demo-frame" class="demo-app-frame zoom-phase-1">
+          <!-- Sidebar -->
+          <aside class="demo-sidebar">
+            <div class="demo-sidebar-logo">
+              <div class="demo-sidebar-logo-icon">✈</div>
+              <div class="demo-sidebar-logo-text">Trip Conecta<br><span style="font-size:0.65rem;color:#64748b;font-weight:normal;">B2B System</span></div>
+            </div>
+            <div class="demo-menu-item">⊞ Dashboard</div>
+            <div class="demo-menu-item">⬜ Catálogo</div>
+            <div class="demo-menu-item active">📄 Cotizaciones</div>
+            <div class="demo-menu-item">👥 Clientes</div>
+            <div class="demo-menu-item">🛒 Mis Ventas</div>
+            <div class="demo-menu-item">📁 Mis Documentos</div>
+            <div style="margin-top:auto;">
+              <div class="demo-menu-item">⚙ Configuración</div>
+            </div>
+          </aside>
+
+          <!-- Main Content -->
+          <main class="demo-main-content">
+            <header class="demo-header">
+              <div class="demo-search-bar">🔍 Buscar paquetes, ventas, clientes...</div>
+              <div class="demo-header-right">
+                <div class="demo-header-icon">🌙</div>
+                <div class="demo-header-icon">🔔<span class="demo-notif-dot"></span></div>
+                <div class="demo-user-profile">
+                  <div style="text-align:right;">
+                    <div style="color:white;font-size:0.85rem;font-weight:600;">Vendedor Test</div>
+                    <div style="color:#94a3b8;font-size:0.7rem;">VENDEDOR</div>
+                  </div>
+                  <div class="demo-avatar">VE</div>
+                </div>
+              </div>
+            </header>
+
+            <div class="demo-content-body">
+              <h1 class="demo-page-title">Nueva Cotización Manual</h1>
+              <p class="demo-page-subtitle">Crea una cotización personalizada paso a paso</p>
+
+              <div class="demo-stepper">
+                <div class="demo-step completed">
+                  <div class="demo-step-icon">✓</div> Cliente <span class="demo-step-sep">-</span>
+                </div>
+                <div class="demo-step active">
+                  <div class="demo-step-icon">2</div> Vuelos <span class="demo-step-sep">-</span>
+                </div>
+                <div class="demo-step">
+                  <div class="demo-step-icon">3</div> Hospedaje <span class="demo-step-sep">-</span>
+                </div>
+                <div class="demo-step">
+                  <div class="demo-step-icon">4</div> Itinerario <span class="demo-step-sep">-</span>
+                </div>
+                <div class="demo-step">
+                  <div class="demo-step-icon">5</div> Precios
+                </div>
+              </div>
+
+              <div class="demo-tabs">
+                <div class="demo-tab active">Pegar desde Amadeus</div>
+                <div class="demo-tab">Ingresar Manual</div>
+              </div>
+
+              <div class="demo-box-container">
+                <div class="demo-box-header">✦ Código Amadeus</div>
+                <p id="demo-box-desc" class="demo-box-desc">Pega aquí el itinerario de Amadeus (formato RP/). El sistema detectará automáticamente los vuelos.</p>
+
+                <div id="demo-inner-scroll" class="demo-inner-scroll-wrapper">
+                  <div id="demo-amadeus-wrapper" class="demo-amadeus-input-wrapper">
+                    <div id="demo-typed-code" class="demo-amadeus-code"></div>
+                  </div>
+
+                  <button id="demo-detect-btn" class="demo-detect-btn">
+                    ✦ Detectar Vuelos Automáticamente
+                  </button>
+
+                  <div id="demo-flights-result" class="demo-flights-result" style="display:none;">
+                    <div class="demo-flights-header">✓ 2 vuelo(s) detectado(s)</div>
+
+                    <div class="demo-flight-card">
+                      <div class="demo-flight-top">
+                        <div class="demo-flight-number">UX 046</div>
+                        <div class="demo-flight-class">Clase T</div>
+                      </div>
+                      <div class="demo-flight-route">
+                        <div class="demo-flight-point">
+                          <div class="demo-flight-code">MVD</div>
+                          <div>12:20</div>
+                          <div class="demo-flight-time">vie, 15 may</div>
+                        </div>
+                        <div class="demo-flight-line">✈</div>
+                        <div class="demo-flight-point" style="text-align:right;">
+                          <div class="demo-flight-code">MAD</div>
+                          <div>05:10</div>
+                          <div class="demo-flight-time">sáb, 16 may</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="demo-flight-card" style="animation-delay:0.2s;">
+                      <div class="demo-flight-top">
+                        <div class="demo-flight-number">UX 045</div>
+                        <div class="demo-flight-class">Clase N</div>
+                      </div>
+                      <div class="demo-flight-route">
+                        <div class="demo-flight-point">
+                          <div class="demo-flight-code">MAD</div>
+                          <div>23:55</div>
+                          <div class="demo-flight-time">dom, 31 may</div>
+                        </div>
+                        <div class="demo-flight-line">✈</div>
+                        <div class="demo-flight-point" style="text-align:right;">
+                          <div class="demo-flight-code">MVD</div>
+                          <div>07:35</div>
+                          <div class="demo-flight-time">lun, 01 jun</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="demo-footer-actions">
+              <button class="demo-btn-prev">← Anterior</button>
+              <div style="color:#94a3b8;font-size:0.85rem;align-self:center;">Paso 2 de 5</div>
+              <button id="demo-btn-next" class="demo-btn-next">Siguiente →</button>
+            </div>
+          </main>
+
+          <!-- PDF Modal -->
+          <div id="demo-pdf-overlay" class="demo-pdf-modal-overlay">
+            <div id="demo-pdf-bubble" class="demo-bubble bubble-top" style="position:absolute;bottom:80px;right:120px;z-index:1000;display:none;">
+              <span class="bubble-icon">📄</span>
+              Con solo 1 clic, obtienes un PDF profesional y de alta conversión, listo para enviar a tus pasajeros.
+            </div>
+            <div class="demo-pdf-window">
+              <div class="demo-pdf-header">
+                <span style="font-weight:600;">Vista Previa: COT-COT-2026-43709.pdf</span>
+                <div style="display:flex;gap:1rem;align-items:center;">
+                  <button class="demo-pdf-dl-btn">⬇ Descargar</button>
+                  <span>✕</span>
+                </div>
+              </div>
+              <div class="demo-pdf-toolbar">
+                <span>⋮</span>
+                <span style="font-size:0.85rem;">4d3608e8-b6e9-4d32-b...</span>
+                <span style="display:flex;align-items:center;gap:0.5rem;background:#334155;padding:2px 8px;border-radius:4px;">1 / 3</span>
+                <span>- 100% +</span>
+                <span>🖨</span>
+              </div>
+              <div class="demo-pdf-viewer-area">
+                <div class="demo-pdf-doc-wrapper">
+                  <div id="demo-pdf-doc" class="demo-pdf-document">
+                    <div class="demo-pdf-doc-header">
+                      <div>
+                        <div style="color:#0f766e;font-size:1.5rem;font-weight:bold;">Vendedor Test</div>
+                        <div style="font-size:0.85rem;color:#64748b;">Viajes y Turismo • tripconecta.com</div>
+                      </div>
+                      <div style="text-align:right;font-size:0.85rem;color:#475569;">
+                        <div style="color:#0f766e;font-size:1.2rem;font-weight:bold;">COT-2026-43709</div>
+                        <div>Fecha: 28/3/2026</div>
+                        <div>Válida hasta: 4/4/2026</div>
+                      </div>
+                    </div>
+
+                    <div style="display:flex;gap:1rem;margin-bottom:1.5rem;">
+                      <div style="border:1.5px solid #34d399;border-radius:6px;padding:1rem;flex:1;">
+                        <div style="color:#059669;font-weight:700;font-size:0.85rem;margin-bottom:0.5rem;">PASAJERO 1 (TITULAR)</div>
+                        <div style="display:flex;gap:2rem;"><span style="color:#64748b;font-size:0.85rem;">Nombre:</span><span style="font-weight:bold;">Nicky Minaj</span></div>
+                      </div>
+                      <div style="border:1.5px solid #34d399;border-radius:6px;padding:1rem;flex:1;">
+                        <div style="color:#059669;font-weight:700;font-size:0.85rem;margin-bottom:0.5rem;">CONFIGURACIÓN DEL VIAJE</div>
+                        <div style="display:flex;gap:2rem;"><span style="color:#64748b;font-size:0.85rem;">Pasajeros:</span><span style="font-weight:bold;">2</span></div>
+                        <div style="display:flex;gap:2rem;margin-top:0.2rem;"><span style="color:#64748b;font-size:0.85rem;">Fecha Salida:</span><span style="font-weight:bold;">9/10/2026</span></div>
+                      </div>
+                    </div>
+
+                    <div style="color:#059669;font-weight:700;text-transform:uppercase;margin-top:2rem;margin-bottom:1rem;">PAQUETE TURÍSTICO</div>
+                    <div style="border:1.5px solid #e2e8f0;border-radius:8px;padding:1rem;display:flex;gap:1rem;margin-bottom:1.5rem;">
+                      <div style="width:100px;height:60px;background:url('https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=200&h=120&fit=crop') center/cover;border-radius:4px;flex-shrink:0;"></div>
+                      <div>
+                        <div style="color:#0f766e;font-weight:bold;">Viaje a Madrid - Madrid 7 días</div>
+                        <div style="display:flex;gap:1.5rem;margin-top:0.5rem;font-size:0.85rem;">
+                          <div><span style="color:#64748b;">Destino:</span> <b>MONTEVIDEO</b></div>
+                          <div><span style="color:#64748b;">Duración:</span> <b>No especificada</b></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style="color:#059669;font-weight:700;text-transform:uppercase;margin-bottom:1rem;">VUELOS</div>
+
+                    <div style="border:1px solid #6ee7b7;border-radius:8px;padding:1rem;margin-bottom:1rem;background:#f0fdf4;">
+                      <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;color:#059669;font-weight:bold;">
+                        <span>MONTEVIDEO → MADRID</span>
+                        <span style="background:#10b981;color:white;padding:0.2rem 0.5rem;border-radius:4px;font-size:0.75rem;">AV UX078</span>
+                      </div>
+                      <div style="display:flex;justify-content:space-between;font-size:1.5rem;font-weight:bold;color:#0f172a;">
+                        <div><div>09:30:00</div><div style="font-size:0.65rem;font-weight:normal;color:#64748b;">2026-10-10</div><div style="font-size:0.9rem;margin-top:0.5rem;">MVD</div><div style="font-size:0.65rem;color:#64748b;">MONTEVIDEO</div></div>
+                        <div style="display:flex;align-items:center;width:200px;"><div style="flex:1;height:2px;background:#34d399;"></div></div>
+                        <div style="text-align:right;"><div>20:45:00</div><div style="font-size:0.65rem;font-weight:normal;color:#64748b;">&nbsp;</div><div style="font-size:0.9rem;margin-top:0.5rem;">MAD</div><div style="font-size:0.65rem;color:#64748b;">MADRID</div></div>
+                      </div>
+                      <div style="display:flex;gap:1rem;font-size:0.85rem;color:#0f766e;border-top:1px dashed #6ee7b7;padding-top:0.5rem;margin-top:0.5rem;">
+                        <div><b>Aerolínea:</b> AIR EUROPA</div><div><b>Vuelo:</b> UX078</div>
+                      </div>
+                    </div>
+
+                    <div style="border:1px solid #6ee7b7;border-radius:8px;padding:1rem;margin-bottom:1rem;background:#f0fdf4;">
+                      <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;color:#059669;font-weight:bold;">
+                        <span>MADRID → MONTEVIDEO</span>
+                        <span style="background:#10b981;color:white;padding:0.2rem 0.5rem;border-radius:4px;font-size:0.75rem;">AV UX087</span>
+                      </div>
+                      <div style="display:flex;justify-content:space-between;font-size:1.5rem;font-weight:bold;color:#0f172a;">
+                        <div><div>10:20:00</div><div style="font-size:0.65rem;font-weight:normal;color:#64748b;">2026-10-17</div><div style="font-size:0.9rem;margin-top:0.5rem;">MAD</div><div style="font-size:0.65rem;color:#64748b;">MADRID</div></div>
+                        <div style="display:flex;align-items:center;width:200px;"><div style="flex:1;height:2px;background:#34d399;"></div></div>
+                        <div style="text-align:right;"><div>21:30:00</div><div style="font-size:0.65rem;font-weight:normal;color:#64748b;">&nbsp;</div><div style="font-size:0.9rem;margin-top:0.5rem;">MVD</div><div style="font-size:0.65rem;color:#64748b;">MONTEVIDEO</div></div>
+                      </div>
+                      <div style="display:flex;gap:1rem;font-size:0.85rem;color:#0f766e;border-top:1px dashed #6ee7b7;padding-top:0.5rem;margin-top:0.5rem;">
+                        <div><b>Aerolínea:</b> AIR EUROPA</div><div><b>Vuelo:</b> UX087</div>
+                      </div>
+                    </div>
+
+                    <div style="color:#059669;font-weight:700;text-transform:uppercase;margin-top:2rem;margin-bottom:1rem;">PASAJEROS (2)</div>
+                    <table style="width:100%;border-collapse:collapse;">
+                      <thead>
+                        <tr>
+                          <th style="background:#1e293b;color:white;text-align:left;padding:0.5rem;font-size:0.85rem;">#</th>
+                          <th style="background:#1e293b;color:white;text-align:left;padding:0.5rem;font-size:0.85rem;">Nombre</th>
+                          <th style="background:#1e293b;color:white;text-align:left;padding:0.5rem;font-size:0.85rem;">Documento</th>
+                          <th style="background:#1e293b;color:white;text-align:left;padding:0.5rem;font-size:0.85rem;">Fecha Nac.</th>
+                          <th style="background:#1e293b;color:white;text-align:left;padding:0.5rem;font-size:0.85rem;">Nacionalidad</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="padding:0.5rem;border-bottom:1px solid #e2e8f0;font-size:0.85rem;">1</td>
+                          <td style="padding:0.5rem;border-bottom:1px solid #e2e8f0;font-size:0.85rem;">Nicky Minaj</td>
+                          <td style="padding:0.5rem;border-bottom:1px solid #e2e8f0;font-size:0.85rem;">3242442</td>
+                          <td style="padding:0.5rem;border-bottom:1px solid #e2e8f0;font-size:0.85rem;">1990-10-10</td>
+                          <td style="padding:0.5rem;border-bottom:1px solid #e2e8f0;font-size:0.85rem;">Uruguay</td>
+                        </tr>
+                        <tr>
+                          <td style="padding:0.5rem;border-bottom:1px solid #e2e8f0;font-size:0.85rem;">2</td>
+                          <td style="padding:0.5rem;border-bottom:1px solid #e2e8f0;font-size:0.85rem;">Laura Maria</td>
+                          <td style="padding:0.5rem;border-bottom:1px solid #e2e8f0;font-size:0.85rem;">12389712398</td>
+                          <td style="padding:0.5rem;border-bottom:1px solid #e2e8f0;font-size:0.85rem;">1990-10-10</td>
+                          <td style="padding:0.5rem;border-bottom:1px solid #e2e8f0;font-size:0.85rem;">Argentina</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <div style="color:#059669;font-weight:700;text-transform:uppercase;margin-top:2.5rem;margin-bottom:0.5rem;">DETALLE DE PRECIOS</div>
+                    <div style="display:flex;justify-content:space-between;align-items:flex-end;border-top:2px solid #e2e8f0;padding-top:1rem;">
+                      <div style="color:#64748b;font-size:0.85rem;">Incluye tasas e impuestos.</div>
+                      <div style="text-align:right;">
+                        <div style="color:#0f766e;font-size:2.2rem;font-weight:bold;">$3.980</div>
+                        <div style="color:#64748b;font-size:0.85rem;">Total a pagar</div>
+                      </div>
+                    </div>
+                    <div style="margin-top:4rem;">&nbsp;</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decorative background elements -->
+    <div class="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-[#bf3480]/10 to-transparent rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+    <div class="absolute top-1/2 right-0 -translate-y-1/2 w-96 h-96 bg-gradient-to-bl from-[#d4f542]/5 to-transparent rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+  </div>
+</section>
+
+<style>
+/* ===================== DEMO ANIMATION STYLES ===================== */
+.demo-app-wrapper {
+  perspective: 1000px;
+  width: 100%;
+  height: 820px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.demo-app-frame {
+  width: 1024px;
+  height: 760px;
+  background-color: #0b0f19;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  font-family: inherit;
+  transition: transform 2.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transform-origin: center center;
+  flex-shrink: 0;
+}
+
+.zoom-phase-1 { transform: scale(1.15) translateY(40px) translateX(-50px); }
+.zoom-phase-2 { transform: scale(1.05) translateY(-60px) translateX(-50px); }
+.zoom-phase-3 { transform: scale(0.95) translateY(0) translateX(0); }
+
+/* Sidebar */
+.demo-sidebar {
+  width: 220px;
+  background-color: #0f1523;
+  border-right: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  flex-shrink: 0;
+}
+.demo-sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  padding-left: 0.5rem;
+}
+.demo-sidebar-logo-icon {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 1rem;
+}
+.demo-sidebar-logo-text { font-weight: 600; color: #fff; font-size: 1.1rem; line-height: 1.2; }
+.demo-menu-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.75rem 1rem; border-radius: 8px;
+  color: #94a3b8; font-size: 0.875rem; margin-bottom: 0.5rem;
+}
+.demo-menu-item.active { background-color: rgba(255,255,255,0.05); color: #fff; }
+
+/* Main */
+.demo-main-content {
+  flex: 1;
+  display: flex; flex-direction: column;
+  background-color: #0b0f19;
+  position: relative;
+  overflow: hidden;
+}
+.demo-header {
+  height: 72px; border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex; align-items: center;
+  padding: 0 2rem; justify-content: space-between;
+  flex-shrink: 0;
+}
+.demo-search-bar {
+  background-color: #1e293b; border-radius: 99px;
+  padding: 0.5rem 1rem; width: 300px;
+  color: #94a3b8; font-size: 0.875rem;
+}
+.demo-header-right { display: flex; align-items: center; gap: 1.5rem; }
+.demo-header-icon { color: #94a3b8; position: relative; font-size: 1.2rem; }
+.demo-notif-dot {
+  position: absolute; top: -2px; right: -2px;
+  background: #ef4444; width: 8px; height: 8px; border-radius: 50%; display: block;
+}
+.demo-user-profile { display: flex; align-items: center; gap: 0.75rem; }
+.demo-avatar {
+  background: #10b981; color: white;
+  width: 36px; height: 36px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; font-weight: bold;
+}
+
+.demo-content-body {
+  padding: 2rem; flex: 1; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.demo-page-title { font-size: 1.5rem; font-weight: 600; color: white; margin-bottom: 0.25rem; }
+.demo-page-subtitle { color: #94a3b8; font-size: 0.875rem; margin-bottom: 1.5rem; }
+
+/* Stepper */
+.demo-stepper { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+.demo-step { display: flex; align-items: center; gap: 0.5rem; color: #64748b; font-size: 0.875rem; font-weight: 500; }
+.demo-step.completed .demo-step-icon { background: #10b981; color: white; }
+.demo-step.active .demo-step-icon { background: #2563eb; color: white; }
+.demo-step-icon {
+  width: 24px; height: 24px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: #1e293b; font-size: 0.75rem;
+}
+.demo-step-sep { color: #334155; margin: 0 10px; }
+
+/* Tabs */
+.demo-tabs {
+  display: flex; background: #1e293b; border-radius: 8px;
+  padding: 0.25rem; margin-bottom: 1.5rem;
+}
+.demo-tab {
+  flex: 1; text-align: center; padding: 0.5rem;
+  font-size: 0.875rem; font-weight: 500; border-radius: 6px; color: #94a3b8;
+}
+.demo-tab.active { background: #2563eb; color: white; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+
+/* Box */
+.demo-box-container {
+  background: #0f1523; border: 1px solid rgba(37,99,235,0.3);
+  border-radius: 12px; padding: 1.5rem; position: relative;
+  transition: all 0.5s ease; min-height: 250px; overflow: hidden;
+}
+.demo-box-header {
+  display: flex; align-items: center; gap: 0.5rem;
+  color: white; font-weight: 600; margin-bottom: 0.5rem;
+}
+.demo-box-desc { color: #94a3b8; font-size: 0.875rem; margin-bottom: 1rem; }
+
+.demo-inner-scroll-wrapper { transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.demo-inner-scroll-wrapper.scrolled { transform: translateY(-80px); }
+
+.demo-amadeus-input-wrapper {
+  background: #1e293b; border: 1px solid #334155;
+  border-radius: 8px; padding: 1rem; position: relative;
+  transition: all 0.5s ease; overflow: hidden;
+}
+.demo-amadeus-input-wrapper.collapsed { height: 80px; opacity: 0.7; }
+
+.demo-amadeus-code {
+  font-family: monospace; color: #e2e8f0;
+  font-size: 0.85rem; white-space: pre-wrap; line-height: 1.5;
+}
+
+.demo-detect-btn {
+  background: #064e3b; color: #34d399;
+  border: 1px solid #059669; border-radius: 8px;
+  width: 100%; padding: 0.75rem; font-weight: 500;
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.5rem; margin-top: 1rem; cursor: pointer;
+  transition: all 0.2s; position: relative; overflow: hidden;
+  font-size: 0.9rem;
+}
+.demo-detect-btn.loading { background: #059669; color: white; }
+.demo-detect-btn.loading::after {
+  content: ""; position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-100%); animation: demoShimmer 1s infinite;
+}
+.demo-detect-btn.done {
+  background: #022c22; border: 1px solid #059669; cursor: default;
+}
+@keyframes demoShimmer { 100% { transform: translateX(100%); } }
+
+.demo-flights-result { margin-top: 1rem; }
+.demo-flights-header {
+  color: white; font-size: 0.875rem;
+  margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.demo-flight-card {
+  background: #022c22; border: 1px solid #059669;
+  border-radius: 8px; padding: 1rem; margin-bottom: 1rem;
+  opacity: 0; transform: translateY(20px);
+  animation: demoFlyIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+@keyframes demoFlyIn { to { opacity: 1; transform: translateY(0); } }
+.demo-flight-top { display: flex; justify-content: space-between; margin-bottom: 1rem; }
+.demo-flight-number { color: #34d399; font-weight: 600; }
+.demo-flight-class { color: #94a3b8; font-size: 0.75rem; }
+.demo-flight-route {
+  display: flex; align-items: center;
+  justify-content: space-between; position: relative;
+}
+.demo-flight-point { display: flex; flex-direction: column; }
+.demo-flight-code { color: white; font-weight: bold; font-size: 1.1rem; }
+.demo-flight-time { color: #94a3b8; font-size: 0.75rem; margin-top: 0.25rem; }
+.demo-flight-line {
+  flex: 1; text-align: center; color: #64748b;
+  border-top: 1px solid #334155; position: relative;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 1rem;
+}
+
+/* Footer */
+.demo-footer-actions {
+  display: flex; justify-content: space-between;
+  padding: 1rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  flex-shrink: 0;
+}
+.demo-btn-prev {
+  background: #1e293b; color: white;
+  padding: 0.5rem 1.5rem; border-radius: 8px;
+  border: none; display: flex; align-items: center; gap: 0.5rem;
+}
+.demo-btn-next {
+  background: #2563eb; color: white;
+  padding: 0.5rem 1.5rem; border-radius: 8px;
+  border: none; font-weight: 500; transition: all 0.3s;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.demo-btn-next.pulse { animation: demoPulseBlue 1.5s infinite; }
+@keyframes demoPulseBlue {
+  0% { box-shadow: 0 0 0 0 rgba(37,99,235,0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(37,99,235,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
+}
+
+/* PDF Modal */
+.demo-pdf-modal-overlay {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+  z-index: 50; display: flex; align-items: center; justify-content: center;
+  padding: 2rem; opacity: 0; pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+.demo-pdf-modal-overlay.visible { opacity: 1; pointer-events: auto; }
+.demo-pdf-window {
+  width: 100%; max-width: 800px; height: 90%;
+  background: #0f1523; border-radius: 12px;
+  display: flex; flex-direction: column;
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+  transform: scale(0.95) translateY(20px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.demo-pdf-modal-overlay.visible .demo-pdf-window { transform: scale(1) translateY(0); }
+.demo-pdf-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); color: white;
+}
+.demo-pdf-dl-btn {
+  background: #2563eb; color: white; border: none;
+  padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.85rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.demo-pdf-toolbar {
+  background: #1e293b; padding: 0.5rem 1rem;
+  display: flex; align-items: center; justify-content: center;
+  gap: 1.5rem; color: #cbd5e1;
+}
+.demo-pdf-viewer-area {
+  flex: 1; background: #334155; padding: 2rem;
+  overflow-y: hidden; display: flex;
+  justify-content: center; position: relative;
+}
+.demo-pdf-doc-wrapper { width: 100%; height: 100%; overflow: hidden; display: flex; justify-content: center; }
+.demo-pdf-document {
+  background: white; width: 100%; max-width: 700px;
+  height: fit-content; min-height: 800px;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+  color: #0f172a; padding: 3rem;
+  transition: transform 12s linear;
+}
+.demo-pdf-document.scrolling { transform: translateY(-550px); }
+.demo-pdf-doc-header {
+  display: flex; justify-content: space-between;
+  border-bottom: 2px solid #10b981;
+  padding-bottom: 1rem; margin-bottom: 2rem;
+}
+
+/* Bubbles */
+.demo-bubble {
+  position: absolute;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white; padding: 1rem 1.25rem; border-radius: 12px;
+  font-size: 0.95rem; font-weight: 500;
+  box-shadow: 0 10px 25px -5px rgba(37,99,235,0.5), 0 0 0 1px rgba(255,255,255,0.1) inset;
+  z-index: 100; max-width: 280px; line-height: 1.4;
+  opacity: 0; transform: translateY(20px) scale(0.95);
+  animation: demoPopIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+.demo-bubble::after {
+  content: ''; position: absolute;
+  width: 0; height: 0; border: 8px solid transparent;
+}
+.bubble-bottom::after {
+  bottom: 100%; left: 50%; transform: translateX(-50%);
+  border-bottom-color: #2563eb;
+}
+.bubble-right::after {
+  right: 100%; top: 50%; transform: translateY(-50%);
+  border-right-color: #2563eb;
+}
+.bubble-top::after {
+  top: 100%; left: 50%; transform: translateX(-50%);
+  border-top-color: #1e40af;
+}
+.bubble-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.2); border-radius: 50%;
+  width: 28px; height: 28px; margin-right: 8px; vertical-align: middle;
+}
+@keyframes demoPopIn { to { opacity: 1; transform: translateY(0) scale(1); } }
+
+@keyframes demoBlink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+.demo-cursor { animation: demoBlink 1s infinite; }
+</style>
+
+<script>
+  // Astro processes <script> as ES modules which are deferred —
+  // DOM is already ready when this runs, no need for DOMContentLoaded.
+  function initDemoAnimation() {
+    const PNR_TEXT = `RP/DZOUY2100/\n 1  UX 046 T 16MAY 6 MVDMAD DK1  1220 0510  17MAY  E  0 789 M\n    SEE RTSVC\n 2  UX 045 N 01JUN 1 MADMVD DK1  2355 0735  02JUN  E  0 789 M\n    SEE RTSVC`;
+
+    let phase = 1;
+    let mainTimeout = null;
+    let typeInterval = null;
+    let started = false;
+
+    const frame         = document.getElementById('demo-frame');
+    const typedCode     = document.getElementById('demo-typed-code');
+    const detectBtn     = document.getElementById('demo-detect-btn');
+    const flightsResult = document.getElementById('demo-flights-result');
+    const amadeusWrapper= document.getElementById('demo-amadeus-wrapper');
+    const innerScroll   = document.getElementById('demo-inner-scroll');
+    const pdfOverlay    = document.getElementById('demo-pdf-overlay');
+    const pdfDoc        = document.getElementById('demo-pdf-doc');
+    const boxDesc       = document.getElementById('demo-box-desc');
+    const bubble1       = document.getElementById('bubble-phase1');
+    const bubble2       = document.getElementById('bubble-phase2');
+    const pdfBubble     = document.getElementById('demo-pdf-bubble');
+    const btnNext       = document.getElementById('demo-btn-next');
+
+    // Guard: if any element is missing, bail out silently
+    if (!frame || !typedCode || !detectBtn) return;
+
+    function showBubble(el) {
+      el.style.display = 'block';
+      // Re-trigger pop-in animation
+      el.style.animation = 'none';
+      void el.offsetHeight;
+      el.style.animation = 'demoPopIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
+    }
+
+    function hideBubble(el) {
+      el.style.display = 'none';
+    }
+
+    function setPhase(p) {
+      phase = p;
+      const zoomClass = 'zoom-phase-' + Math.min(p, 3);
+      frame.className = 'demo-app-frame ' + zoomClass;
+
+      // Bubbles
+      if (p === 1) { showBubble(bubble1); hideBubble(bubble2); hideBubble(pdfBubble); }
+      else if (p === 2) { hideBubble(bubble1); showBubble(bubble2); hideBubble(pdfBubble); }
+      else if (p === 3) { hideBubble(bubble1); hideBubble(bubble2); showBubble(pdfBubble); }
+      else { hideBubble(bubble1); hideBubble(bubble2); hideBubble(pdfBubble); }
+
+      // Next button pulse on phase 2
+      if (p === 2) btnNext.classList.add('pulse');
+      else btnNext.classList.remove('pulse');
+
+      // Box description
+      boxDesc.style.display = p === 1 ? 'block' : 'none';
+
+      // Amadeus wrapper & scroll
+      if (p > 1) {
+        amadeusWrapper.classList.add('collapsed');
+        innerScroll.classList.add('scrolled');
+      } else {
+        amadeusWrapper.classList.remove('collapsed');
+        innerScroll.classList.remove('scrolled');
+      }
+
+      // Detect button state
+      detectBtn.style.display = 'flex';
+      if (p === 1) {
+        detectBtn.className = 'demo-detect-btn';
+        detectBtn.innerHTML = '✦ Detectar Vuelos Automáticamente';
+      } else {
+        detectBtn.className = 'demo-detect-btn done';
+        detectBtn.innerHTML = '✦ Detectar Vuelos Automáticamente';
+      }
+
+      // Flights result
+      if (p >= 2) {
+        flightsResult.style.display = 'block';
+        const cards = flightsResult.querySelectorAll('.demo-flight-card');
+        cards.forEach(function(c, i) {
+          c.style.animation = 'none';
+          void c.offsetHeight;
+          c.style.animation = 'demoFlyIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) ' + (i * 0.2) + 's forwards';
+        });
+      } else {
+        flightsResult.style.display = 'none';
+      }
+
+      // PDF overlay
+      if (p === 3) {
+        pdfOverlay.classList.add('visible');
+      } else {
+        pdfOverlay.classList.remove('visible');
+      }
+    }
+
+    function clearTimers() {
+      if (mainTimeout) { clearTimeout(mainTimeout); mainTimeout = null; }
+      if (typeInterval) { clearInterval(typeInterval); typeInterval = null; }
+    }
+
+    function runSequence() {
+      clearTimers();
+
+      // Full reset
+      typedCode.innerHTML = '';
+      pdfDoc.classList.remove('scrolling');
+      setPhase(1);
+
+      // Phase 1: type the PNR
+      let charIndex = 0;
+      typeInterval = setInterval(function () {
+        if (charIndex <= PNR_TEXT.length) {
+          const cursor = charIndex < PNR_TEXT.length
+            ? '<span class="demo-cursor">|</span>' : '';
+          typedCode.innerHTML = PNR_TEXT.substring(0, charIndex) + cursor;
+          charIndex += 2;
+        } else {
+          clearInterval(typeInterval);
+          typeInterval = null;
+
+          // Show "Analizando GDS..." loading state
+          detectBtn.className = 'demo-detect-btn loading';
+          detectBtn.innerHTML = 'Analizando GDS...';
+
+          // After 1s → show flights (phase 2)
+          mainTimeout = setTimeout(function () {
+            setPhase(2);
+
+            // After 6s reading flights → open PDF (phase 3)
+            mainTimeout = setTimeout(function () {
+              setPhase(3);
+
+              // After 2s → start PDF scroll
+              mainTimeout = setTimeout(function () {
+                pdfDoc.classList.add('scrolling');
+
+                // After 14s scrolling → fade out and restart
+                mainTimeout = setTimeout(function () {
+                  setPhase(4); // hides overlay, resets classes
+                  mainTimeout = setTimeout(runSequence, 800);
+                }, 14000);
+              }, 2000);
+            }, 6000);
+          }, 1000);
+        }
+      }, 45);
+    }
+
+    // Start animation when the section scrolls into view (lazy start)
+    const root = document.getElementById('demo-animation-root');
+    if (root && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !started) {
+            started = true;
+            runSequence();
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(root);
+    } else if (root) {
+      // Fallback: start immediately
+      runSequence();
+    }
+  } // end initDemoAnimation
+
+  // Call directly — Astro module scripts are deferred, DOM is already ready
+  initDemoAnimation();
+</script>
+

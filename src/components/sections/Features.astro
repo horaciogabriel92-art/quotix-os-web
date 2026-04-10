@@ -1,0 +1,49 @@
+---
+const features = [
+  {
+    icon: "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z",
+    title: "One view across every team",
+    description: "Get complete, shared visibility across every customer interaction and history. No more silos or lost context."
+  },
+  {
+    icon: "M13 10V3L4 14h7v7l9-11h-7z",
+    title: "AI built for more than FAQs",
+    description: "Quotix AI handles complex requests from first message to final resolution. Intelligent routing and handling."
+  },
+  {
+    icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
+    title: "Resolution without rework",
+    description: "Higher accuracy, fewer handoffs, and responses that land the first time. Boost customer satisfaction."
+  }
+];
+---
+
+<section class="section-padding bg-white">
+  <div class="container-custom">
+    <!-- Section header -->
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <h2 class="heading-lg text-slate-900 mb-4">
+        Built for complex sales workflows
+      </h2>
+      <p class="body-md text-slate-600">
+        We sprint through complexity that trips up other customer service platforms
+      </p>
+    </div>
+    
+    <!-- Feature cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      {features.map((feature) => (
+        <div class="group p-6 lg:p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:border-slate-200 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300">
+          <!-- Icon -->
+          <div class="w-11 h-11 rounded-xl bg-[#d4f542] flex items-center justify-center text-[#0f172a] mb-5 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={feature.icon}/></svg>
+          </div>
+          
+          <!-- Content -->
+          <h3 class="heading-sm text-slate-900 mb-2">{feature.title}</h3>
+          <p class="body-sm text-slate-600 leading-relaxed">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

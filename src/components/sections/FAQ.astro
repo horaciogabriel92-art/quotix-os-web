@@ -1,0 +1,122 @@
+---
+const faqs = [
+  {
+    q: "¿Funciona con mi Amadeus/Sabre actual?",
+    a: "Sí. Quotix funciona con cualquier GDS. Solo copiás y pegás el código PNR. No necesitás cambiar nada de tu sistema actual ni pedir permisos a nadie."
+  },
+  {
+    q: "¿Cuánto tiempo toma implementarlo?",
+    a: "La mayoría de las agencias están cotizando el primer día. La integración completa (logo, colores, plantillas personalizadas) toma entre 1 y 2 semanas."
+  },
+  {
+    q: "¿Cuánto cuesta?",
+    a: "Depende del tamaño de tu equipo y las funcionalidades que necesites. En la demo gratuita analizamos tu caso específico y te damos un presupuesto exacto, sin sorpresas."
+  },
+  {
+    q: "¿Puedo probarlo antes de comprar?",
+    a: "La demo es tu prueba. En 20 minutos hacemos una cotización con tus datos reales y tu PNR. Vas a ver exactamente cómo funciona en tu día a día."
+  },
+  {
+    q: "¿Y si mi equipo no se adapta?",
+    a: "La capacitación está incluida. Y la interfaz es tan simple (copiar y pegar) que la mayoría de los vendedores la usan desde el primer día sin problemas."
+  }
+];
+---
+
+<section class="section-padding bg-slate-50">
+  <div class="container-custom">
+
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <h2 class="heading-lg text-slate-900">
+        Preguntas que nos hacen antes de agendar
+      </h2>
+    </div>
+
+    <!-- FAQ list -->
+    <div class="max-w-3xl mx-auto space-y-3 mb-12">
+      {faqs.map((faq, i) => (
+        <div class="faq-item rounded-2xl bg-white border border-slate-100 overflow-hidden opacity-0" style={`transform: translateY(15px); transition-delay: ${i * 0.08}s;`}>
+          <button
+            class="faq-btn w-full flex items-center justify-between gap-4 p-6 text-left hover:bg-slate-50 transition-colors duration-200"
+            data-index={i}
+          >
+            <span class="font-semibold text-slate-900">{faq.q}</span>
+            <svg class="faq-arrow w-5 h-5 text-slate-400 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-out">
+            <p class="px-6 pb-6 text-slate-600 leading-relaxed">{faq.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA box -->
+    <div class="max-w-3xl mx-auto reveal">
+      <div class="p-8 rounded-2xl bg-[#0f172a] text-center">
+        <p class="text-white font-semibold mb-4">¿Te quedó alguna duda?</p>
+        <a href="#demo" class="btn-primary btn-lime text-sm px-6 py-3">
+          Agendá una demo y la resolvemos en vivo →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.faq-item { transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
+.faq-item.active { opacity: 1; transform: translateY(0); }
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+.faq-content { transition: max-height 0.35s ease-out, opacity 0.3s ease; opacity: 0; }
+.faq-item.open .faq-content { opacity: 1; }
+</style>
+
+<script>
+  (function() {
+    const items = document.querySelectorAll('.faq-item');
+    const btns = document.querySelectorAll('.faq-btn');
+
+    // Accordion
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const content = item.querySelector('.faq-content');
+        const isOpen = item.classList.contains('open');
+
+        // Close all
+        items.forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-content').style.maxHeight = '0';
+        });
+
+        // Toggle clicked
+        if (!isOpen) {
+          item.classList.add('open');
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Entrance
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const idx = Array.from(items).indexOf(e.target);
+          setTimeout(() => e.target.classList.add('active'), idx * 80);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    items.forEach(i => obs.observe(i));
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      el.style.opacity = '0'; el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) { el.style.opacity = '1'; el.style.transform = 'none'; }
+      }, { threshold: 0.2 }).observe(el);
+    });
+  })();
+</script>

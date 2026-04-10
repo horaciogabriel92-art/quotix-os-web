@@ -1,0 +1,96 @@
+---
+const features = [
+  {
+    name: "Copilot",
+    description: "Quickly generate AI drafts for complex inquiries that require agent review, based on customer conversations and your help content.",
+    expanded: true
+  },
+  {
+    name: "Autopilot",
+    description: "Automatically resolve routine inquiries with AI-powered responses that maintain your brand voice.",
+    expanded: false
+  },
+  {
+    name: "Topics",
+    description: "Categorize and analyze conversation themes to identify trends and improve your knowledge base.",
+    expanded: false
+  },
+  {
+    name: "Smart QA",
+    description: "Automatically review conversation quality and provide feedback to help agents improve.",
+    expanded: false
+  },
+  {
+    name: "Smart CSAT",
+    description: "Predict customer satisfaction scores and proactively address potential issues.",
+    expanded: false
+  },
+  {
+    name: "Summarize",
+    description: "Generate concise summaries of long conversations for quick context and handoffs.",
+    expanded: false
+  },
+  {
+    name: "Compose",
+    description: "AI-assisted writing that helps agents craft perfect responses every time.",
+    expanded: false
+  },
+  {
+    name: "Translate",
+    description: "Instantly translate conversations to support customers in any language.",
+    expanded: false
+  }
+];
+---
+
+<section class="py-24 bg-[#0f172a]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <h2 class="text-3xl sm:text-4xl font-semibold text-white mb-16">
+      Everything Quotix AI can do for your support team
+    </h2>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- Accordion -->
+      <div class="space-y-0">
+        {features.map((feature, index) => (
+          <div class="border-b border-slate-700">
+            <button class="w-full py-6 flex items-center justify-between text-left group">
+              <span class="text-xl font-semibold text-white group-hover:text-[#bf3480] transition-colors">
+                {feature.name}
+              </span>
+              <div class={`w-8 h-8 rounded-full border border-slate-600 flex items-center justify-center ${feature.expanded ? 'bg-[#d4f542] border-[#d4f542]' : ''}`}>
+                <svg class={`w-4 h-4 ${feature.expanded ? 'text-[#0f172a]' : 'text-white'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {feature.expanded ? (
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+                  ) : (
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                  )}
+                </svg>
+              </div>
+            </button>
+            {feature.expanded && (
+              <div class="pb-6">
+                <p class="text-slate-400 leading-relaxed">{feature.description}</p>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+      
+      <!-- Stats cards -->
+      <div class="space-y-6">
+        <div class="p-8 rounded-2xl bg-gradient-to-br from-[#bf3480]/20 to-[#8b5cf6]/20 border border-[#bf3480]/20">
+          <div class="text-sm text-white/60 mb-2">DealDash</div>
+          <div class="text-6xl font-bold text-white mb-2">2x</div>
+          <div class="text-white/80">response time decrease</div>
+        </div>
+        
+        <div class="p-8 rounded-2xl bg-gradient-to-br from-[#d4f542]/20 to-[#8b5cf6]/20 border border-[#d4f542]/20">
+          <div class="text-sm text-white/60 mb-2">Mixam</div>
+          <div class="text-6xl font-bold text-white mb-2">60%</div>
+          <div class="text-white/80">faster first response</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

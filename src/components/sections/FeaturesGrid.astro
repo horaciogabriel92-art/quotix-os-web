@@ -1,0 +1,70 @@
+---
+const features = [
+  { icon: "🔗", title: "Integración GDS", sub: "Funciona con tu Amadeus actual", desc: "No cambiás nada. Solo copiás y pegás el PNR." },
+  { icon: "📄", title: "PDFs Profesionales", sub: "Cotizaciones que venden por su apariencia", desc: "Plantillas que transmiten profesionalismo. Tus clientes sienten que están en buenas manos." },
+  { icon: "💰", title: "Comisiones Claras", sub: "Sabés exactamente cuánto ganás en cada venta", desc: "Dashboard en tiempo real. Sin sorpresas." },
+  { icon: "👥", title: "CRM Integrado", sub: "Tus clientes, organizados", desc: "Historial de cotizaciones, seguimientos y recordatorios." },
+  { icon: "🏢", title: "Multi-Vendedor", sub: "Controlá toda tu red", desc: "Asignás permisos, ves quién cotiza qué, reportes en tiempo real." },
+  { icon: "🌐", title: "Web de Paquetes", sub: "Tus productos online en minutos", desc: "Publicás tus paquetes en una web lista para compartir." }
+];
+---
+
+<section class="section-padding bg-[#0f172a]">
+  <div class="container-custom">
+
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <p class="text-xs font-semibold text-[#bf3480] uppercase tracking-widest mb-3">Todo lo que necesitás</p>
+      <h2 class="heading-lg text-white mb-4">Una plataforma, todas las herramientas</h2>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {features.map((f, i) => (
+        <div
+          class="feature-card group relative p-7 rounded-2xl bg-slate-800/30 border border-slate-700/50 hover:bg-slate-800/60 hover:border-[#bf3480]/30 transition-all duration-300 overflow-hidden"
+          style={`opacity:0; transform: translateY(30px);`}
+        >
+          <!-- Gradient border on hover -->
+          <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#bf3480] to-[#d4f542] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <!-- Icon -->
+          <div class="text-3xl mb-4 transition-transform duration-200 group-hover:scale-110 group-hover:rotate-6">{f.icon}</div>
+          <!-- Content -->
+          <h3 class="text-xs font-bold text-[#bf3480] uppercase tracking-widest mb-1">{f.title}</h3>
+          <p class="font-semibold text-white text-base mb-2">{f.sub}</p>
+          <p class="text-sm text-slate-400 leading-relaxed">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.feature-card { transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s, border 0.3s; }
+.feature-card.active { opacity: 1; transform: translateY(0); }
+</style>
+
+<script>
+  (function() {
+    const cards = document.querySelectorAll('.feature-card');
+    if (!cards.length) return;
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = Array.from(cards).indexOf(entry.target);
+          setTimeout(() => entry.target.classList.add('active'), idx * 100);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    cards.forEach(c => obs.observe(c));
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      el.style.opacity = '0'; el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) { el.style.opacity = '1'; el.style.transform = 'none'; }
+      }, { threshold: 0.2 }).observe(el);
+    });
+  })();
+</script>

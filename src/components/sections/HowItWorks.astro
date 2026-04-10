@@ -1,0 +1,121 @@
+---
+const steps = [
+  {
+    num: "01",
+    icon: "📋",
+    title: "COPIÁS Y PEGÁS EL PNR",
+    desc: "Desde Amadeus, Sabre o Galileo. Copiás el código y lo pegás en Quotix. Así de simple.",
+    accent: "from-[#bf3480] to-[#8b5cf6]"
+  },
+  {
+    num: "02",
+    icon: "⚡",
+    title: "REVISÁS EN SEGUNDOS",
+    desc: "El sistema extrae todo automáticamente. Vuelos, horarios, tarifas y tasas. Zero errores.",
+    accent: "from-[#8b5cf6] to-[#3b82f6]"
+  },
+  {
+    num: "03",
+    icon: "📄",
+    title: "ENVIÁS EL PDF",
+    desc: "Generás un PDF profesional con tu logo, lo enviás al cliente y seguís con la siguiente.",
+    accent: "from-[#d4f542] to-[#10b981]"
+  }
+];
+---
+
+<section class="section-padding bg-white">
+  <div class="container-custom">
+
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <p class="text-xs font-semibold text-[#bf3480] uppercase tracking-widest mb-3">Sin curva de aprendizaje</p>
+      <h2 class="heading-lg text-slate-900 mb-4">
+        Tres pasos. Sin capacitación.<br>
+        <span class="text-slate-500">Sin cambiar tu GDS.</span>
+      </h2>
+    </div>
+
+    <!-- Connector line (desktop) -->
+    <div class="hidden lg:block relative mb-12">
+      <div class="absolute top-6 left-[16.66%] right-[16.66%] h-0.5 bg-slate-200">
+        <div class="connector-line h-full bg-gradient-to-r from-[#bf3480] via-[#8b5cf6] to-[#d4f542] origin-left scale-x-0 transition-transform duration-1000 ease-out"></div>
+      </div>
+      <!-- Dots -->
+      <div class="flex justify-around">
+        {steps.map((s, i) => (
+          <div class="step-dot w-12 h-12 rounded-full bg-gradient-to-br {s.accent} flex items-center justify-center text-white font-bold text-sm shadow-lg opacity-0 scale-75 transition-all duration-400 ease-out z-10">
+            {s.num}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {steps.map((step, i) => (
+        <div class="how-card group text-center p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300" style={`opacity:0; transform: translateY(40px);`}>
+          <!-- Icon -->
+          <div class="text-5xl mb-5 block group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">{step.icon}</div>
+          <!-- Number (mobile) -->
+          <div class={`lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br ${step.accent} text-white font-bold text-sm mb-4`}>{step.num}</div>
+          <!-- Title -->
+          <h3 class="text-base font-bold text-slate-900 tracking-wide mb-3">{step.title}</h3>
+          <!-- Desc -->
+          <p class="text-sm text-slate-600 leading-relaxed">{step.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-12 reveal">
+      <p class="text-slate-500 mb-2 text-sm">¿Tan fácil? Sí.</p>
+      <a href="#demo" class="btn-primary btn-filled-dark text-sm px-6 py-3">
+        Quiero verlo en vivo →
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+.how-card { transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s; }
+.how-card.active { opacity: 1 !important; transform: translateY(0) !important; }
+.step-dot.active { opacity: 1; transform: scale(1); }
+</style>
+
+<script>
+  (function() {
+    const cards = document.querySelectorAll('.how-card');
+    const dots = document.querySelectorAll('.step-dot');
+    const connectorLine = document.querySelector('.connector-line');
+    if (!cards.length) return;
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animate connector
+          if (connectorLine) connectorLine.style.transform = 'scaleX(1)';
+          // Animate dots and cards
+          cards.forEach((card, i) => {
+            setTimeout(() => {
+              card.classList.add('active');
+              if (dots[i]) dots[i].classList.add('active');
+            }, i * 250);
+          });
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    if (cards[0]) obs.observe(cards[0]);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) { el.style.opacity = '1'; el.style.transform = 'none'; }
+      }, { threshold: 0.3 }).observe(el);
+    });
+  })();
+</script>
