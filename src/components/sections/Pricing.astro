@@ -21,7 +21,7 @@ const formatLimit = (value: number | null, singular: string, plural: string) => 
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
       {plans.map((plan) => (
         <div class={`relative rounded-2xl p-6 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 ${
           plan.destacado 
@@ -36,68 +36,60 @@ const formatLimit = (value: number | null, singular: string, plural: string) => 
             </div>
           )}
 
-          <div class="mb-6">
-            <span class={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3 ${
-              plan.destacado ? 'bg-white/10 text-white' : 'bg-[#bf3480]/10 text-[#bf3480]'
+          <div class="mb-6 text-center">
+            <div class={`w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center text-2xl ${
+              plan.destacado ? 'bg-white/10' : 'bg-slate-100'
             }`}>
-              7 días gratis
-            </span>
-            <h3 class="text-xl font-bold mb-2">{plan.nombre}</h3>
-            <div class="flex items-baseline gap-1">
-              <span class="text-4xl font-black">
-                {plan.precio_mensual_usd === 0 ? 'Gratis' : `$${plan.precio_mensual_usd}`}
-              </span>
-              {plan.precio_mensual_usd > 0 && (
-                <span class={`text-sm ${plan.destacado ? 'text-slate-400' : 'text-slate-500'}`}>/mes</span>
-              )}
+              {plan.icono}
             </div>
+            <h3 class="text-xl font-bold mb-1">{plan.nombre}</h3>
+            <p class={`text-sm ${plan.destacado ? 'text-slate-400' : 'text-slate-500'}`}>
+              {plan.subtitulo}
+            </p>
           </div>
 
-          <ul class="space-y-3 mb-8 flex-1">
-            <li class="flex items-center gap-2 text-sm">
-              <svg class={`w-4 h-4 flex-shrink-0 ${plan.destacado ? 'text-[#d4f542]' : 'text-[#bf3480]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              {formatLimit(plan.max_users, 'usuario', 'usuarios')}
-            </li>
-            <li class="flex items-center gap-2 text-sm">
-              <svg class={`w-4 h-4 flex-shrink-0 ${plan.destacado ? 'text-[#d4f542]' : 'text-[#bf3480]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              {formatLimit(plan.max_cotizaciones_por_mes, 'cotización/mes', 'cotizaciones/mes')}
-            </li>
-            <li class="flex items-center gap-2 text-sm">
-              <svg class={`w-4 h-4 flex-shrink-0 ${plan.destacado ? 'text-[#d4f542]' : 'text-[#bf3480]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              {formatLimit(plan.max_paquetes, 'paquete', 'paquetes')}
-            </li>
-            <li class="flex items-center gap-2 text-sm">
-              <svg class={`w-4 h-4 flex-shrink-0 ${plan.destacado ? 'text-[#d4f542]' : 'text-[#bf3480]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              {plan.permite_dominio_propio ? 'Dominio propio' : 'Sin dominio propio'}
-            </li>
-            {plan.precio_usuario_extra_usd > 0 && (
-              <li class="flex items-center gap-2 text-sm">
-                <svg class={`w-4 h-4 flex-shrink-0 ${plan.destacado ? 'text-[#d4f542]' : 'text-[#bf3480]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                +${plan.precio_usuario_extra_usd}/mes usuario extra
-              </li>
+          <div class="text-center mb-6">
+            <span class="text-4xl font-black">
+              {plan.precio_mensual_usd === 0 ? 'Gratis' : `$${plan.precio_mensual_usd}`}
+            </span>
+            {plan.precio_mensual_usd > 0 && (
+              <span class={`text-sm ${plan.destacado ? 'text-slate-400' : 'text-slate-500'}`}>/mes</span>
             )}
-          </ul>
+          </div>
 
           <a
             href={`/registro?plan=${plan.slug}`}
-            class={`w-full text-center py-3 rounded-full font-semibold text-sm transition-all ${
+            class={`w-full text-center py-3 rounded-full font-semibold text-sm transition-all mb-6 ${
               plan.destacado
                 ? 'bg-[#d4f542] text-[#0f172a] hover:bg-[#e0ff70]'
-                : 'bg-[#0f172a] text-white hover:bg-[#1e293b]'
+                : plan.precio_mensual_usd === 0
+                  ? 'border-2 border-[#0f172a] text-[#0f172a] hover:bg-[#0f172a] hover:text-white'
+                  : 'bg-[#0f172a] text-white hover:bg-[#1e293b]'
             }`}
           >
-            Probar gratis 7 días
+            {plan.cta}
           </a>
+
+          <ul class="space-y-3 flex-1">
+            {plan.features.map((feature) => (
+              <li class={`flex items-start gap-3 text-sm ${
+                feature.incluido 
+                  ? (plan.destacado ? 'text-slate-200' : 'text-slate-700')
+                  : (plan.destacado ? 'text-slate-600' : 'text-slate-400')
+              }`}>
+                {feature.incluido ? (
+                  <svg class={`w-5 h-5 flex-shrink-0 mt-0.5 ${plan.destacado ? 'text-[#d4f542]' : 'text-[#bf3480]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                ) : (
+                  <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                  </svg>
+                )}
+                <span>{feature.text}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       ))}
     </div>
