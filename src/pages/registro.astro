@@ -1,0 +1,311 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+---
+
+<MainLayout title="Crear cuenta - Quotix" description="Creá tu cuenta de Quotix y empezá tu prueba gratuita de 7 días.">
+  <main class="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-xl mx-auto">
+      <div class="text-center mb-8">
+        <a href="/">
+          <img src="/images/logo-magenta.png" alt="Quotix" class="h-12 w-auto mx-auto mb-6" />
+        </a>
+        <h1 class="heading-lg text-[#0f172a]">Creá tu cuenta</h1>
+        <p class="text-slate-600 mt-2">
+          Plan seleccionado: <span id="plan-name" class="font-bold text-[#bf3480]">Free</span>
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+        {/* Progress */}
+        <div class="flex items-center gap-2 mb-8">
+          <div id="progress-1" class="flex-1 h-2 rounded-full bg-[#bf3480]"></div>
+          <div id="progress-2" class="flex-1 h-2 rounded-full bg-slate-200"></div>
+        </div>
+
+        <div id="error-message" class="hidden mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm flex items-start gap-2">
+          <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span id="error-text"></span>
+        </div>
+
+        <form id="register-form">
+          {/* Step 1 */}
+          <div id="step-1" class="space-y-6">
+            <div>
+              <label for="nombre_agencia" class="block text-sm font-medium text-slate-700 mb-2">
+                Nombre de tu agencia
+              </label>
+              <input
+                type="text"
+                id="nombre_agencia"
+                name="nombre_agencia"
+                required
+                minlength="2"
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#bf3480] focus:ring-2 focus:ring-[#bf3480]/20 outline-none transition-all"
+                placeholder="Ej: Viajes del Sur"
+              />
+            </div>
+
+            <div>
+              <label for="slug" class="block text-sm font-medium text-slate-700 mb-2">
+                URL de tu espacio
+              </label>
+              <div class="flex items-center">
+                <input
+                  type="text"
+                  id="slug"
+                  name="slug"
+                  required
+                  pattern="[a-z0-9-]+"
+                  class="flex-1 px-4 py-3 rounded-l-xl border border-r-0 border-slate-200 focus:border-[#bf3480] focus:ring-2 focus:ring-[#bf3480]/20 outline-none transition-all"
+                  placeholder="viajes-del-sur"
+                />
+                <span class="px-4 py-3 rounded-r-xl border border-l-0 border-slate-200 bg-slate-50 text-slate-500 text-sm">
+                  .travel.quotixos.com
+                </span>
+              </div>
+              <p class="text-xs text-slate-500 mt-1">Solo letras minúsculas, números y guiones.</p>
+            </div>
+
+            <button
+              type="button"
+              id="btn-step-1"
+              class="w-full py-3 rounded-full bg-[#0f172a] text-white font-semibold hover:bg-[#1e293b] transition-colors"
+            >
+              Continuar
+            </button>
+          </div>
+
+          {/* Step 2 */}
+          <div id="step-2" class="hidden space-y-5">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="nombre" class="block text-sm font-medium text-slate-700 mb-2">Nombre</label>
+                <input
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  required
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#bf3480] focus:ring-2 focus:ring-[#bf3480]/20 outline-none transition-all"
+                />
+              </div>
+              <div>
+                <label for="apellido" class="block text-sm font-medium text-slate-700 mb-2">Apellido</label>
+                <input
+                  type="text"
+                  id="apellido"
+                  name="apellido"
+                  required
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#bf3480] focus:ring-2 focus:ring-[#bf3480]/20 outline-none transition-all"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-medium text-slate-700 mb-2">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#bf3480] focus:ring-2 focus:ring-[#bf3480]/20 outline-none transition-all"
+                placeholder="tu@email.com"
+              />
+            </div>
+
+            <div>
+              <label for="password" class="block text-sm font-medium text-slate-700 mb-2">Contraseña</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                minlength="8"
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#bf3480] focus:ring-2 focus:ring-[#bf3480]/20 outline-none transition-all"
+                placeholder="Mínimo 8 caracteres"
+              />
+            </div>
+
+            <div>
+              <label for="confirmPassword" class="block text-sm font-medium text-slate-700 mb-2">Confirmar contraseña</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                required
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#bf3480] focus:ring-2 focus:ring-[#bf3480]/20 outline-none transition-all"
+              />
+            </div>
+
+            <div class="flex gap-3">
+              <button
+                type="button"
+                id="btn-back"
+                class="flex-1 py-3 rounded-xl border border-slate-200 text-slate-700 font-semibold hover:bg-slate-50 transition-colors"
+              >
+                Volver
+              </button>
+              <button
+                type="submit"
+                id="btn-submit"
+                class="flex-[2] py-3 rounded-full bg-[#bf3480] text-white font-semibold hover:bg-[#d9469a] transition-colors flex items-center justify-center gap-2"
+              >
+                <span>Crear cuenta</span>
+                <svg id="submit-spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <p class="text-xs text-slate-500 text-center mt-6">
+          Al crear tu cuenta aceptás nuestros <a href="#" class="text-[#bf3480] hover:underline">términos y condiciones</a> y <a href="#" class="text-[#bf3480] hover:underline">política de privacidad</a>.
+        </p>
+      </div>
+    </div>
+  </main>
+</MainLayout>
+
+<script>
+  const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:3001/api';
+  const PANEL_URL = import.meta.env.PUBLIC_PANEL_URL || 'http://localhost:3000';
+
+  const params = new URLSearchParams(window.location.search);
+  const planSlug = params.get('plan') || 'free';
+  const planNames: Record<string, string> = {
+    free: 'Free',
+    freelance: 'Freelance',
+    'pro-agencia': 'Pro Agencia',
+    'pro-ilimitado': 'Pro Ilimitado'
+  };
+  document.getElementById('plan-name')!.textContent = planNames[planSlug] || planSlug;
+
+  const step1 = document.getElementById('step-1')!;
+  const step2 = document.getElementById('step-2')!;
+  const progress1 = document.getElementById('progress-1')!;
+  const progress2 = document.getElementById('progress-2')!;
+  const errorMessage = document.getElementById('error-message')!;
+  const errorText = document.getElementById('error-text')!;
+
+  const showError = (msg: string) => {
+    errorText.textContent = msg;
+    errorMessage.classList.remove('hidden');
+  };
+
+  const hideError = () => {
+    errorMessage.classList.add('hidden');
+  };
+
+  const nombreAgencia = document.getElementById('nombre_agencia') as HTMLInputElement;
+  const slugInput = document.getElementById('slug') as HTMLInputElement;
+
+  nombreAgencia.addEventListener('input', () => {
+    if (!slugInput.dataset.edited) {
+      slugInput.value = nombreAgencia.value
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    }
+  });
+
+  slugInput.addEventListener('input', () => {
+    slugInput.dataset.edited = 'true';
+  });
+
+  document.getElementById('btn-step-1')!.addEventListener('click', () => {
+    hideError();
+    const nombre = nombreAgencia.value.trim();
+    const slug = slugInput.value.trim();
+
+    if (nombre.length < 2) {
+      showError('El nombre de la agencia debe tener al menos 2 caracteres');
+      return;
+    }
+    if (!/^[a-z0-9-]+$/.test(slug)) {
+      showError('El slug solo puede contener letras minúsculas, números y guiones');
+      return;
+    }
+
+    step1.classList.add('hidden');
+    step2.classList.remove('hidden');
+    progress1.classList.remove('bg-[#bf3480]');
+    progress1.classList.add('bg-[#bf3480]/50');
+    progress2.classList.remove('bg-slate-200');
+    progress2.classList.add('bg-[#bf3480]');
+  });
+
+  document.getElementById('btn-back')!.addEventListener('click', () => {
+    step2.classList.add('hidden');
+    step1.classList.remove('hidden');
+    progress2.classList.add('bg-slate-200');
+    progress2.classList.remove('bg-[#bf3480]');
+    progress1.classList.add('bg-[#bf3480]');
+    progress1.classList.remove('bg-[#bf3480]/50');
+    hideError();
+  });
+
+  document.getElementById('register-form')!.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError();
+
+    const nombre = (document.getElementById('nombre') as HTMLInputElement).value.trim();
+    const apellido = (document.getElementById('apellido') as HTMLInputElement).value.trim();
+    const email = (document.getElementById('email') as HTMLInputElement).value.trim();
+    const password = (document.getElementById('password') as HTMLInputElement).value;
+    const confirmPassword = (document.getElementById('confirmPassword') as HTMLInputElement).value;
+
+    if (nombre.length < 2 || apellido.length < 2) {
+      showError('Nombre y apellido son requeridos');
+      return;
+    }
+    if (password.length < 8) {
+      showError('La contraseña debe tener al menos 8 caracteres');
+      return;
+    }
+    if (password !== confirmPassword) {
+      showError('Las contraseñas no coinciden');
+      return;
+    }
+
+    const btnSubmit = document.getElementById('btn-submit') as HTMLButtonElement;
+    const spinner = document.getElementById('submit-spinner')!;
+    btnSubmit.disabled = true;
+    spinner.classList.remove('hidden');
+
+    try {
+      const response = await fetch(`${API_URL}/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre_agencia: nombreAgencia.value.trim(),
+          slug: slugInput.value.trim(),
+          email,
+          password,
+          nombre,
+          apellido,
+          plan_slug: planSlug
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Error al crear la cuenta');
+      }
+
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+
+      window.location.href = `${PANEL_URL}/dashboard`;
+    } catch (err: any) {
+      showError(err.message || 'Error al crear la cuenta');
+      btnSubmit.disabled = false;
+      spinner.classList.add('hidden');
+    }
+  });
+</script>
