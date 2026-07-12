@@ -37,11 +37,13 @@ const formatLimit = (value: number | null, singular: string, plural: string) => 
           )}
 
           <div class="mb-6 text-center">
-            <div class={`w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center text-2xl ${
-              plan.destacado ? 'bg-white/10' : 'bg-slate-100'
-            }`}>
-              {plan.icono}
-            </div>
+            {plan.icono && (
+              <div class={`w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center text-2xl ${
+                plan.destacado ? 'bg-white/10' : 'bg-slate-100'
+              }`}>
+                {plan.icono}
+              </div>
+            )}
             <h3 class="text-xl font-bold mb-1">{plan.nombre}</h3>
             <p class={`text-sm ${plan.destacado ? 'text-slate-400' : 'text-slate-500'}`}>
               {plan.subtitulo}

@@ -27,33 +27,6 @@ const featuresBase: Feature[] = [
 
 export const plans: Plan[] = [
   {
-    slug: "free",
-    nombre: "Free",
-    subtitulo: "Para probar sin compromiso",
-    precio_mensual_usd: 0,
-    precio_usuario_extra_usd: 0,
-    max_users: 1,
-    max_cotizaciones_por_mes: 10,
-    max_paquetes: 1,
-    permite_dominio_propio: false,
-    icono: "✈️",
-    cta: "Empezar gratis",
-    features: [
-      ...featuresBase,
-      { text: "1 usuario", incluido: true },
-      { text: "10 cotizaciones / mes", incluido: true },
-      { text: "1 paquete", incluido: true },
-      { text: "Subdominio .travel.quotixos.com", incluido: true },
-      { text: "Emails automáticos", incluido: false },
-      { text: "Dominio propio", incluido: false },
-      { text: "Soporte prioritario", incluido: false },
-      { text: "Integración Amadeus / PNR", incluido: false },
-      { text: "Control de comisiones avanzado", incluido: false },
-      { text: "Vouchers y documentos de viaje", incluido: false },
-      { text: "Reportes", incluido: false }
-    ]
-  },
-  {
     slug: "freelance",
     nombre: "Freelance",
     subtitulo: "Para agentes independientes",
@@ -133,6 +106,33 @@ export const plans: Plan[] = [
       { text: "Vouchers y documentos de viaje", incluido: true },
       { text: "Reportes", incluido: true },
       { text: "+$10 / mes por usuario extra", incluido: true }
+    ]
+  },
+  {
+    slug: "free",
+    nombre: "Free",
+    subtitulo: "Para probar sin compromiso",
+    precio_mensual_usd: 0,
+    precio_usuario_extra_usd: 0,
+    max_users: 1,
+    max_cotizaciones_por_mes: 10,
+    max_paquetes: 1,
+    permite_dominio_propio: false,
+    icono: "",
+    cta: "Empezar gratis",
+    features: [
+      ...featuresBase,
+      { text: "1 usuario", incluido: true },
+      { text: "10 cotizaciones / mes", incluido: true },
+      { text: "1 paquete", incluido: true },
+      { text: "Subdominio .travel.quotixos.com", incluido: true },
+      { text: "Emails automáticos", incluido: false },
+      { text: "Dominio propio", incluido: false },
+      { text: "Soporte prioritario", incluido: false },
+      { text: "Integración Amadeus / PNR", incluido: false },
+      { text: "Control de comisiones avanzado", incluido: false },
+      { text: "Vouchers y documentos de viaje", incluido: false },
+      { text: "Reportes", incluido: false }
     ]
   }
 ];
