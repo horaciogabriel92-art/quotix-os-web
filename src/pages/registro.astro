@@ -49,24 +49,44 @@ import '@/styles/global.css';
             </div>
 
             <div>
-              <label for="slug" class="block text-sm font-medium text-slate-700 mb-2">
-                URL de tu espacio
+              <label class="block text-sm font-medium text-slate-700 mb-2">
+                ¿Sos freelance o tenés una agencia?
               </label>
-              <div class="flex items-center">
-                <input
-                  type="text"
-                  id="slug"
-                  name="slug"
-                  required
-                  pattern="[a-z0-9-]+"
-                  class="flex-1 px-4 py-3 rounded-l-xl border border-r-0 border-slate-200 focus:border-[#bf3480] focus:ring-2 focus:ring-[#bf3480]/20 outline-none transition-all"
-                  placeholder="viajes-del-sur"
-                />
-                <span class="px-4 py-3 rounded-r-xl border border-l-0 border-slate-200 bg-slate-50 text-slate-500 text-sm">
-                  .travel.quotixos.com
-                </span>
+              <div class="grid grid-cols-2 gap-3">
+                <button
+                  type="button"
+                  id="btn-tipo-freelance"
+                  class="tipo-btn px-4 py-3 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 hover:border-[#bf3480] transition-all"
+                >
+                  Freelance
+                </button>
+                <button
+                  type="button"
+                  id="btn-tipo-agencia"
+                  class="tipo-btn px-4 py-3 rounded-xl border border-slate-200 text-sm font-medium text-slate-700 hover:border-[#bf3480] transition-all"
+                >
+                  Agencia
+                </button>
               </div>
-              <p class="text-xs text-slate-500 mt-1">Solo letras minúsculas, números y guiones.</p>
+              <input type="hidden" id="tipo" name="tipo" />
+            </div>
+
+            <div id="vendedores-wrapper" class="hidden">
+              <label for="vendedores" class="block text-sm font-medium text-slate-700 mb-2">
+                ¿Cuántos vendedores tenés?
+              </label>
+              <select
+                id="vendedores"
+                name="vendedores"
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#bf3480] focus:ring-2 focus:ring-[#bf3480]/20 outline-none transition-all bg-white"
+              >
+                <option value="">Seleccionar</option>
+                <option value="1-2">1 a 2 vendedores</option>
+                <option value="3-5">3 a 5 vendedores</option>
+                <option value="6-10">6 a 10 vendedores</option>
+                <option value="10+">Más de 10</option>
+              </select>
+              <p class="text-xs text-slate-500 mt-1">Ahora creás un usuario. Después agregás los que necesites según tu plan.</p>
             </div>
 
             <button
@@ -139,6 +159,45 @@ import '@/styles/global.css';
               />
             </div>
 
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="pais" class="block text-sm font-medium text-slate-700 mb-2">País</label>
+                <input
+                  type="text"
+                  id="pais"
+                  name="pais"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#bf3480] focus:ring-2 focus:ring-[#bf3480]/20 outline-none transition-all"
+                  placeholder="Ej: Uruguay"
+                />
+              </div>
+              <div>
+                <label for="gds" class="block text-sm font-medium text-slate-700 mb-2">¿Qué GDS usás?</label>
+                <select
+                  id="gds"
+                  name="gds"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#bf3480] focus:ring-2 focus:ring-[#bf3480]/20 outline-none transition-all bg-white"
+                >
+                  <option value="">Seleccionar</option>
+                  <option value="amadeus">Amadeus</option>
+                  <option value="galileo">Galileo</option>
+                  <option value="sabre">Sabre</option>
+                  <option value="otro">Otro</option>
+                  <option value="ninguno">No uso GDS</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="tipo_viajes" class="block text-sm font-medium text-slate-700 mb-2">¿Qué tipo de viajes vendés?</label>
+              <input
+                type="text"
+                id="tipo_viajes"
+                name="tipo_viajes"
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#bf3480] focus:ring-2 focus:ring-[#bf3480]/20 outline-none transition-all"
+                placeholder="Ej: Turismo, corporativo, cruceros"
+              />
+            </div>
+
             <div class="flex gap-3">
               <button
                 type="button"
@@ -201,34 +260,64 @@ import '@/styles/global.css';
   };
 
   const nombreAgencia = document.getElementById('nombre_agencia') as HTMLInputElement;
-  const slugInput = document.getElementById('slug') as HTMLInputElement;
+  const tipoInput = document.getElementById('tipo') as HTMLInputElement;
+  const vendedoresWrapper = document.getElementById('vendedores-wrapper')!;
+  const vendedoresInput = document.getElementById('vendedores') as HTMLSelectElement;
 
-  nombreAgencia.addEventListener('input', () => {
-    if (!slugInput.dataset.edited) {
-      slugInput.value = nombreAgencia.value
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '');
+  const generateSlug = (text: string) => {
+    return text
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  };
+
+  const updateTipoButtons = () => {
+    const tipo = tipoInput.value;
+    const freelanceBtn = document.getElementById('btn-tipo-freelance')!;
+    const agenciaBtn = document.getElementById('btn-tipo-agencia')!;
+
+    freelanceBtn.classList.toggle('border-[#bf3480]', tipo === 'freelance');
+    freelanceBtn.classList.toggle('bg-[#bf3480]/10', tipo === 'freelance');
+    freelanceBtn.classList.toggle('text-[#bf3480]', tipo === 'freelance');
+    agenciaBtn.classList.toggle('border-[#bf3480]', tipo === 'agencia');
+    agenciaBtn.classList.toggle('bg-[#bf3480]/10', tipo === 'agencia');
+    agenciaBtn.classList.toggle('text-[#bf3480]', tipo === 'agencia');
+
+    if (tipo === 'agencia') {
+      vendedoresWrapper.classList.remove('hidden');
+    } else {
+      vendedoresWrapper.classList.add('hidden');
+      vendedoresInput.value = '';
     }
+  };
+
+  document.getElementById('btn-tipo-freelance')!.addEventListener('click', () => {
+    tipoInput.value = 'freelance';
+    updateTipoButtons();
   });
 
-  slugInput.addEventListener('input', () => {
-    slugInput.dataset.edited = 'true';
+  document.getElementById('btn-tipo-agencia')!.addEventListener('click', () => {
+    tipoInput.value = 'agencia';
+    updateTipoButtons();
   });
 
   document.getElementById('btn-step-1')!.addEventListener('click', () => {
     hideError();
     const nombre = nombreAgencia.value.trim();
-    const slug = slugInput.value.trim();
+    const tipo = tipoInput.value;
 
     if (nombre.length < 2) {
       showError('El nombre de la agencia debe tener al menos 2 caracteres');
       return;
     }
-    if (!/^[a-z0-9-]+$/.test(slug)) {
-      showError('El slug solo puede contener letras minúsculas, números y guiones');
+    if (!tipo) {
+      showError('Seleccioná si sos freelance o agencia');
+      return;
+    }
+    if (tipo === 'agencia' && !vendedoresInput.value) {
+      showError('Indicá cuántos vendedores tiene tu agencia');
       return;
     }
 
@@ -259,6 +348,9 @@ import '@/styles/global.css';
     const email = (document.getElementById('email') as HTMLInputElement).value.trim();
     const password = (document.getElementById('password') as HTMLInputElement).value;
     const confirmPassword = (document.getElementById('confirmPassword') as HTMLInputElement).value;
+    const pais = (document.getElementById('pais') as HTMLInputElement).value.trim();
+    const gds = (document.getElementById('gds') as HTMLSelectElement).value;
+    const tipoViajes = (document.getElementById('tipo_viajes') as HTMLInputElement).value.trim();
 
     if (nombre.length < 2 || apellido.length < 2) {
       showError('Nombre y apellido son requeridos');
@@ -284,12 +376,19 @@ import '@/styles/global.css';
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           nombre_agencia: nombreAgencia.value.trim(),
-          slug: slugInput.value.trim(),
+          slug: generateSlug(nombreAgencia.value.trim()),
           email,
           password,
           nombre,
           apellido,
-          plan_slug: planSlug
+          plan_slug: planSlug,
+          onboarding: {
+            tipo: tipoInput.value,
+            vendedores: tipoInput.value === 'agencia' ? vendedoresInput.value : null,
+            pais,
+            tipo_viajes: tipoViajes,
+            gds
+          }
         })
       });
 
