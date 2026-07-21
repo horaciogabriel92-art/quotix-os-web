@@ -1,0 +1,149 @@
+---
+import MainLayout from './MainLayout.astro';
+import Header from '@/components/sections/Header.astro';
+import Footer from '@/components/sections/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  ogImage?: string;
+  schema?: string;
+  publishDate: string;
+  readTime: string;
+  category?: string;
+}
+
+const { title, description, canonical, ogImage, schema, publishDate, readTime, category = 'Blog' } = Astro.props;
+const siteUrl = 'https://www.quotixos.com';
+const canonicalUrl = canonical.startsWith('http') ? canonical : `${siteUrl}${canonical}`;
+---
+
+<MainLayout title={title} description={description} canonical={canonical} ogImage={ogImage} schema={schema}>
+  <Header />
+  
+  <main class="pt-24 pb-16 bg-slate-50 min-h-screen">
+    <article class="container-custom max-w-4xl mx-auto">
+      <div class="mb-8">
+        <nav class="text-sm text-slate-500 mb-4" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-magenta">Inicio</a>
+          <span class="mx-2">/</span>
+          <a href="/blog/" class="hover:text-magenta">Blog</a>
+          <span class="mx-2">/</span>
+          <span class="text-slate-700">{category}</span>
+        </nav>
+        
+        <span class="inline-block px-3 py-1 text-xs font-semibold tracking-wide text-magenta bg-magenta/10 rounded-full mb-4">
+          {category}
+        </span>
+        
+        <h1 class="heading-lg text-slate-900 mb-4">{title}</h1>
+        
+        <div class="flex items-center gap-4 text-sm text-slate-500">
+          <span>Publicado: {publishDate}</span>
+          <span>•</span>
+          <span>Tiempo de lectura: {readTime}</span>
+        </div>
+      </div>
+      
+      <div class="bg-white border border-slate-200 rounded-2xl p-8 md:p-10 shadow-sm prose prose-slate max-w-none article-content">
+        <slot />
+      </div>
+      
+      <!-- CTA final -->
+      <div class="mt-12 bg-gradient-to-br from-navy to-navy-800 rounded-2xl p-8 text-white text-center">
+        <h3 class="heading-md mb-3">¿Armás cotizaciones para agencias de viajes?</h3>
+        <p class="body-md text-slate-300 mb-6">
+          Con Quotix convertís PNRs en cotizaciones PDF con tu marca, hoteles, traslados y seguros en minutos.
+        </p>
+        <a href="/precios" class="inline-flex items-center justify-center px-8 py-3 bg-magenta hover:bg-magenta-500 text-white font-semibold rounded-full transition-colors">
+          Probar Quotix gratis 7 días
+        </a>
+      </div>
+    </article>
+  </main>
+  
+  <Footer />
+</MainLayout>
+
+<style>
+  .article-content h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #0f172a;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .article-content h3 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+    font-weight: 600;
+    color: #0f172a;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .article-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #475569;
+    margin-bottom: 1rem;
+  }
+  .article-content ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .article-content li {
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+  .article-content a {
+    color: #bf3480;
+    text-decoration: none;
+  }
+  .article-content a:hover {
+    text-decoration: underline;
+  }
+  .article-content strong {
+    color: #0f172a;
+    font-weight: 600;
+  }
+  .article-content pre {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+  .article-content code {
+    font-family: ui-monospace, monospace;
+    font-size: 0.875rem;
+    color: #0f172a;
+  }
+  .article-content details {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .article-content summary {
+    font-weight: 600;
+    color: #0f172a;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .article-content summary::marker,
+  .article-content summary::-webkit-details-marker {
+    display: none;
+  }
+  .article-content details[open] summary {
+    margin-bottom: 0.75rem;
+  }
+</style>

@@ -1,0 +1,177 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+
+const title = '¿Qué es un PNR? Guía Completa para Agentes de Viajes 2026';
+const description = 'Descubrí qué es un PNR en Amadeus, cómo decodificarlo y mejorar tus ventas. Empezá tu prueba de 7 días gratis sin tarjeta. Optimizá tus cotizaciones hoy.';
+const canonical = '/blog/que-es-pnr/';
+const ogImage = 'https://www.quotixos.com/assets/images/que-es-pnr-cover.jpg';
+const publishDate = '21 de julio de 2026';
+const readTime = '8 minutos';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: title,
+      description: 'Una guía detallada sobre qué es el Passenger Name Record (PNR), cómo funciona en sistemas como Amadeus y cómo optimizar su uso en agencias de viajes.',
+      image: ogImage,
+      author: {
+        '@type': 'Person',
+        name: 'Horacio'
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Quotix',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://www.quotixos.com/assets/images/logo.png'
+        }
+      },
+      datePublished: '2026-07-21',
+      dateModified: '2026-07-21',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://www.quotixos.com/blog/que-es-pnr/'
+      }
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: '¿Qué significan las siglas PNR?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'PNR significa Passenger Name Record (Registro del Nombre del Pasajero). Es un código alfanumérico único que contiene todos los detalles del itinerario de un viajero dentro de un Sistema de Distribución Global (GDS).'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: '¿Cuáles son los elementos obligatorios de un PNR?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Existen cinco elementos obligatorios conocidos por el acrónimo PRINT: Phone (Teléfono de contacto), Receive from (Quién realiza la reserva), Itinerary (Itinerario del viaje), Name (Nombre del pasajero) y Ticketing (Estado de la emisión del boleto).'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: '¿Por qué es difícil para un cliente leer un PNR de Amadeus?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Los códigos PNR se generan en un formato críptico y altamente técnico diseñado para la eficiencia operativa de los agentes de viajes, utilizando abreviaturas que resultan incomprensibles para personas ajenas a la industria.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: '¿Cómo puedo mostrar un PNR a mis clientes de forma profesional?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Podés utilizar un Conversor PNR, una herramienta que traduce el código críptico a un formato visual, limpio y profesional en PDF, facilitando la lectura y protegiendo tu información operativa.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: '¿Un PNR contiene información sobre las comisiones de la agencia?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Dentro del entorno GDS, la reserva puede mostrar precios netos. Al usar herramientas adecuadas de cotización, estos datos internos y comisiones se mantienen completamente ocultos para el pasajero final.'
+          }
+        }
+      ]
+    }
+  ]
+});
+---
+
+<ArticleLayout title={title} description={description} canonical={canonical} ogImage={ogImage} schema={schema} publishDate={publishDate} readTime={readTime} category="Guía PNR">
+  <section>
+    <p>Para cualquier persona externa a la industria turística, la pantalla de un Sistema de Distribución Global (GDS) se ve exactamente igual al código fuente de una película de ciencia ficción. Letras, números, barras y comandos se agrupan en bloques densos de información. Sin embargo, para los profesionales del turismo, ese texto críptico es el idioma universal de los negocios. En el corazón de toda esa información se encuentra el <strong>PNR</strong>, el elemento más vital para cualquier reserva de viajes.</p>
+
+    <p>A pesar de su importancia técnica, entregarle ese código en bruto a un pasajero genera confusión, desconfianza y, muchas veces, la pérdida de una venta. Comprender a fondo qué es un PNR, cómo se estructura y, sobre todo, cómo presentarlo de manera comercialmente viable, es indispensable para escalar tu agencia de viajes en 2026.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-6">
+      <a href="/precios/" class="inline-flex items-center justify-center px-6 py-3 bg-magenta hover:bg-magenta-500 text-white font-semibold rounded-full transition-colors">Probá gratis por 7 días. Sin tarjeta de crédito. Setup en 24hs.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>El Significado de PNR en la Industria Turística</h2>
+    <p>Las siglas PNR responden a <em>Passenger Name Record</em>, que en español se traduce como Registro del Nombre del Pasajero. En términos técnicos, un PNR es un archivo digital creado dentro de un GDS o en el sistema interno de una aerolínea que contiene el itinerario completo de un viajero o un grupo de viajeros que realizan su trayecto juntos.</p>
+
+    <p>Cuando trabajás cotizando vuelos a Buenos Aires, Montevideo o Madrid a través de operadores como Aerolíneas Argentinas, Copa o Air Europa, el sistema genera un código alfanumérico único, generalmente de seis caracteres. Este código de localización actúa como la llave maestra para acceder a la base de datos y recuperar absolutamente todos los detalles de la reserva asociada.</p>
+
+    <h3>Los 5 Elementos Obligatorios de un PNR (El acrónimo PRINT)</h3>
+    <p>Para que un GDS como <a href="https://amadeus.com" target="_blank" rel="nofollow noopener">Amadeus</a> permita almacenar y generar el localizador de manera exitosa, el agente de viajes debe ingresar obligatoriamente cinco campos de información. Si falta alguno de estos elementos, el sistema rechazará la creación del archivo. La industria utiliza la regla mnemotécnica <strong>PRINT</strong> para recordarlos:</p>
+    <ul>
+      <li><strong>P (Phone):</strong> Un número de teléfono de contacto válido, ya sea de la agencia de viajes o del pasajero directo.</li>
+      <li><strong>R (Received from):</strong> La identificación de la persona que solicitó o autorizó la creación de la reserva.</li>
+      <li><strong>I (Itinerary):</strong> Los segmentos del viaje. Esto incluye vuelos específicos, fechas, horarios y clases de reserva.</li>
+      <li><strong>N (Name):</strong> El nombre completo y apellido del pasajero, tal cual figura en su pasaporte o documento de identidad.</li>
+      <li><strong>T (Ticketing):</strong> El límite de tiempo para la emisión del boleto o el estado actual de los billetes asociados.</li>
+    </ul>
+    <p>Una vez que ingresás estos cinco campos básicos en tu terminal, podés enriquecer la reserva con elementos opcionales, como requerimientos dietéticos especiales (SSR), solicitudes de sillas de ruedas, o el ingreso de programas de viajero frecuente de aerolíneas como LATAM o Avianca.</p>
+  </section>
+
+  <section>
+    <h2>El Gran Problema: La brecha entre el Agente y el Pasajero</h2>
+    <p>El formato críptico de los GDS fue diseñado en la década de 1960 para minimizar el uso de ancho de banda y acelerar el procesamiento de datos por parte de los operadores. Hoy, esa eficiencia técnica representa un obstáculo comercial gigantesco cuando te comunicás con el cliente final.</p>
+
+    <p>Imaginá enviar un correo a un cliente corporativo que necesita viajar de urgencia a Santiago de Chile. Si pegás el texto críptico tal cual sale de tu pantalla, el pasajero se encontrará con un bloque incomprensible lleno de códigos de aeropuerto (EZE, SCL, MAD), indicadores de clase tarifaria (Y, J, C) y tiempos expresados en formatos militares de 24 horas sin zonas horarias aclaradas. El cliente pierde tiempo valioso intentando descifrar a qué hora sale su vuelo, en qué terminal debe presentarse y qué franquicia de equipaje tiene incluida.</p>
+
+    <p>La presentación visual de una propuesta comercial define la percepción de valor de tu agencia de viajes. Obligar al pasajero a leer formatos técnicos perjudica la experiencia de usuario y te posiciona en desventaja frente a las grandes plataformas OTA (Online Travel Agencies) que invierten millones en interfaces amigables.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-6">
+      <a href="/" class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-slate-700 hover:border-magenta hover:text-magenta font-semibold rounded-full transition-colors">¿Listo para cotizar como las agencias que venden en serio? Probá Quotix gratis por 7 días.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>La Solución: El Conversor PNR para Agencias Modernas</h2>
+    <p>Para resolver la fricción entre la terminal técnica y la bandeja de entrada del pasajero, las agencias de viajes líderes utilizan herramientas de decodificación. Aquí es donde la tecnología de <a href="/">Quotix</a> marca la diferencia en tu flujo operativo diario.</p>
+
+    <p>En lugar de perder treinta minutos transcribiendo manualmente horarios de vuelos, números de terminales y políticas de equipaje en un documento de Word, podés utilizar un <strong>Conversor PNR</strong>. El funcionamiento es extremadamente directo: copiás el bloque de texto críptico directamente de tu pantalla de Amadeus y lo pegás en la plataforma. El sistema interpreta todos los comandos, decodifica los segmentos y genera automáticamente una cotización en formato PDF con un diseño profesional, limpio y visualmente atractivo.</p>
+
+    <p>Visitá nuestra sección del <a href="/pnr-converter/">Conversor PNR</a> para ver ejemplos de cómo un texto incomprensible se transforma en una propuesta de alto impacto lista para ser enviada por correo electrónico o WhatsApp. Este nivel de automatización te devuelve el control de tu tiempo, permitiéndote enfocarte en cerrar ventas y captar nuevos clientes.</p>
+  </section>
+
+  <section>
+    <h2>Privacidad, Seguridad y Gestión de Comisiones</h2>
+    <p>Compartir información críptica directamente conlleva el riesgo de exponer datos confidenciales. Muchos PNRs contienen líneas de remarks internos, costos netos de los operadores y porcentajes de rentabilidad que bajo ninguna circunstancia deben llegar al consumidor final.</p>
+
+    <p>El uso del decodificador te garantiza una capa de protección fundamental. Al procesar el itinerario, vos decidís exactamente qué información se imprime en el PDF. Podés aplicar tus propios márgenes de ganancia (markups) con total tranquilidad, asegurando que el cliente vea exclusivamente el precio final de venta al público.</p>
+
+    <p>Además, esta funcionalidad se integra perfectamente con las herramientas de gestión de clientes. Cada propuesta generada se convierte en una tarjeta dentro de un tablero Kanban, permitiéndote aplicar un seguimiento estructurado. Si manejás un equipo de ventas, el entorno multi-vendedor te brinda visibilidad total sobre qué agentes están enviando cotizaciones, qué propuestas están en negociación y cuáles han sido emitidas exitosamente. Revisá los detalles de implementación para equipos en nuestra página de <a href="/precios/">planes y precios</a>.</p>
+  </section>
+
+  <section>
+    <h2>La Evolución del PNR hacia 2026</h2>
+    <p>La industria del turismo está atravesando una transformación tecnológica profunda. Con la consolidación del estándar NDC (New Distribution Capability) impulsado por IATA, la forma en que se estructuran y distribuyen las tarifas aéreas está cambiando. El NDC permite a las aerolíneas ofrecer contenido más rico, como imágenes de cabinas, opciones de asientos premium y servicios complementarios (ancillaries) directamente en el punto de venta.</p>
+
+    <p>A pesar de esta evolución hacia formatos basados en XML, el concepto de PNR sigue siendo el eje central del registro de pasajeros en los sistemas heredados. Mantenerse actualizado con las mejores herramientas de software para agencias de viajes, como las que analizamos frecuentemente en nuestro <a href="/blog/">blog especializado</a>, garantiza que tu negocio pueda operar tanto con la eficiencia de la vieja escuela como con las exigencias visuales del consumidor moderno.</p>
+  </section>
+
+  <section>
+    <h2>Preguntas Frecuentes sobre Códigos PNR</h2>
+    <details>
+      <summary>¿Qué significan las siglas PNR? <span class="text-magenta">▼</span></summary>
+      <p>PNR significa Passenger Name Record (Registro del Nombre del Pasajero). Es un código alfanumérico único que contiene todos los detalles del itinerario de un viajero dentro de un Sistema de Distribución Global (GDS).</p>
+    </details>
+    <details>
+      <summary>¿Cuáles son los elementos obligatorios de un PNR? <span class="text-magenta">▼</span></summary>
+      <p>Existen cinco elementos obligatorios conocidos por el acrónimo PRINT: Phone (Teléfono de contacto), Receive from (Quién realiza la reserva), Itinerary (Itinerario del viaje), Name (Nombre del pasajero) y Ticketing (Estado de la emisión del boleto).</p>
+    </details>
+    <details>
+      <summary>¿Por qué es difícil para un cliente leer un PNR de Amadeus? <span class="text-magenta">▼</span></summary>
+      <p>Los códigos PNR se generan en un formato críptico y altamente técnico diseñado para la eficiencia operativa de los agentes de viajes, utilizando abreviaturas que resultan incomprensibles para personas ajenas a la industria.</p>
+    </details>
+    <details>
+      <summary>¿Cómo puedo mostrar un PNR a mis clientes de forma profesional? <span class="text-magenta">▼</span></summary>
+      <p>Podés utilizar un Conversor PNR, una herramienta que traduce el código críptico a un formato visual, limpio y profesional en PDF, facilitando la lectura y protegiendo tu información operativa.</p>
+    </details>
+    <details>
+      <summary>¿Un PNR contiene información sobre las comisiones de la agencia? <span class="text-magenta">▼</span></summary>
+      <p>Dentro del entorno GDS, la reserva puede mostrar precios netos. Al usar herramientas adecuadas de cotización, estos datos internos y comisiones se mantienen completamente ocultos para el pasajero final.</p>
+    </details>
+  </section>
+</ArticleLayout>

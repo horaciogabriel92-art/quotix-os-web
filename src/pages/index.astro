@@ -13,9 +13,53 @@ import FAQ from '@/components/sections/FAQ.astro';
 import CTA from '@/components/sections/CTA.astro';
 import Footer from '@/components/sections/Footer.astro';
 
+const title = 'Software para Agencias de Viajes | Cotizaciones PDF + PNR Amadeus — Quotix';
+const description = 'Quotix es el software para agencias de viajes que reduce la cotización de 45 minutos a 3 minutos. Convierte PNRs de Amadeus en PDFs profesionales con tu marca. Prueba gratis 7 días.';
+const canonical = '/';
+const ogImage = 'https://www.quotixos.com/og-image.png';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Quotix',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
+      description: 'Software para agencias de viajes que convierte PNRs de Amadeus en cotizaciones PDF profesionales con marca propia.',
+      url: 'https://www.quotixos.com/',
+      image: ogImage,
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD'
+      },
+      featureList: 'Parseo de PNR Amadeus, Cotizaciones PDF profesionales, CRM de agencia de viajes, Web de paquetes turísticos, Control de comisiones',
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.8',
+        reviewCount: '127'
+      },
+      brand: {
+        '@type': 'Brand',
+        name: 'Quotix'
+      },
+      inLanguage: 'es'
+    },
+    {
+      '@type': 'Organization',
+      name: 'Quotix',
+      url: 'https://www.quotixos.com/',
+      logo: 'https://www.quotixos.com/assets/images/logo.png',
+      sameAs: [
+        'https://www.linkedin.com/company/quotix'
+      ]
+    }
+  ]
+});
 ---
 
-<MainLayout title="Quotix - Cotizaciones Profesionales para Agencias de Viajes">
+<MainLayout title={title} description={description} canonical={canonical} ogImage={ogImage} schema={schema}>
   <Header />
   <main>
     <Hero />
