@@ -1,0 +1,209 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+
+const title = 'How to Calculate Commissions from a PNR Without Errors';
+const description = 'Learn how to read and calculate commissions from an Amadeus PNR. Avoid errors, protect your margin, and quote like a pro. Try Quotix free for 7 days.';
+const canonical = '/en/blog/calculate-commissions-pnr/';
+const heroImage = '/images/blog/travel-counters.jpg';
+const heroAlt = 'Travel agent reviewing airline commission data on a booking system';
+const heroCaption = 'Calculating commissions correctly is key to protecting your agency margin';
+const ogImage = 'https://www.quotixos.com/images/blog/travel-counters.jpg';
+const publishDate = 'July 21, 2026';
+const readTime = '10 min';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: title,
+      description: 'Complete guide to calculating travel agency commissions from an Amadeus PNR, avoiding common mistakes.',
+      image: ogImage,
+      author: {
+        '@type': 'Person',
+        name: 'Horacio'
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Quotix',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://www.quotixos.com/assets/images/logo.png'
+        }
+      },
+      datePublished: '2026-07-21',
+      dateModified: '2026-07-21',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://www.quotixos.com/en/blog/calculate-commissions-pnr/'
+      }
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What is a commission in an Amadeus PNR?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'It is the percentage or fixed amount an airline or operator pays the agency for selling the ticket or service. In the PNR it usually appears in fields like FM, Commission, or as part of the fare line.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'How do you calculate the final selling price from a PNR?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Add the net price of the service, taxes, and the desired agency markup. The airline commission is calculated on the net price or added as income, depending on the business model.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Why should I not send the raw PNR to the client?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Because the PNR may contain net costs, commissions, and internal remarks that reveal your margin and confuse the client.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Can I calculate commissions automatically with Quotix?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. Quotix lets you set commission percentages by airline or service type and automatically calculates the final price and your margin when generating the PDF quote.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'What if the commission varies by airline?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'That is normal. Each airline or consolidator may have a different percentage. That is why it is important to have a system that applies the correct rules automatically.'
+          }
+        }
+      ]
+    }
+  ]
+});
+---
+
+<ArticleLayout title={title} description={description} canonical={canonical} ogImage={ogImage} heroImage={heroImage} heroAlt={heroAlt} heroCaption={heroCaption} schema={schema} publishDate={publishDate} readTime={readTime} category="Business">
+  <section>
+    <p>For many travel agencies, the moment of calculating commissions is where most mistakes happen. A misplaced decimal, a tax not considered, or an airline commission that changed without notice can turn a profitable sale into a headache. Worse still: if those numbers leak to the client through a poorly sent PNR, your agency's credibility suffers.</p>
+
+    <p>In this article, we explain how to <strong>calculate commissions from an Amadeus PNR</strong> clearly, what fields to look at, what mistakes to avoid, and how a tool like <a href="/">Quotix</a> can automate the entire process so you never lose money on a bad calculation again.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+      <a href="/precios/" class="inline-flex items-center justify-center px-6 py-3 bg-magenta hover:bg-magenta-500 text-white font-semibold rounded-full transition-colors">Start your 7-day free trial. No credit card. Setup in 24h.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>What are commissions in a PNR?</h2>
+    <p>A <strong>commission</strong> is the percentage or fixed amount an airline, operator, or consolidator pays your agency for selling their service. In an Amadeus PNR, this information can appear in several ways depending on the GDS and issuance type.</p>
+
+    <p>Some of the most common fields are:</p>
+    <ul>
+      <li><strong><code>FM</code></strong> (Form of Payment / Commission): shows the commission percentage assigned to the booking.</li>
+      <li><strong><code>FP</code></strong> (Form of Payment): indicates payment method and sometimes breaks down amounts.</li>
+      <li><strong><code>FS</code></strong> or <code>FE</code>: fields related to fare rules and special fares.</li>
+      <li><strong>Fare lines:</strong> contain the base price, taxes, and fees of the ticket.</li>
+    </ul>
+    <p>The key is understanding that the PNR contains the <strong>cost</strong> of the service, but not the <strong>selling price</strong>. The final price is defined by your agency applying the appropriate markup.</p>
+  </section>
+
+  <section>
+    <h2>Basic formula for calculating commissions</h2>
+    <p>The most common formula for calculating the final selling price is:</p>
+    <pre><code>Final price = (Net price + Taxes) × (1 + Desired markup)</code></pre>
+    <p>Where:</p>
+    <ul>
+      <li><strong>Net price:</strong> what the agency pays the operator or airline.</li>
+      <li><strong>Taxes:</strong> mandatory airport taxes, fees, and charges.</li>
+      <li><strong>Markup:</strong> the commercial margin the agency wants to earn.</li>
+    </ul>
+    <p>For example, if a flight has a net price of USD 800, taxes of USD 200, and you want a 10% markup, the calculation would be:</p>
+    <pre><code>(800 + 200) × 1.10 = USD 1,100</code></pre>
+    <p>The commission you receive from the airline (for example, 7%) is calculated on the net price:</p>
+    <pre><code>800 × 0.07 = USD 56</code></pre>
+    <p>This means your total profit is the sum of the applied markup plus the commission received, unless you are working on a net model.</p>
+  </section>
+
+  <section>
+    <h2>How to read commission fields in the PNR</h2>
+    <p>Suppose you have this line in a PNR:</p>
+    <pre><code>FM CASH 7.00%</code></pre>
+    <p>This indicates the commission is 7% of the ticket value. If the base fare is USD 500, the commission would be USD 35.</p>
+
+    <p>Another common example:</p>
+    <pre><code>FP CASH/XXX 1200.00</code></pre>
+    <p>Here, <code>1200.00</code> represents the total charged amount, which may include base fare plus taxes. To know how much is commission, you first need to identify the net price and then apply the corresponding percentage.</p>
+
+    <h3>Markup vs. commission?</h3>
+    <p>Many agencies confuse markup with commission. <strong>Commission</strong> is what the supplier pays you. <strong>Markup</strong> is what you add for your service. Both are part of your profitability, but they are calculated differently and should be recorded separately.</p>
+  </section>
+
+  <section>
+    <h2>Common mistakes when calculating commissions</h2>
+    <p>These mistakes happen in agencies of all sizes. Know them to avoid them:</p>
+    <ul>
+      <li><strong>Calculating commission on the total including taxes:</strong> most airlines pay commission only on the base fare, not on taxes.</li>
+      <li><strong>Confusing net price with selling price:</strong> selling at cost without markup means working for free.</li>
+      <li><strong>Not updating percentages:</strong> commissions change. If you use an outdated table, you lose money.</li>
+      <li><strong>Showing internal calculations to the client:</strong> sending the PNR with <code>FM</code> or <code>RM</code> lines exposes your business.</li>
+      <li><strong>Forgetting local taxes:</strong> each destination has additional fees that impact the final price.</li>
+    </ul>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+      <a href="/precios/" class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-slate-700 hover:border-magenta hover:text-magenta font-semibold rounded-full transition-colors">Ready to quote like agencies that sell seriously? Try Quotix free for 7 days.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Automate the calculation with Quotix</h2>
+    <p>Calculating commissions manually on every quote is slow and risky. With <a href="/funcionalidades/">Quotix</a>, you can set business rules once and the system applies them automatically:</p>
+    <ul>
+      <li>Set commission percentages by airline or service type.</li>
+      <li>Define default markup or per-client markup.</li>
+      <li>The <a href="/en/pnr-converter/">PNR Converter</a> reads the code and builds the visual itinerary.</li>
+      <li>The generated PDF only shows the final selling price, without revealing costs.</li>
+      <li>The dashboard shows how much you earn on each quote and issuance.</li>
+    </ul>
+    <p>This not only eliminates errors, it also lets you quote faster, respond before the competition, and have clear profitability on every operation.</p>
+  </section>
+
+  <section>
+    <h2>Best practices to protect your margin</h2>
+    <p>Beyond the tool you use, there are habits that help keep your commissions healthy:</p>
+    <ul>
+      <li><strong>Review commissions monthly.</strong> Percentages change, especially with promotions or new agreements.</li>
+      <li><strong>Record the actual cost of each booking.</strong> Do not rely only on the PNR; compare with your supplier invoice.</li>
+      <li><strong>Set minimum markups by product.</strong> Flights, hotels, and tours do not have the same margins.</li>
+      <li><strong>Train your team.</strong> A seller who understands the calculation sells better and negotiates with more confidence.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Frequently asked questions about commissions in PNRs</h2>
+    <details>
+      <summary>What is a commission in an Amadeus PNR? <span class="text-magenta">▼</span></summary>
+      <p>It is the percentage or fixed amount an airline or operator pays the agency for selling the service. It appears in the PNR in fields like FM, Commission, or within the fare lines.</p>
+    </details>
+    <details>
+      <summary>How do you calculate the final selling price from a PNR? <span class="text-magenta">▼</span></summary>
+      <p>Add the net price, taxes, and desired markup. The airline commission is calculated on the net price and deducted or added depending on the business model.</p>
+    </details>
+    <details>
+      <summary>Why should I not send the raw PNR to the client? <span class="text-magenta">▼</span></summary>
+      <p>Because it may contain net costs, commissions, and internal remarks that reveal your margin and confuse the client.</p>
+    </details>
+    <details>
+      <summary>Can I calculate commissions automatically with Quotix? <span class="text-magenta">▼</span></summary>
+      <p>Yes. Quotix lets you set commissions by airline and apply markup automatically when generating the PDF quote.</p>
+    </details>
+    <details>
+      <summary>What if the commission varies by airline? <span class="text-magenta">▼</span></summary>
+      <p>That is normal. Each airline may have its own percentage. A quoting system with automatic business rules prevents errors.</p>
+    </details>
+  </section>
+</ArticleLayout>

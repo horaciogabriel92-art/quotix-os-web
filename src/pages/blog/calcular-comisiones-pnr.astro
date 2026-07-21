@@ -1,0 +1,209 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+
+const title = 'Cómo Calcular Comisiones desde un PNR sin Errores';
+const description = 'Aprendé a leer y calcular comisiones desde un PNR de Amadeus. Evitá errores, protegé tu margen y cotizá como un profesional. Probá Quotix gratis 7 días.';
+const canonical = '/blog/calcular-comisiones-pnr/';
+const heroImage = '/images/blog/travel-counters.jpg';
+const heroAlt = 'Agente de viajes revisando una reserva aérea en el sistema de comisiones';
+const heroCaption = 'Calcular comisiones correctamente es clave para proteger el margen de tu agencia';
+const ogImage = 'https://www.quotixos.com/images/blog/travel-counters.jpg';
+const publishDate = '21 de julio de 2026';
+const readTime = '10 minutos';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: title,
+      description: 'Guía completa para calcular comisiones de agencia de viajes a partir de un PNR de Amadeus, evitando errores comunes.',
+      image: ogImage,
+      author: {
+        '@type': 'Person',
+        name: 'Horacio'
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Quotix',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://www.quotixos.com/assets/images/logo.png'
+        }
+      },
+      datePublished: '2026-07-21',
+      dateModified: '2026-07-21',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://www.quotixos.com/blog/calcular-comisiones-pnr/'
+      }
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: '¿Qué es una comisión en un PNR de Amadeus?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Es el porcentaje o monto fijo que la aerolínea o el operador paga a la agencia por vender el boleto o servicio. En el PNR suele aparecer en campos como FM, Commission o como parte de la línea de tarifa.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: '¿Cómo se calcula el precio final de venta desde un PNR?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Se obtiene sumando el precio neto del servicio, los impuestos y el markup o margen comercial que la agencia desea aplicar. La comisión de la aerolínea se descuenta del precio neto o se suma como ingreso, según el modelo de negocio.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: '¿Por qué no debo mostrar el PNR en bruto al cliente?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Porque el PNR puede contener líneas con costos netos, comisiones y remarks internos que revelan tu margen comercial y desorientan al cliente.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: '¿Puedo calcular comisiones automáticamente con Quotix?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Sí. Quotix permite configurar porcentajes de comisión por aerolínea o tipo de servicio y calcula automáticamente el precio final y tu margen al generar la cotización PDF.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: '¿Qué pasa si la comisión varía según la aerolínea?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Es normal. Cada aerolínea o consolidador puede tener un porcentaje diferente. Por eso es importante tener un sistema que aplique las reglas correctas automáticamente.'
+          }
+        }
+      ]
+    }
+  ]
+});
+---
+
+<ArticleLayout title={title} description={description} canonical={canonical} ogImage={ogImage} heroImage={heroImage} heroAlt={heroAlt} heroCaption={heroCaption} schema={schema} publishDate={publishDate} readTime={readTime} category="Negocios">
+  <section>
+    <p>Para muchas agencias de viajes, el momento de calcular comisiones es donde más errores ocurren. Un decimal mal puesto, un impuesto no considerado o una comisión de aerolínea que cambió sin avisar pueden convertir una venta rentable en un dolor de cabeza. Peor aún: si esos números se filtran al cliente a través de un PNR mal enviado, la credibilidad de tu agencia se resiente.</p>
+
+    <p>En este artículo te explicamos cómo <strong>calcular comisiones desde un PNR</strong> de Amadeus de forma clara, qué campos mirar, qué errores evitar y cómo una herramienta como <a href="/">Quotix</a> puede automatizar todo el proceso para que nunca más pierdas plata por un cálculo mal hecho.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+      <a href="/precios/" class="inline-flex items-center justify-center px-6 py-3 bg-magenta hover:bg-magenta-500 text-white font-semibold rounded-full transition-colors">Probá gratis por 7 días. Sin tarjeta de crédito. Setup en 24hs.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>¿Qué son las comisiones en un PNR?</h2>
+    <p>Una <strong>comisión</strong> es el porcentaje o monto fijo que una aerolínea, operador o consolidador paga a tu agencia por vender su servicio. En un PNR de Amadeus, esta información puede aparecer de varias formas, dependiendo del GDS y del tipo de emisión.</p>
+
+    <p>Algunos de los campos más comunes son:</p>
+    <ul>
+      <li><strong><code>FM</code></strong> (Form of Payment / Commission): muestra el porcentaje de comisión asignado a la reserva.</li>
+      <li><strong><code>FP</code></strong> (Form of Payment): indica la forma de pago y a veces desglosa montos.</li>
+      <li><strong><code>FS</code></strong> o <code>FE</code>: campos relacionados con fare rules y tarifas especiales.</li>
+      <li><strong>Líneas de tarifa:</strong> contienen el precio base, impuestos y tasas del boleto.</li>
+    </ul>
+    <p>La clave es entender que el PNR tiene el <strong>costo</strong> del servicio, pero no el <strong>precio de venta</strong>. El precio final lo define tu agencia aplicando el markup correspondiente.</p>
+  </section>
+
+  <section>
+    <h2>Fórmula básica para calcular comisiones</h2>
+    <p>La fórmula más común para calcular el precio final de venta es:</p>
+    <pre><code>Precio final = (Precio neto + Impuestos) × (1 + Markup deseado)</code></pre>
+    <p>Donde:</p>
+    <ul>
+      <li><strong>Precio neto:</strong> lo que la agencia le paga al operador o aerolínea.</li>
+      <li><strong>Impuestos:</strong> tasas, impuestos aeroportuarios y cargos obligatorios.</li>
+      <li><strong>Markup:</strong> el margen comercial que la agencia quiere obtener.</li>
+    </ul>
+    <p>Por ejemplo, si un vuelo tiene un precio neto de USD 800, impuestos de USD 200 y querés un markup del 10%, el cálculo sería:</p>
+    <pre><code>(800 + 200) × 1.10 = USD 1.100</code></pre>
+    <p>La comisión que recibís de la aerolínea (por ejemplo, un 7%) se calcula sobre el precio neto:</p>
+    <pre><code>800 × 0.07 = USD 56</code></pre>
+    <p>Eso significa que tu ganancia total es la suma del markup aplicado más la comisión recibida, siempre que no estés trabajando con un modelo neto.</p>
+  </section>
+
+  <section>
+    <h2>Cómo leer los campos de comisión en el PNR</h2>
+    <p>Supongamos que tenés esta línea en un PNR:</p>
+    <pre><code>FM CASH 7.00%</code></pre>
+    <p>Esto indica que la comisión es del 7% sobre el valor del boleto. Si el total de la tarifa base es USD 500, la comisión sería USD 35.</p>
+
+    <p>Otro ejemplo común:</p>
+    <pre><code>FP CASH/XXX 1200.00</code></pre>
+    <p>Aquí el <code>1200.00</code> representa el monto total cobrado, que puede incluir tarifa base + impuestos. Para saber cuánto es comisión, tenés que identificar primero el precio neto y luego aplicar el porcentaje correspondiente.</p>
+
+    <h3>¿Markup o comisión?</h3>
+    <p>Muchas agencias confunden markup con comisión. La <strong>comisión</strong> es lo que te paga el proveedor. El <strong>markup</strong> es lo que vos agregás por tu servicio. Ambos forman parte de tu rentabilidad, pero se calculan de forma diferente y deben registrarse por separado.</p>
+  </section>
+
+  <section>
+    <h2>Errores comunes al calcular comisiones</h2>
+    <p>Estos errores se repiten en agencias de todos los tamaños. Conocelos para evitarlos:</p>
+    <ul>
+      <li><strong>Calcular comisión sobre el total con impuestos:</strong> la mayoría de las aerolíneas pagan comisión solo sobre la tarifa base, no sobre impuestos.</li>
+      <li><strong>Confundir precio neto con precio de venta:</strong> vender al costo sin aplicar markup es trabajar gratis.</li>
+      <li><strong>No actualizar porcentajes:</strong> las comisiones cambian. Si usás una tabla desactualizada, perdés plata.</li>
+      <li><strong>Mostrar cálculos internos al cliente:</strong> enviar el PNR con líneas de <code>FM</code> o <code>RM</code> expone tu negocio.</li>
+      <li><strong>Olvidar los impuestos locales:</strong> cada destino tiene tasas adicionales que impactan el precio final.</li>
+    </ul>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+      <a href="/precios/" class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-slate-700 hover:border-magenta hover:text-magenta font-semibold rounded-full transition-colors">¿Listo para cotizar como las agencias que venden en serio? Probá Quotix gratis por 7 días.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Automatizar el cálculo con Quotix</h2>
+    <p>Calcular comisiones a mano en cada cotización es lento y riesgoso. Con <a href="/funcionalidades/">Quotix</a>, podés configurar reglas comerciales una sola vez y el sistema las aplica automáticamente:</p>
+    <ul>
+      <li>Configurá porcentajes de comisión por aerolínea o tipo de servicio.</li>
+      <li>Definí markup por defecto o por cliente.</li>
+      <li>El <a href="/pnr-converter/">Conversor PNR</a> lee el código y arma el itinerario visual.</li>
+      <li>El PDF generado muestra solo el precio final de venta, sin revelar costos.</li>
+      <li>El dashboard te muestra cuánto ganás en cada cotización y emisión.</li>
+    </ul>
+    <p>Esto no solo elimina errores, también te permite cotizar más rápido, responder antes que la competencia y tener clara tu rentabilidad en cada operación.</p>
+  </section>
+
+  <section>
+    <h2>Mejores prácticas para proteger tu margen</h2>
+    <p>Más allá de la herramienta que uses, hay hábitos que te ayudan a mantener tus comisiones sanas:</p>
+    <ul>
+      <li><strong>Revisá las comisiones mensualmente.</strong> Los porcentajes cambian, especialmente con promociones o nuevos acuerdos.</li>
+      <li><strong>Registrá el costo real de cada reserva.</strong> No confíes solo en el PNR; compará con tu factura del proveedor.</li>
+      <li><strong>Establecé markup mínimos por producto.</strong> Vuelos, hoteles y excursiones no tienen los mismos márgenes.</li>
+      <li><strong>Capacitá a tu equipo.</strong> Un vendedor que entiende el cálculo vende mejor y negocia con más seguridad.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Preguntas frecuentes sobre comisiones en PNR</h2>
+    <details>
+      <summary>¿Qué es una comisión en un PNR de Amadeus? <span class="text-magenta">▼</span></summary>
+      <p>Es el porcentaje o monto fijo que la aerolínea u operador paga a la agencia por vender el servicio. En el PNR aparece en campos como FM, Commission o dentro de las líneas de tarifa.</p>
+    </details>
+    <details>
+      <summary>¿Cómo se calcula el precio final de venta desde un PNR? <span class="text-magenta">▼</span></summary>
+      <p>Se suma el precio neto, los impuestos y el markup deseado. La comisión de la aerolínea se calcula sobre el precio neto y se descuenta o suma según el modelo comercial.</p>
+    </details>
+    <details>
+      <summary>¿Por qué no debo mostrar el PNR en bruto al cliente? <span class="text-magenta">▼</span></summary>
+      <p>Porque puede contener costos netos, comisiones y remarks internos que revelan tu margen y confunden al cliente.</p>
+    </details>
+    <details>
+      <summary>¿Puedo calcular comisiones automáticamente con Quotix? <span class="text-magenta">▼</span></summary>
+      <p>Sí. Quotix permite configurar comisiones por aerolínea y aplicar markup automáticamente al generar la cotización PDF.</p>
+    </details>
+    <details>
+      <summary>¿Qué pasa si la comisión varía según la aerolínea? <span class="text-magenta">▼</span></summary>
+      <p>Es normal. Cada aerolínea puede tener su propio porcentaje. Un sistema de cotización con reglas comerciales automáticas evita errores.</p>
+    </details>
+  </section>
+</ArticleLayout>
