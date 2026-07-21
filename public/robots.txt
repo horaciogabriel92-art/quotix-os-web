@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /pnr-converter?pnr=*
+Disallow: /pnr-converter/?pnr=*
+
+Sitemap: https://www.quotixos.com/sitemap.xml

@@ -2,12 +2,21 @@
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
+  canonical?: string;
+  schema?: string;
 }
 
 const { 
   title = "Quotix - Cotizaciones Profesionales para Agencias de Viajes",
-  description = "Genera cotizaciones de paquetes turísticos en 3 minutos. PDFs profesionales, control de comisiones y parser PNR Amadeus integrado."
+  description = "Genera cotizaciones de paquetes turísticos en 3 minutos. PDFs profesionales, control de comisiones y parser PNR Amadeus integrado.",
+  ogImage = "https://www.quotixos.com/og-image.png",
+  canonical,
+  schema
 } = Astro.props;
+
+const siteUrl = "https://www.quotixos.com";
+const canonicalUrl = canonical ? (canonical.startsWith('http') ? canonical : `${siteUrl}${canonical}`) : null;
 ---
 
 <!DOCTYPE html>
@@ -17,6 +26,25 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
   <meta name="theme-color" content="#0f172a" />
+  
+  {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:url" content={canonicalUrl || siteUrl} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_ES" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+  
+  <!-- Schema JSON-LD -->
+  {schema && <script type="application/ld+json" set:html={schema} />}
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

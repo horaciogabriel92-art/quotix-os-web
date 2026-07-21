@@ -31,3 +31,15 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# Archivos de planificación/SEO locales (no subir)
+PNR*Converter*SEO*
+Plan*SEO*
+plan_seo_extracted.txt
+*.docx
+*.doc
+
+# Documentación del proyecto (vive fuera de este repo, no subir a GitHub)
+docs/
+archive/
+business_plan/
