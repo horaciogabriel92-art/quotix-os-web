@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { List, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 interface TOCItem {
   id: string;
@@ -62,11 +62,7 @@ export default function BlogTOC() {
   return (
     <div className="space-y-4">
       {/* Desktop TOC */}
-      <div className="hidden lg:block bg-slate-50 border border-slate-200 rounded-2xl p-5">
-        <div className="flex items-center gap-2 text-sm font-semibold text-slate-900 mb-4">
-          <List className="w-4 h-4 text-magenta" />
-          Contenido
-        </div>
+      <div className="hidden lg:block">
         {items.length === 0 ? (
           <div className="space-y-2">
             {[1, 2, 3].map((i) => (
@@ -75,15 +71,15 @@ export default function BlogTOC() {
           </div>
         ) : (
           <nav aria-label="Tabla de contenidos">
-            <ul className="space-y-1">
+            <ul className="space-y-1 border-l-2 border-slate-200">
               {items.map((item) => (
                 <li key={item.id}>
                   <button
                     onClick={() => handleClick(item.id)}
-                    className={`w-full text-left text-sm leading-snug py-1.5 px-2 rounded-lg transition-colors flex items-start gap-2 ${
+                    className={`w-full text-left text-sm leading-snug py-1.5 pl-4 pr-2 rounded-r-lg transition-all flex items-start gap-2 ${
                       activeId === item.id
-                        ? 'bg-magenta/10 text-magenta font-medium'
-                        : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                        ? 'bg-magenta/10 text-magenta font-semibold border-l-2 border-magenta -ml-0.5'
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                     }`}
                   >
                     <ChevronRight className={`w-3.5 h-3.5 mt-0.5 flex-shrink-0 ${activeId === item.id ? 'text-magenta' : 'text-slate-400'}`} />
@@ -100,10 +96,10 @@ export default function BlogTOC() {
       <div className="lg:hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex items-center justify-between gap-2 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900"
+          className="w-full flex items-center justify-between gap-2 bg-slate-50 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100 transition-colors"
         >
           <span className="flex items-center gap-2">
-            <List className="w-4 h-4 text-magenta" />
+            <span className="text-magenta">▸</span>
             Contenido
           </span>
           <span className="text-slate-400">{isOpen ? '▲' : '▼'}</span>

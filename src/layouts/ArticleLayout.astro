@@ -11,13 +11,14 @@ interface Props {
   ogImage?: string;
   heroImage?: string;
   heroAlt?: string;
+  heroCaption?: string;
   schema?: string;
   publishDate: string;
   readTime: string;
   category?: string;
 }
 
-const { title, description, canonical, ogImage, heroImage, heroAlt, schema, publishDate, readTime, category = 'Blog' } = Astro.props;
+const { title, description, canonical, ogImage, heroImage, heroAlt, heroCaption, schema, publishDate, readTime, category = 'Blog' } = Astro.props;
 const siteUrl = 'https://www.quotixos.com';
 const canonicalUrl = canonical.startsWith('http') ? canonical : `${siteUrl}${canonical}`;
 ---
@@ -25,83 +26,107 @@ const canonicalUrl = canonical.startsWith('http') ? canonical : `${siteUrl}${can
 <MainLayout title={title} description={description} canonical={canonical} ogImage={ogImage} schema={schema}>
   <Header />
 
-  <main class="pt-24 pb-20 bg-white min-h-screen">
-    <article class="container-custom max-w-6xl mx-auto">
-      <!-- Header del artículo -->
-      <header class="max-w-3xl mx-auto text-center mb-10 md:mb-14">
-        <nav class="text-sm text-slate-500 mb-4" aria-label="Breadcrumb">
-          <a href="/" class="hover:text-magenta transition-colors">Inicio</a>
-          <span class="mx-2 text-slate-300">/</span>
-          <a href="/blog/" class="hover:text-magenta transition-colors">Blog</a>
-          <span class="mx-2 text-slate-300">/</span>
-          <span class="text-slate-700">{category}</span>
+  <main class="pt-28 pb-24 bg-[#0f172a]">
+    <!-- Hero de artículo -->
+    <div class="container-custom max-w-4xl mx-auto px-4 sm:px-6">
+      <header class="text-center mb-12">
+        <nav class="flex flex-wrap items-center justify-center gap-2 text-sm text-slate-400 mb-6" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-white transition-colors">Inicio</a>
+          <span class="text-slate-600">/</span>
+          <a href="/blog/" class="hover:text-white transition-colors">Blog</a>
+          <span class="text-slate-600">/</span>
+          <span class="text-slate-300">{category}</span>
         </nav>
 
-        <span class="inline-block px-3 py-1 text-xs font-semibold tracking-wide text-magenta bg-magenta/10 rounded-full mb-4">
+        <span class="inline-block px-4 py-1.5 text-xs font-bold tracking-widest uppercase text-[#d4f542] bg-[#d4f542]/10 rounded-full mb-6">
           {category}
         </span>
 
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight tracking-tight mb-5">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight mb-6">
           {title}
         </h1>
 
-        <p class="text-lg md:text-xl text-slate-600 leading-relaxed mb-6">
+        <p class="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-8">
           {description}
         </p>
 
-        <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-500">
-          <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-magenta to-magenta-500 flex items-center justify-center text-white text-xs font-bold">
+        <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm text-slate-400">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-magenta to-[#8b5cf6] flex items-center justify-center text-white text-sm font-bold">
               H
             </div>
-            <span class="font-medium text-slate-700">Horacio</span>
+            <div class="text-left">
+              <div class="font-semibold text-slate-200">Horacio</div>
+              <div class="text-slate-500">Equipo Quotix</div>
+            </div>
           </div>
-          <span class="hidden md:inline text-slate-300">•</span>
-          <span>{publishDate}</span>
-          <span class="text-slate-300">•</span>
-          <span class="flex items-center gap-1">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            {readTime} de lectura
-          </span>
+          <div class="hidden sm:block w-px h-8 bg-slate-700"></div>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 text-slate-400">
+            <span>{publishDate}</span>
+            <span class="hidden sm:inline text-slate-600">•</span>
+            <span class="flex items-center gap-1">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              {readTime} de lectura
+            </span>
+          </div>
         </div>
-
-        {heroImage && (
-          <div class="mt-8 rounded-2xl overflow-hidden shadow-lg border border-slate-200">
-            <img src={heroImage} alt={heroAlt || title} class="w-full h-auto object-cover" loading="eager" />
-          </div>
-        )}
       </header>
 
-      <!-- Layout de contenido: TOC + artículo -->
-      <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-12 items-start">
+      {heroImage && (
+        <figure class="rounded-2xl overflow-hidden shadow-2xl shadow-black/30 border border-slate-700/50">
+          <img src={heroImage} alt={heroAlt || title} class="w-full h-auto object-cover" loading="eager" />
+          {heroCaption && (
+            <figcaption class="bg-slate-900 px-6 py-3 text-sm text-slate-400 text-center border-t border-slate-700/50">
+              {heroCaption}
+            </figcaption>
+          )}
+        </figure>
+      )}
+    </div>
+  </main>
+
+  <!-- Contenido del artículo -->
+  <div class="bg-white">
+    <div class="container-custom max-w-7xl mx-auto px-4 sm:px-6 py-16 lg:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,280px)_minmax(0,1fr)] gap-10 lg:gap-16 items-start">
+        <!-- TOC Sidebar -->
         <aside class="lg:sticky lg:top-28 order-2 lg:order-1">
-          <BlogTOC client:load />
+          <div class="bg-slate-50 rounded-2xl border border-slate-200 p-5 lg:p-6">
+            <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4 flex items-center gap-2">
+              <svg class="w-4 h-4 text-[#bf3480]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+              Contenido
+            </h3>
+            <BlogTOC client:load />
+          </div>
         </aside>
 
-        <div class="order-1 lg:order-2">
-          <div class="article-content max-w-2xl mx-auto lg:mx-0">
+        <!-- Artículo -->
+        <article class="order-1 lg:order-2">
+          <div class="article-content max-w-3xl mx-auto lg:mx-0">
             <slot />
           </div>
 
           <!-- CTA final -->
-          <div class="max-w-2xl mx-auto lg:mx-0 mt-14 bg-gradient-to-br from-navy via-navy-800 to-navy-700 rounded-2xl p-8 md:p-10 text-white text-center shadow-lg relative overflow-hidden">
-            <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-magenta/20 rounded-full blur-2xl"></div>
-            <div class="absolute bottom-0 left-0 -mb-4 -ml-4 w-20 h-20 bg-lime/10 rounded-full blur-2xl"></div>
+          <div class="max-w-3xl mx-auto lg:mx-0 mt-16 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#334155] rounded-2xl p-8 md:p-12 text-white text-center shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-[#bf3480]/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-32 h-32 bg-[#d4f542]/10 rounded-full blur-3xl"></div>
             <div class="relative z-10">
-              <h3 class="text-2xl md:text-3xl font-bold mb-3 leading-tight">¿Armás cotizaciones para agencias de viajes?</h3>
-              <p class="text-slate-300 text-lg mb-6 leading-relaxed">
-                Con Quotix convertís PNRs en cotizaciones PDF con tu marca, hoteles, traslados y seguros en minutos.
+              <div class="text-4xl mb-4">✈️</div>
+              <h3 class="text-2xl md:text-3xl font-bold mb-4 leading-tight">¿Armás cotizaciones para agencias de viajes?</h3>
+              <p class="text-slate-300 text-lg mb-8 leading-relaxed max-w-xl mx-auto">
+                Con Quotix convertís PNRs en cotizaciones PDF con tu marca, hoteles, traslados y seguros en minutos. Probá gratis 7 días, sin tarjeta de crédito.
               </p>
-              <a href="/precios" class="inline-flex items-center justify-center px-8 py-3.5 bg-magenta hover:bg-magenta-500 text-white font-semibold rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+              <a href="/precios" class="inline-flex items-center justify-center px-8 py-4 bg-[#bf3480] hover:bg-[#d9469a] text-white font-bold rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
                 Probar Quotix gratis 7 días
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
               </a>
+              <p class="text-slate-500 text-sm mt-4">Cancelás cuando querés. Setup en 24hs.</p>
             </div>
           </div>
-        </div>
+        </article>
       </div>
-    </article>
-  </main>
+    </div>
+  </div>
 
   <Footer />
 </MainLayout>
@@ -114,7 +139,7 @@ const canonicalUrl = canonical.startsWith('http') ? canonical : `${siteUrl}${can
   }
 
   .article-content > section {
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
   }
 
   .article-content > section:last-child {
@@ -122,7 +147,7 @@ const canonicalUrl = canonical.startsWith('http') ? canonical : `${siteUrl}${can
   }
 
   .article-content p {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
   }
 
   .article-content p:last-child {
@@ -130,14 +155,13 @@ const canonicalUrl = canonical.startsWith('http') ? canonical : `${siteUrl}${can
   }
 
   .article-content h2 {
-    font-size: 1.875rem;
-    font-weight: 700;
+    font-size: 2.25rem;
+    font-weight: 800;
     color: #0f172a;
-    line-height: 1.25;
-    margin-top: 3.5rem;
-    margin-bottom: 1.25rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid #f1f5f9;
+    line-height: 1.2;
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.025em;
   }
 
   .article-content h2:first-of-type {
@@ -145,79 +169,80 @@ const canonicalUrl = canonical.startsWith('http') ? canonical : `${siteUrl}${can
   }
 
   .article-content h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.625rem;
+    font-weight: 700;
     color: #1e293b;
     line-height: 1.35;
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.015em;
   }
 
   .article-content h4 {
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #1e293b;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
   }
 
   .article-content a {
     color: #bf3480;
     text-decoration: none;
-    font-weight: 500;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s ease;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(191, 52, 128, 0.25);
+    transition: border-color 0.2s ease, color 0.2s ease;
   }
 
   .article-content a:hover {
+    color: #d9469a;
     border-bottom-color: #bf3480;
   }
 
   .article-content strong {
     color: #0f172a;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .article-content em {
-    color: #334155;
+    color: #475569;
     font-style: italic;
   }
 
   .article-content ul,
   .article-content ol {
-    margin-bottom: 1.5rem;
-    padding-left: 1.75rem;
+    margin-bottom: 1.75rem;
+    padding-left: 0;
   }
 
   .article-content ul {
     list-style: none;
-    padding-left: 0;
   }
 
   .article-content ul li {
     position: relative;
-    padding-left: 1.75rem;
-    margin-bottom: 0.75rem;
+    padding-left: 2rem;
+    margin-bottom: 0.875rem;
   }
 
   .article-content ul li::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 0.6rem;
-    width: 0.5rem;
-    height: 0.5rem;
+    top: 0.55rem;
+    width: 0.6rem;
+    height: 0.6rem;
     background: linear-gradient(135deg, #bf3480, #d9469a);
     border-radius: 50%;
   }
 
   .article-content ol {
     list-style: decimal;
-    padding-left: 1.5rem;
+    padding-left: 1.75rem;
   }
 
   .article-content ol li {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.875rem;
     padding-left: 0.5rem;
   }
 
@@ -225,10 +250,10 @@ const canonicalUrl = canonical.startsWith('http') ? canonical : `${siteUrl}${can
     background: #0f172a;
     color: #f8fafc;
     border-radius: 1rem;
-    padding: 1.25rem;
+    padding: 1.5rem;
     overflow-x: auto;
-    margin: 1.5rem 0;
-    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25);
+    margin: 2rem 0;
+    box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.25);
   }
 
   .article-content code {
@@ -249,25 +274,26 @@ const canonicalUrl = canonical.startsWith('http') ? canonical : `${siteUrl}${can
     color: #0f172a;
     padding: 0.2rem 0.45rem;
     border-radius: 0.375rem;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .article-content details {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-radius: 0.875rem;
-    padding: 1.25rem;
-    margin-bottom: 0.875rem;
+    border-radius: 1rem;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .article-content summary {
-    font-weight: 600;
+    font-weight: 700;
     color: #0f172a;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-between;
     list-style: none;
+    font-size: 1.05rem;
   }
 
   .article-content summary::-webkit-details-marker {
@@ -276,36 +302,43 @@ const canonicalUrl = canonical.startsWith('http') ? canonical : `${siteUrl}${can
 
   .article-content details[open] summary {
     margin-bottom: 0.75rem;
+    color: #bf3480;
   }
 
   .article-content details > p {
     color: #475569;
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 1.05rem;
+    line-height: 1.75;
   }
 
   .article-content blockquote {
-    background: #fdf2f8;
+    background: linear-gradient(135deg, #fdf2f8 0%, #fff 100%);
     border-left: 4px solid #bf3480;
     border-radius: 0 1rem 1rem 0;
-    padding: 1.5rem;
-    margin: 2rem 0;
+    padding: 1.75rem 2rem;
+    margin: 2.5rem 0;
     font-style: italic;
   }
 
   .article-content blockquote p {
     color: #831843;
     margin-bottom: 0;
+    font-size: 1.25rem;
+    line-height: 1.6;
   }
 
-  /* CTA inline boxes */
+  /* Inline CTA boxes */
   .article-content .cta-box {
     background: linear-gradient(135deg, #fdf2f8 0%, #f8fafc 100%);
     border: 1px solid #f1d5e5;
     border-radius: 1rem;
-    padding: 1.5rem;
-    margin: 2rem 0;
+    padding: 1.75rem;
+    margin: 2.5rem 0;
     text-align: center;
+  }
+
+  .article-content .cta-box p {
+    margin-bottom: 1.25rem;
   }
 
   @media (min-width: 768px) {
@@ -318,9 +351,40 @@ const canonicalUrl = canonical.startsWith('http') ? canonical : `${siteUrl}${can
     }
   }
 
+  /* Image captions */
+  .article-content figure {
+    margin: 2.5rem 0;
+  }
+
+  .article-content figure img {
+    border-radius: 1rem;
+    box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.15);
+  }
+
+  .article-content figcaption {
+    text-align: center;
+    color: #64748b;
+    font-size: 0.95rem;
+    margin-top: 0.75rem;
+  }
+
   @media (max-width: 1023px) {
     .article-content {
       font-size: 1.125rem;
+    }
+
+    .article-content h2 {
+      font-size: 1.875rem;
+    }
+
+    .article-content h3 {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .article-content h2 {
+      font-size: 1.75rem;
     }
   }
 </style>
