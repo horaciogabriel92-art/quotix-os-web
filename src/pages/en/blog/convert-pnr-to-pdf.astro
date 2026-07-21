@@ -1,0 +1,220 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+
+const title = 'How to Convert a PNR to a Professional PDF in 3 Steps';
+const description = 'Learn how to convert an Amadeus PNR into a professional PDF in 3 steps. Save time, avoid errors, and send quotes that sell. Try Quotix free for 7 days.';
+const canonical = '/en/blog/convert-pnr-to-pdf/';
+const heroImage = '/images/blog/airport-checkin.jpg';
+const heroAlt = 'Travel agent showing a professional PDF quote to a client';
+const heroCaption = 'A professional PDF turns a cryptic PNR into a clear commercial proposal';
+const ogImage = 'https://www.quotixos.com/images/blog/airport-checkin.jpg';
+const publishDate = 'July 21, 2026';
+const readTime = '9 min';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: title,
+      description: 'Step-by-step guide to convert an Amadeus PNR into a professional, clean, commercial PDF for travel agencies.',
+      image: ogImage,
+      author: {
+        '@type': 'Person',
+        name: 'Horacio'
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Quotix',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://www.quotixos.com/assets/images/logo.png'
+        }
+      },
+      datePublished: '2026-07-21',
+      dateModified: '2026-07-21',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://www.quotixos.com/en/blog/convert-pnr-to-pdf/'
+      }
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to convert a PNR to a professional PDF',
+      description: '3-step process to transform an Amadeus PNR code into a professional PDF quote.',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Copy the PNR from Amadeus',
+          text: 'Open the booking in your Amadeus terminal and copy the full PNR block, including flight segments, names, and ticketing time limits.'
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Paste the PNR into the PNR Converter',
+          text: 'Paste the code into the free Quotix PNR Converter. The system automatically detects flights, airlines, times, and airports.'
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Generate and download the professional PDF',
+          text: 'Review the visual itinerary, add your branding and extra services, and download the PDF ready to send to the client.'
+        }
+      ]
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What do I need to convert a PNR to PDF?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'You only need the PNR code copied from your GDS (Amadeus, Sabre, or Galileo) and access to the Quotix PNR Converter. No installation or technical integration is required.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Does the PDF keep my agency branding?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. You can customize the PDF with your logo, colors, contact details, and commercial terms so every quote represents your agency professionally.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Can I add hotels, transfers, and insurance to the PDF?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. Besides the flights from the PNR, you can include hotels, transfers, insurance, tours, and any other service that makes up the travel package.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Does the client see my net costs or commissions?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'No. The PDF only shows the final selling price. Net costs, commissions, and internal remarks remain hidden to protect your margin.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Is it free to convert PNR to PDF?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'The free PNR Converter lets you generate visual itineraries. For branded PDFs, CRM tracking, and unlimited quotes, you can try Quotix free for 7 days.'
+          }
+        }
+      ]
+    }
+  ]
+});
+---
+
+<ArticleLayout title={title} description={description} canonical={canonical} ogImage={ogImage} heroImage={heroImage} heroAlt={heroAlt} heroCaption={heroCaption} schema={schema} publishDate={publishDate} readTime={readTime} category="PNR Tutorial">
+  <section>
+    <p>Imagine you just booked a flight from Buenos Aires to Madrid for a family of four. You have the PNR on your Amadeus screen, with all the codes, times, and confirmed classes. Now comes the part that steals time from many agents: turning that cryptic text block into a proposal the client can read, understand, and, most importantly, approve without hesitation.</p>
+
+    <p>The good news is that converting a <strong>PNR to PDF</strong> no longer requires Word, Excel, or manual templates. In this article, we show you the exact three-step process, with practical tips so every quote you send sells more and represents your agency as the professional business it is.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+      <a href="/precios/" class="inline-flex items-center justify-center px-6 py-3 bg-magenta hover:bg-magenta-500 text-white font-semibold rounded-full transition-colors">Start your 7-day free trial. No credit card. Setup in 24h.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Step 1: Copy the PNR from your Amadeus terminal</h2>
+    <p>The first step is the simplest and most important. Open the booking in Amadeus using the locator and copy the full PNR block. Make sure to include:</p>
+    <ul>
+      <li>The passenger name line.</li>
+      <li>The flight segments (itinerary).</li>
+      <li>The ticketing time limit line (<code>TK TL</code>).</li>
+      <li>Phones and reference contacts.</li>
+    </ul>
+    <p>The PNR does not need to be perfectly formatted. The important thing is that the block is complete, because the <a href="/en/pnr-converter/">PNR Converter</a> reads and automatically discards information that adds no value to the final client.</p>
+
+    <h3>Practical tip: do not send the raw PNR</h3>
+    <p>Sending the PNR exactly as it comes out of Amadeus forces the client to interpret codes like <code>HK</code>, <code>EZE</code>, or <code>MAD</code>. That creates friction, doubts, and often a poor perception of your service. The goal of the PDF is to remove that friction in one go.</p>
+  </section>
+
+  <section>
+    <h2>Step 2: Paste the PNR into the PNR Converter</h2>
+    <p>Once the code is copied, open the free <a href="/en/pnr-converter/">Quotix PNR Converter</a> and paste the text into the input field. Within seconds, the system analyzes the content and extracts:</p>
+    <ul>
+      <li><strong>Airlines and flight numbers.</strong></li>
+      <li><strong>Origin and destination airports.</strong></li>
+      <li><strong>Departure and arrival dates and times.</strong></li>
+      <li><strong>Booking classes and status codes.</strong></li>
+      <li><strong>Passenger names.</strong></li>
+    </ul>
+    <p>The result is a clean, visual, organized itinerary where each segment is presented with the key information highlighted. You do not have to type anything or worry about transcription errors.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+      <a href="/precios/" class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-slate-700 hover:border-magenta hover:text-magenta font-semibold rounded-full transition-colors">Ready to quote like agencies that sell seriously? Try Quotix free for 7 days.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Step 3: Customize, review, and generate the PDF</h2>
+    <p>Before downloading the file, review that everything is correct. Check that passenger names are spelled correctly, dates match what was agreed with the client, and no segment is missing.</p>
+
+    <h3>Add your brand and extra services</h3>
+    <p>The professional PDF does not only show flights. You can also include:</p>
+    <ul>
+      <li>Your agency logo and contact details.</li>
+      <li>Hotels, transfers, insurance, and tours.</li>
+      <li>Commercial terms, payment methods, and cancellation policy.</li>
+      <li>The final selling price, with your margins already applied.</li>
+    </ul>
+    <p>This customization is key for the client to perceive value and professionalism. A well-designed quote builds trust before the client even reads the price.</p>
+
+    <h3>Download and send</h3>
+    <p>Once ready, click download. The PDF is ready to send by email, WhatsApp, or print. If you use <a href="/funcionalidades/">Quotix</a>, the quote is also automatically saved in the CRM, linked to the client, so you can follow up from one place.</p>
+  </section>
+
+  <section>
+    <h2>6 tips to make your quote PDF sell more</h2>
+    <p>Converting the PNR to PDF is only half the job. The other half is designing a proposal that leads to a sale. Here are some practical tips:</p>
+    <ul>
+      <li><strong>Use a clear title:</strong> "Trip quote to Madrid · García Family · October 2026" is better than a generic file.</li>
+      <li><strong>Highlight value, not just price:</strong> Include hotel name, included meals, tours, and any differential benefit.</li>
+      <li><strong>Separate items clearly:</strong> Flights, hotels, transfers, and insurance should be clearly differentiated with their prices.</li>
+      <li><strong>Add a note of urgency:</strong> "Subject to availability. Ticketing deadline: October 15."</li>
+      <li><strong>Include your contact details:</strong> Let the client know who they are talking to and how to confirm the booking.</li>
+      <li><strong>Offer the next action:</strong> End with a button or link that says "Confirm booking" or "Check availability."</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Common mistakes when converting PNR to PDF</h2>
+    <p>Although the process is simple, there are common mistakes that can cost you a sale. Avoid them:</p>
+    <ul>
+      <li><strong>Sending the PNR without reviewing:</strong> Always check names and dates.</li>
+      <li><strong>Showing net costs:</strong> Make sure the PDF does not include <code>RM</code> lines with internal prices.</li>
+      <li><strong>PDFs without brand identity:</strong> A generic file lowers the perceived value of your agency.</li>
+      <li><strong>Forgetting the deadline:</strong> The client needs to know how long they have to confirm.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Frequently asked questions about converting PNR to PDF</h2>
+    <details>
+      <summary>What do I need to convert a PNR to PDF? <span class="text-magenta">▼</span></summary>
+      <p>You only need the PNR code copied from your GDS (Amadeus, Sabre, or Galileo) and access to the Quotix PNR Converter. No installation or technical integration is required.</p>
+    </details>
+    <details>
+      <summary>Does the PDF keep my agency branding? <span class="text-magenta">▼</span></summary>
+      <p>Yes. You can customize the PDF with your logo, colors, contact details, and commercial terms so every quote represents your agency professionally.</p>
+    </details>
+    <details>
+      <summary>Can I add hotels, transfers, and insurance to the PDF? <span class="text-magenta">▼</span></summary>
+      <p>Yes. Besides the flights from the PNR, you can include hotels, transfers, insurance, tours, and any other service that makes up the travel package.</p>
+    </details>
+    <details>
+      <summary>Does the client see my net costs or commissions? <span class="text-magenta">▼</span></summary>
+      <p>No. The PDF only shows the final selling price. Net costs, commissions, and internal remarks remain hidden to protect your margin.</p>
+    </details>
+    <details>
+      <summary>Is it free to convert PNR to PDF? <span class="text-magenta">▼</span></summary>
+      <p>The free PNR Converter lets you generate visual itineraries. For branded PDFs, CRM tracking, and unlimited quotes, you can try Quotix free for 7 days.</p>
+    </details>
+  </section>
+</ArticleLayout>

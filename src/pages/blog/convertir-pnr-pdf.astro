@@ -1,0 +1,220 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+
+const title = 'Cómo Convertir un PNR a PDF Profesional en 3 Pasos';
+const description = 'Aprendé a convertir un PNR de Amadeus en un PDF profesional en 3 pasos. Ahorrá tiempo, evitá errores y enviá cotizaciones que venden. Probá Quotix gratis 7 días.';
+const canonical = '/blog/convertir-pnr-pdf/';
+const heroImage = '/images/blog/airport-checkin.jpg';
+const heroAlt = 'Agente de viajes mostrando una cotización PDF profesional a un cliente';
+const heroCaption = 'Un PDF profesional convierte un PNR críptico en una propuesta comercial clara';
+const ogImage = 'https://www.quotixos.com/images/blog/airport-checkin.jpg';
+const publishDate = '21 de julio de 2026';
+const readTime = '9 minutos';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: title,
+      description: 'Guía paso a paso para convertir un PNR de Amadeus en un PDF profesional, limpio y comercial para agencias de viajes.',
+      image: ogImage,
+      author: {
+        '@type': 'Person',
+        name: 'Horacio'
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Quotix',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://www.quotixos.com/assets/images/logo.png'
+        }
+      },
+      datePublished: '2026-07-21',
+      dateModified: '2026-07-21',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://www.quotixos.com/blog/convertir-pnr-pdf/'
+      }
+    },
+    {
+      '@type': 'HowTo',
+      name: 'Cómo convertir un PNR a PDF profesional',
+      description: 'Proceso de 3 pasos para transformar un código PNR de Amadeus en una cotización PDF profesional.',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Copiar el PNR desde Amadeus',
+          text: 'Abrí la reserva en tu terminal de Amadeus y copiá el bloque completo del PNR, incluyendo los segmentos de vuelo, nombres y tiempos límite.'
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Pegar el PNR en el Conversor PNR',
+          text: 'Pegá el código en el Conversor PNR de Quotix. El sistema detecta automáticamente vuelos, aerolíneas, horarios y aeropuertos.'
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Generar y descargar el PDF profesional',
+          text: 'Revisá el itinerario visual, agregá tu marca y servicios adicionales, y descargá el PDF listo para enviar al cliente.'
+        }
+      ]
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: '¿Qué necesito para convertir un PNR a PDF?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Solo necesitás el código PNR copiado desde tu GDS (Amadeus, Sabre o Galileo) y acceso al Conversor PNR de Quotix. No se requiere instalación ni integración técnica.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: '¿El PDF conserva el formato de mi agencia?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Sí. Podés personalizar el PDF con tu logo, colores, datos de contacto y condiciones comerciales para que cada cotización represente profesionalmente a tu agencia.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: '¿Puedo agregar hoteles, traslados y seguros al PDF?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Sí. Además de los vuelos del PNR, podés incluir hoteles, traslados, seguros, excursiones y cualquier servicio que conforme el paquete turístico.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: '¿El cliente ve mis costos netos o comisiones?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'No. El PDF muestra solo el precio final de venta. Los costos netos, comisiones y remarks internos quedan ocultos para proteger tu margen.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: '¿Es gratis convertir PNR a PDF?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'El Conversor PNR gratuito permite generar itinerarios visuales. Para PDFs con tu marca, seguimiento CRM y cotizaciones ilimitadas, podés probar Quotix gratis por 7 días.'
+          }
+        }
+      ]
+    }
+  ]
+});
+---
+
+<ArticleLayout title={title} description={description} canonical={canonical} ogImage={ogImage} heroImage={heroImage} heroAlt={heroAlt} heroCaption={heroCaption} schema={schema} publishDate={publishDate} readTime={readTime} category="Tutorial PNR">
+  <section>
+    <p>Imaginá que acabás de cerrar un vuelo de Buenos Aires a Madrid para una familia de cuatro personas. Tenés el PNR en la pantalla de Amadeus, con todos los códigos, horarios y clases confirmadas. Ahora viene la parte que a muchos agentes les roba tiempo: transformar ese bloque de texto críptico en una propuesta que el cliente pueda leer, entender y, lo más importante, aprobar sin dudas.</p>
+
+    <p>La buena noticia es que convertir un <strong>PNR a PDF</strong> profesional ya no requiere Word, Excel ni plantillas manuales. En este artículo te mostramos el proceso exacto en tres pasos, con consejos prácticos para que cada cotización que envíes venda más y te represente como la agencia profesional que sos.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+      <a href="/precios/" class="inline-flex items-center justify-center px-6 py-3 bg-magenta hover:bg-magenta-500 text-white font-semibold rounded-full transition-colors">Probá gratis por 7 días. Sin tarjeta de crédito. Setup en 24hs.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Paso 1: Copiar el PNR desde tu terminal de Amadeus</h2>
+    <p>El primer paso es el más simple y, a la vez, el más importante. Abrí la reserva en Amadeus usando el localizador y copiá el bloque completo del PNR. Asegurate de incluir:</p>
+    <ul>
+      <li>La línea de nombres de los pasajeros.</li>
+      <li>Los segmentos de vuelo (itinerario).</li>
+      <li>La línea de tiempos límite de emisión (<code>TK TL</code>).</li>
+      <li>Los teléfonos y contactos de referencia.</li>
+    </ul>
+    <p>No es necesario que el PNR esté perfectamente formateado. Lo importante es que el bloque esté completo, porque el <a href="/pnr-converter/">Conversor PNR</a> se encarga de leer y descartar automáticamente la información que no aporta valor al cliente final.</p>
+
+    <h3>Tip práctico: no envíes el PNR en bruto</h3>
+    <p>Enviar el PNR tal cual sale de Amadeus obliga al cliente a interpretar códigos como <code>HK</code>, <code>EZE</code> o <code>MAD</code>. Eso genera fricción, dudas y, en muchos casos, una mala percepción de tu servicio. El objetivo del PDF es eliminar esa fricción de una sola vez.</p>
+  </section>
+
+  <section>
+    <h2>Paso 2: Pegar el PNR en el Conversor PNR</h2>
+    <p>Una vez copiado el código, accedé al <a href="/pnr-converter/">Conversor PNR gratuito de Quotix</a> y pegá el texto en el campo correspondiente. En segundos, el sistema analiza el contenido y extrae:</p>
+    <ul>
+      <li><strong>Aerolíneas y números de vuelo.</strong></li>
+      <li><strong>Aeropuertos de origen y destino.</strong></li>
+      <li><strong>Fechas y horarios de salida y llegada.</strong></li>
+      <li><strong>Clases de reserva y códigos de estado.</strong></li>
+      <li><strong>Nombres de pasajeros.</strong></li>
+    </ul>
+    <p>El resultado es un itinerario visual, limpio y ordenado, donde cada tramo se presenta con la información clave destacada. No tenés que tipear nada ni preocuparte por errores de transcripción.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+      <a href="/pnr-converter/" class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-slate-700 hover:border-magenta hover:text-magenta font-semibold rounded-full transition-colors">¿Listo para cotizar como las agencias que venden en serio? Probá Quotix gratis por 7 días.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Paso 3: Personalizar, revisar y generar el PDF</h2>
+    <p>Antes de descargar el archivo, revisá que todo esté correcto. Verificá que los nombres de los pasajeros estén bien escritos, que las fechas coincidan con lo pactado con el cliente y que no falte ningún tramo.</p>
+
+    <h3>Agregá tu marca y servicios adicionales</h3>
+    <p>El PDF profesional no solo muestra vuelos. También podés incluir:</p>
+    <ul>
+      <li>El logo y los datos de contacto de tu agencia.</li>
+      <li>Hoteles, traslados, seguros y excursiones.</li>
+      <li>Condiciones comerciales, formas de pago y política de cancelación.</li>
+      <li>El precio final de venta, con tus márgenes ya aplicados.</li>
+    </ul>
+    <p>Esta personalización es clave para que el cliente perciba valor y profesionalismo. Una cotización bien diseñada comunica confianza antes incluso de que el cliente lea el precio.</p>
+
+    <h3>Descargá y enviá</h3>
+    <p>Una vez listo, hacé clic en descargar. El PDF queda listo para enviar por correo, WhatsApp o para imprimir. Si usás <a href="/funcionalidades/">Quotix</a>, la cotización también se guarda automáticamente en el CRM, asociada al cliente, para que puedas hacer seguimiento desde el mismo lugar.</p>
+  </section>
+
+  <section>
+    <h2>6 consejos para que tu PDF de cotización venda más</h2>
+    <p>Convertir el PNR a PDF es solo la mitad del trabajo. La otra mitad es diseñar una propuesta que conduzca a la venta. Acá van algunos consejos prácticos:</p>
+    <ul>
+      <li><strong>Usá un título claro:</strong> "Cotización de viaje a Madrid · Familia García · Octubre 2026" es mejor que un archivo genérico.</li>
+      <li><strong>Destacá el valor, no solo el precio:</strong> Incluí el nombre del hotel, las comidas incluidas, las excursiones y cualquier beneficio diferencial.</li>
+      <li><strong>Separá bien los ítems:</strong> Vuelos, hoteles, traslados y seguros deben estar claramente diferenciados con sus precios.</li>
+      <li><strong>Agregá una nota de urgencia:</strong> "Plazas sujetas a disponibilidad. Tiempo límite de emisión: 15 de octubre."</li>
+      <li><strong>Incluí tus datos de contacto:</strong> Que el cliente sepa con quién habla y cómo confirmar la reserva.</li>
+      <li><strong>Ofrecé la siguiente acción:</strong> Terminá con un botón o enlace que diga "Confirmar reserva" o "Consultar disponibilidad".</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Errores comunes al convertir PNR a PDF</h2>
+    <p>Aunque el proceso sea simple, hay errores que se repiten y que pueden costarte una venta. Evitalos:</p>
+    <ul>
+      <li><strong>Enviar el PNR sin revisar:</strong> Siempre verificá que los nombres y fechas estén correctos.</li>
+      <li><strong>Mostrar costos netos:</strong> Asegurate de que el PDF no incluya líneas de <code>RM</code> con precios internos.</li>
+      <li><strong>PDFs sin identidad de marca:</strong> Un archivo genérico reduce la percepción de valor de tu agencia.</li>
+      <li><strong>Olvidar el tiempo límite:</strong> El cliente necesita saber hasta cuándo tiene para confirmar.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Preguntas frecuentes sobre convertir PNR a PDF</h2>
+    <details>
+      <summary>¿Qué necesito para convertir un PNR a PDF? <span class="text-magenta">▼</span></summary>
+      <p>Solo necesitás el código PNR copiado desde tu GDS (Amadeus, Sabre o Galileo) y acceso al Conversor PNR de Quotix. No se requiere instalación ni integración técnica.</p>
+    </details>
+    <details>
+      <summary>¿El PDF conserva el formato de mi agencia? <span class="text-magenta">▼</span></summary>
+      <p>Sí. Podés personalizar el PDF con tu logo, colores, datos de contacto y condiciones comerciales para que cada cotización represente profesionalmente a tu agencia.</p>
+    </details>
+    <details>
+      <summary>¿Puedo agregar hoteles, traslados y seguros al PDF? <span class="text-magenta">▼</span></summary>
+      <p>Sí. Además de los vuelos del PNR, podés incluir hoteles, traslados, seguros, excursiones y cualquier servicio que conforme el paquete turístico.</p>
+    </details>
+    <details>
+      <summary>¿El cliente ve mis costos netos o comisiones? <span class="text-magenta">▼</span></summary>
+      <p>No. El PDF muestra solo el precio final de venta. Los costos netos, comisiones y remarks internos quedan ocultos para proteger tu margen.</p>
+    </details>
+    <details>
+      <summary>¿Es gratis convertir PNR a PDF? <span class="text-magenta">▼</span></summary>
+      <p>El Conversor PNR gratuito permite generar itinerarios visuales. Para PDFs con tu marca, seguimiento CRM y cotizaciones ilimitadas, podés probar Quotix gratis por 7 días.</p>
+    </details>
+  </section>
+</ArticleLayout>
