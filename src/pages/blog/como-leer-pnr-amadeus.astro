@@ -4,7 +4,9 @@ import ArticleLayout from '@/layouts/ArticleLayout.astro';
 const title = 'Cómo Leer un PNR de Amadeus Paso a Paso | Guía 2026';
 const description = 'Aprendé cómo leer un PNR de Amadeus fácilmente. Entendé los códigos crípticos y automatizá tus cotizaciones. Probá Quotix 7 días gratis.';
 const canonical = '/blog/como-leer-pnr-amadeus/';
-const ogImage = 'https://www.quotixos.com/assets/images/como-leer-pnr-cover.jpg';
+const heroImage = '/images/blog/flight-screen.jpg';
+const heroAlt = 'Pantalla de información de vuelos en un aeropuerto mostrando horarios de salida';
+const ogImage = 'https://www.quotixos.com/images/blog/flight-screen.jpg';
 const publishDate = '21 de julio de 2026';
 const readTime = '10 minutos';
 
@@ -84,7 +86,7 @@ const schema = JSON.stringify({
 });
 ---
 
-<ArticleLayout title={title} description={description} canonical={canonical} ogImage={ogImage} schema={schema} publishDate={publishDate} readTime={readTime} category="Tutorial PNR">
+<ArticleLayout title={title} description={description} canonical={canonical} ogImage={ogImage} heroImage={heroImage} heroAlt={heroAlt} schema={schema} publishDate={publishDate} readTime={readTime} category="Tutorial PNR">
   <section>
     <p>Enfrentarse por primera vez a la pantalla de un Sistema de Distribución Global (GDS) puede resultar abrumador. Líneas de texto verde sobre fondo negro, repletas de letras, números y siglas que parecen carecer de sentido. Para los agentes de viajes, dominar este lenguaje es un requisito indispensable para operar con velocidad. Comprender <strong>cómo leer un PNR</strong> (Passenger Name Record) te permite gestionar reservas, verificar estados de vuelos y asegurar que tus clientes tengan su itinerario en orden.</p>
 

@@ -4,7 +4,9 @@ import ArticleLayout from '@/layouts/ArticleLayout.astro';
 const title = '¿Qué es un PNR? Guía Completa para Agentes de Viajes 2026';
 const description = 'Descubrí qué es un PNR en Amadeus, cómo decodificarlo y mejorar tus ventas. Empezá tu prueba de 7 días gratis sin tarjeta. Optimizá tus cotizaciones hoy.';
 const canonical = '/blog/que-es-pnr/';
-const ogImage = 'https://www.quotixos.com/assets/images/que-es-pnr-cover.jpg';
+const heroImage = '/images/blog/boarding-pass.jpg';
+const heroAlt = 'Pasaporte y boarding pass sobre una maleta, representando el PNR de una reserva aérea';
+const ogImage = 'https://www.quotixos.com/images/blog/boarding-pass.jpg';
 const publishDate = '21 de julio de 2026';
 const readTime = '8 minutos';
 
@@ -84,7 +86,7 @@ const schema = JSON.stringify({
 });
 ---
 
-<ArticleLayout title={title} description={description} canonical={canonical} ogImage={ogImage} schema={schema} publishDate={publishDate} readTime={readTime} category="Guía PNR">
+<ArticleLayout title={title} description={description} canonical={canonical} ogImage={ogImage} heroImage={heroImage} heroAlt={heroAlt} schema={schema} publishDate={publishDate} readTime={readTime} category="Guía PNR">
   <section>
     <p>Para cualquier persona externa a la industria turística, la pantalla de un Sistema de Distribución Global (GDS) se ve exactamente igual al código fuente de una película de ciencia ficción. Letras, números, barras y comandos se agrupan en bloques densos de información. Sin embargo, para los profesionales del turismo, ese texto críptico es el idioma universal de los negocios. En el corazón de toda esa información se encuentra el <strong>PNR</strong>, el elemento más vital para cualquier reserva de viajes.</p>
 

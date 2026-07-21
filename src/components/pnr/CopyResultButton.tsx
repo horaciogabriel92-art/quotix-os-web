@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Copy, Check } from 'lucide-react';
+import { type Lang, getTranslations } from './i18n';
 
 interface CopyResultButtonProps {
   text: string;
+  lang?: Lang;
 }
 
-export default function CopyResultButton({ text }: CopyResultButtonProps) {
+export default function CopyResultButton({ text, lang = 'es' }: CopyResultButtonProps) {
+  const t = getTranslations(lang);
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -28,12 +31,12 @@ export default function CopyResultButton({ text }: CopyResultButtonProps) {
       {copied ? (
         <>
           <Check className="w-4 h-4 text-green-600" />
-          <span className="text-green-600">Copiado</span>
+          <span className="text-green-600">{t.copiedButton}</span>
         </>
       ) : (
         <>
           <Copy className="w-4 h-4" />
-          Copiar resultado
+          {t.copyButton}
         </>
       )}
     </button>

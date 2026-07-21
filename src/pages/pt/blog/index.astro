@@ -3,24 +3,24 @@ import MainLayout from '@/layouts/MainLayout.astro';
 import Header from '@/components/sections/Header.astro';
 import Footer from '@/components/sections/Footer.astro';
 
-const title = 'Blog de Quotix | Software, PNR y Cotizaciones para Agencias de Viajes';
-const description = 'Guías prácticas para agencias de viajes: PNR Amadeus, cotizaciones PDF, software de gestión y mejores prácticas para vender más viajes.';
-const canonical = '/blog/';
+const title = 'Blog da Quotix | Software, PNR e Cotações para Agências de Viagem';
+const description = 'Guias práticos para agências de viagens: PNR Amadeus, cotações em PDF, software de gestão e melhores práticas para vender mais viagens.';
+const canonical = '/pt/blog/';
 
 const posts = [
   {
-    slug: '/blog/que-es-pnr/',
-    title: '¿Qué es un PNR? Guía Completa para Agentes de Viajes 2026',
-    excerpt: 'Descubrí qué es el Passenger Name Record, cómo se estructura en Amadeus y por qué no deberías enviarlo en bruto a tus clientes.',
+    slug: '/pt/blog/o-que-e-pnr/',
+    title: 'O que é um PNR? Guia Completo para Agentes de Viagem 2026',
+    excerpt: 'Descubra o que é um Passenger Name Record, como é estruturado na Amadeus e por que você não deve enviá-lo em bruto aos seus clientes.',
     image: '/images/blog/boarding-pass.jpg',
-    category: 'Guía PNR',
+    category: 'Guia PNR',
     date: '21 jul 2026',
     readTime: '8 min'
   },
   {
-    slug: '/blog/como-leer-pnr-amadeus/',
-    title: 'Cómo Leer un PNR de Amadeus Paso a Paso | Guía 2026',
-    excerpt: 'Aprendé a interpretar el formato críptico de Amadeus: itinerarios, códigos de estado, tiempos límite y campos de nombre.',
+    slug: '/pt/blog/como-ler-pnr-amadeus/',
+    title: 'Como Ler um PNR da Amadeus Passo a Passo | Guia 2026',
+    excerpt: 'Aprenda a interpretar o formato enigmático da Amadeus: itinerários, códigos de status, prazos limite e campos de nome.',
     image: '/images/blog/flight-screen.jpg',
     category: 'Tutorial PNR',
     date: '21 jul 2026',
@@ -31,8 +31,8 @@ const posts = [
 const schema = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Blog',
-  name: 'Blog de Quotix',
-  url: 'https://www.quotixos.com/blog/',
+  name: 'Blog da Quotix',
+  url: 'https://www.quotixos.com/pt/blog/',
   description: description,
   blogPost: posts.map(post => ({
     '@type': 'BlogPosting',
@@ -56,9 +56,9 @@ const schema = JSON.stringify({
         <span class="inline-block px-3 py-1 text-xs font-semibold tracking-wide text-magenta bg-magenta/10 rounded-full mb-4">
           Blog
         </span>
-        <h1 class="heading-lg text-slate-900 mb-4">Blog de Quotix</h1>
+        <h1 class="heading-lg text-slate-900 mb-4">Blog da Quotix</h1>
         <p class="body-lg text-slate-600">
-          Guías prácticas para agencias de viajes: PNR Amadeus, cotizaciones PDF, software de gestión y mejores prácticas para vender más viajes.
+          Guias práticos para agências de viagens: PNR Amadeus, cotações em PDF, software de gestão e melhores práticas para vender mais viagens.
         </p>
       </div>
 
@@ -79,7 +79,7 @@ const schema = JSON.stringify({
                 </h2>
                 <p class="text-slate-600 mb-4 leading-relaxed">{post.excerpt}</p>
                 <a href={post.slug} class="inline-flex items-center text-sm font-semibold text-magenta hover:text-magenta-500 transition-colors">
-                  Leer artículo
+                  Ler artigo
                   <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                   </svg>

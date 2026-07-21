@@ -1,0 +1,99 @@
+---
+import FeatureLayout from '@/layouts/FeatureLayout.astro';
+
+const title = 'Funcionalidades de Quotix | Software para Agencias de Viajes';
+const description = 'Conocé todas las funcionalidades de Quotix: PNR Converter, cotizaciones PDF, web de paquetes, CRM para agencias y control de comisiones. Probá 7 días gratis.';
+const canonical = '/funcionalidades/';
+const h1 = 'Todas las funcionalidades de Quotix para agencias de viajes';
+const subtitle = 'Desde el PNR hasta el PDF profesional: cotizá más rápido, gestioná clientes y vendé más viajes con el software pensado para agencias de viajes modernas.';
+const heroImage = '/images/blog/travel-counters.jpg';
+const heroAlt = 'Mostradores de agencia de viajes en un aeropuerto internacional';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Quotix',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  description: description,
+  url: 'https://www.quotixos.com/funcionalidades/',
+  featureList: 'PNR Converter, Cotizaciones PDF, Web de paquetes turísticos, CRM para agencias, Control de comisiones, Multi-vendedor',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD'
+  },
+  brand: {
+    '@type': 'Brand',
+    name: 'Quotix'
+  },
+  inLanguage: 'es'
+});
+---
+
+<FeatureLayout title={title} description={description} canonical={canonical} h1={h1} subtitle={subtitle} heroImage={heroImage} heroAlt={heroAlt} schema={schema}>
+  <section>
+    <p>Quotix es un software integral para agencias de viajes que unifica todo el flujo de ventas en una sola plataforma. Desde la decodificación del PNR hasta la entrega de una cotización profesional en PDF, pasando por la gestión de clientes, el seguimiento comercial y el control de comisiones.</p>
+  </section>
+
+  <section>
+    <h2>1. PNR Converter</h2>
+    <p>Copiá el código PNR de tu GDS y convertilo en una propuesta visual clara en segundos. El <a href="/pnr-converter">PNR Converter</a> de Quotix interpreta segmentos, clases, horarios y aeropuertos para armar automáticamente un itinerario legible.</p>
+    <ul>
+      <li>Compatible con PNRs de Amadeus.</li>
+      <li>Salida simple y lista para capturar pantalla o copiar.</li>
+      <li>Gratis, sin registro y sin guardar historial.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>2. Cotizaciones PDF profesionales</h2>
+    <p>Generá cotizaciones en PDF con el logo, los colores y los datos de tu agencia. Incluí vuelos, hoteles, traslados, seguros, excursiones y cualquier servicio que armes para tu cliente.</p>
+    <ul>
+      <li>Plantillas personalizables con tu marca.</li>
+      <li>Tablas de precios, condiciones y notas legales.</li>
+      <li>Envío directo por email o WhatsApp.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. CRM para agencias de viajes</h2>
+    <p>Administrá tus clientes y oportunidades en un tablero tipo Kanban. Visualizá el estado de cada cotización, asigná vendedores, agregá notas y nunca perdás el seguimiento de una venta.</p>
+    <ul>
+      <li>Pipeline de cotizaciones por etapas.</li>
+      <li>Historial de interacciones por cliente.</li>
+      <li>Multi-vendedor con permisos y visibilidad.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. Web de paquetes turísticos</h2>
+    <p>Publicá tus paquetes en una web propia y compartila con tus clientes. Cada paquete puede incluir itinerario, galería, precios, condiciones y un botón de consulta.</p>
+    <ul>
+      <li>Catálogo público con URL propia.</li>
+      <li>Diseño adaptable a tu marca.</li>
+      <li>Conversión directa a cotización.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Control de comisiones y márgenes</h2>
+    <p>Definí markup por proveedor, por servicio o por paquete. Quotix oculta los costos netos en el PDF que recibe el cliente y te muestra el margen real de cada operación.</p>
+  </section>
+
+  <section>
+    <h2>Preguntas frecuentes</h2>
+    <details>
+      <summary>¿Qué incluye la prueba gratis de 7 días? <span class="text-magenta">▼</span></summary>
+      <p>Acceso completo a todas las funcionalidades del plan elegido. No requiere tarjeta de crédito.</p>
+    </details>
+    <details>
+      <summary>¿Puedo usar solo el PNR Converter? <span class="text-magenta">▼</span></summary>
+      <p>Sí, el PNR Converter es gratuito e independiente. Si después querés guardar cotizaciones y usar el CRM, podés pasarte a un plan pago.</p>
+    </details>
+    <details>
+      <summary>¿Se integra con Amadeus? <span class="text-magenta">▼</span></summary>
+      <p>Quotix lee PNRs de Amadeus copiados y pegados por el agente. No requiere una integración técnica compleja ni costos de GDS.</p>
+    </details>
+  </section>
+</FeatureLayout>

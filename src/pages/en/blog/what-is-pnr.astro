@@ -1,0 +1,179 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+
+const title = 'What is a PNR? Complete Guide for Travel Agents 2026';
+const description = 'Discover what an Amadeus PNR is, how to decode it, and improve your travel sales. Start your 7-day free trial without a credit card. Optimize quotes today.';
+const canonical = '/en/blog/what-is-pnr/';
+const heroImage = '/images/blog/boarding-pass.jpg';
+const heroAlt = 'Passport and boarding pass on a suitcase, representing the PNR of an air reservation';
+const ogImage = 'https://www.quotixos.com/images/blog/boarding-pass.jpg';
+const publishDate = 'July 21, 2026';
+const readTime = '8 minutes';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: title,
+      description: 'A detailed guide on what a Passenger Name Record (PNR) is, how it works in systems like Amadeus, and how to optimize its use for travel agencies.',
+      image: ogImage,
+      author: {
+        '@type': 'Person',
+        name: 'Horacio'
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Quotix',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://www.quotixos.com/assets/images/logo.png'
+        }
+      },
+      datePublished: '2026-07-21',
+      dateModified: '2026-07-21',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://www.quotixos.com/en/blog/what-is-pnr/'
+      }
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What does PNR stand for?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'PNR stands for Passenger Name Record. It is a unique alphanumeric code that contains all the details of a traveler\'s itinerary within a Global Distribution System (GDS).'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'What are the mandatory elements of a PNR?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'There are five mandatory elements known by the acronym PRINT: Phone (Contact phone number), Receive from (Who is making the booking), Itinerary (Flight segments), Name (Passenger\'s name), and Ticketing (Ticket issuance status).'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Why is it difficult for a client to read an Amadeus PNR?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'PNR codes are generated in a cryptic and highly technical format designed for the operational efficiency of travel agents, using abbreviations that are incomprehensible to people outside the industry.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'How can I show a PNR to my clients professionally?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'You can use a PNR Converter, a tool that translates the cryptic code into a visual, clean, and professional PDF format, making it easy to read and protecting your commission information.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Does a PNR contain information about agency commissions?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Within the GDS environment, the booking can show net prices. By using proper quoting tools, these internal data and commissions are kept completely hidden from the final passenger.'
+          }
+        }
+      ]
+    }
+  ]
+});
+---
+
+<ArticleLayout title={title} description={description} canonical={canonical} ogImage={ogImage} heroImage={heroImage} heroAlt={heroAlt} schema={schema} publishDate={publishDate} readTime={readTime} category="PNR Guide">
+  <section>
+    <p>To anyone outside the travel industry, the screen of a Global Distribution System (GDS) looks exactly like the source code from a science fiction movie. Letters, numbers, slashes, and commands are grouped in dense blocks of information. However, for tourism professionals, that cryptic text is the universal language of business. At the heart of all that data lies the <strong>PNR</strong>, the single most vital element of any travel reservation.</p>
+
+    <p>Despite its technical importance, delivering that raw code to a passenger creates confusion, mistrust, and often results in a lost sale. Fully understanding what a PNR is, how it is structured, and above all, how to present it in a commercially viable way, is essential for scaling your travel agency in 2026.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-6">
+      <a href="/en/pricing/" class="inline-flex items-center justify-center px-6 py-3 bg-magenta hover:bg-magenta-500 text-white font-semibold rounded-full transition-colors">Start your 7-day free trial. No credit card. Setup in 24h.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Meaning of PNR in the Travel Industry</h2>
+    <p>The acronym PNR stands for <em>Passenger Name Record</em>. In technical terms, a PNR is a digital file created within a GDS or an airline's internal reservation system that contains the complete itinerary of a traveler or a group of travelers flying together.</p>
+
+    <p>When you are quoting flights to London, New York, or Paris through carriers like United, Delta, or British Airways, the system generates a unique alphanumeric code, typically six characters long. This locator code acts as the master key to access the database and retrieve absolutely every detail regarding the associated reservation.</p>
+
+    <h3>The 5 Mandatory Elements of a PNR (The PRINT Acronym)</h3>
+    <p>For a GDS like <a href="https://amadeus.com" target="_blank" rel="nofollow noopener">Amadeus</a> to successfully store and generate the locator code, the travel agent must input five mandatory fields of information. If any of these elements are missing, the system will reject the creation of the file. The industry uses the mnemonic rule <strong>PRINT</strong> to remember them:</p>
+    <ul>
+      <li><strong>P (Phone):</strong> A valid contact phone number, either for the travel agency or the direct passenger.</li>
+      <li><strong>R (Received from):</strong> The identification of the person who requested or authorized the booking.</li>
+      <li><strong>I (Itinerary):</strong> The segments of the trip. This includes specific flights, dates, times, and booking classes.</li>
+      <li><strong>N (Name):</strong> The full name and surname of the passenger, exactly as it appears on their passport or ID.</li>
+      <li><strong>T (Ticketing):</strong> The time limit for ticket issuance or the current status of the associated tickets.</li>
+    </ul>
+    <p>Once you enter these five basic fields in your terminal, you can enrich the reservation with optional elements, such as special dietary requirements (SSR), wheelchair requests, or frequent flyer numbers for airlines like Emirates or Air France.</p>
+  </section>
+
+  <section>
+    <h2>The Big Problem: The Gap Between Agent and Passenger</h2>
+    <p>The cryptic format of the GDS was designed in the 1960s to minimize bandwidth usage and accelerate data processing by operators. Today, that technical efficiency represents a massive commercial obstacle when you communicate with the end client.</p>
+
+    <p>Imagine sending an email to a corporate client who needs an urgent trip to Dubai. If you paste the cryptic text exactly as it comes out of your screen, the passenger will face an incomprehensible block filled with airport codes (JFK, LHR, DXB), fare class indicators (Y, J, C), and times expressed in 24-hour military formats without clear time zones. The client wastes valuable time trying to decipher what time their flight leaves, which terminal they need to go to, and what baggage allowance is included.</p>
+
+    <p>The visual presentation of a commercial proposal defines the perceived value of your travel agency. Forcing the passenger to read technical formats damages the user experience and puts you at a severe disadvantage against massive OTA (Online Travel Agencies) platforms that invest heavily in user-friendly interfaces.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-6">
+      <a href="/" class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-slate-700 hover:border-magenta hover:text-magenta font-semibold rounded-full transition-colors">Ready to quote like agencies that sell seriously? Try Quotix free for 7 days.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Solution: The PNR Converter for Modern Agencies</h2>
+    <p>To solve the friction between the technical terminal and the passenger's inbox, leading travel agencies use decoding tools. This is where <a href="/">Quotix</a> technology makes a definitive impact on your daily operational workflow.</p>
+
+    <p>Instead of wasting thirty minutes manually transcribing flight schedules, terminal numbers, and baggage policies into a Word document, you can use a <strong>PNR Converter</strong>. The operation is extremely straightforward: you copy the cryptic text block directly from your Amadeus screen and paste it into the platform. The system parses all the commands, decodes the segments, and automatically generates a PDF quote with a professional, clean, and visually stunning design.</p>
+
+    <p>Visit our <a href="/en/pnr-converter/">PNR Converter</a> section to see examples of how incomprehensible text is transformed into a high-impact proposal ready to be sent via email or WhatsApp. This level of automation gives you back control of your time, allowing you to focus on closing sales and acquiring new clients.</p>
+  </section>
+
+  <section>
+    <h2>Privacy, Security, and Commission Management</h2>
+    <p>Sharing cryptic information directly carries the severe risk of exposing confidential data. Many PNRs contain internal remark lines, net costs from operators, and profitability percentages that under no circumstances should reach the final consumer.</p>
+
+    <p>Using the decoder guarantees you a fundamental layer of protection. When processing the itinerary, you decide exactly what information is printed on the PDF. You can confidently apply your own profit margins (markups), ensuring that the client exclusively sees the final retail price.</p>
+
+    <p>Furthermore, this functionality seamlessly integrates with client management tools. Each generated proposal becomes a card within a Kanban board, allowing you to apply structured follow-ups. If you manage a sales team, the multi-vendor environment provides total visibility into which agents are sending quotes, which proposals are under negotiation, and which have been successfully issued. Review implementation details for teams on our <a href="/en/pricing/">pricing and plans</a> page.</p>
+  </section>
+
+  <section>
+    <h2>The Evolution of the PNR Towards 2026</h2>
+    <p>The travel industry is undergoing a profound technological transformation. With the consolidation of the NDC (New Distribution Capability) standard driven by IATA, the way airfares are structured and distributed is actively changing. NDC allows airlines to offer richer content, such as cabin images, premium seating options, and ancillary services directly at the point of sale.</p>
+
+    <p>Despite this evolution towards XML-based formats, the concept of the PNR remains the central axis of passenger registration in legacy systems. Staying updated with the best travel agency software tools, like the ones we frequently analyze on our <a href="/en/blog/">specialized blog</a>, guarantees that your business can operate with both old-school efficiency and the visual demands of the modern consumer.</p>
+  </section>
+
+  <section>
+    <h2>Frequently Asked Questions about PNR Codes</h2>
+    <details>
+      <summary>What does PNR stand for? <span class="text-magenta">▼</span></summary>
+      <p>PNR stands for Passenger Name Record. It is a unique alphanumeric code that contains all the details of a traveler's itinerary within a Global Distribution System (GDS).</p>
+    </details>
+    <details>
+      <summary>What are the mandatory elements of a PNR? <span class="text-magenta">▼</span></summary>
+      <p>There are five mandatory elements known by the acronym PRINT: Phone (Contact phone number), Receive from (Who is making the booking), Itinerary (Flight segments), Name (Passenger's name), and Ticketing (Ticket issuance status).</p>
+    </details>
+    <details>
+      <summary>Why is it difficult for a client to read an Amadeus PNR? <span class="text-magenta">▼</span></summary>
+      <p>PNR codes are generated in a cryptic and highly technical format designed for the operational efficiency of travel agents, using abbreviations that are incomprehensible to people outside the industry.</p>
+    </details>
+    <details>
+      <summary>How can I show a PNR to my clients professionally? <span class="text-magenta">▼</span></summary>
+      <p>You can use a PNR Converter, a tool that translates the cryptic code into a visual, clean, and professional PDF format, making it easy to read and protecting your operational information.</p>
+    </details>
+    <details>
+      <summary>Does a PNR contain information about agency commissions? <span class="text-magenta">▼</span></summary>
+      <p>Within the GDS environment, the booking can show net prices. By using proper quoting tools, these internal data and commissions are kept completely hidden from the final passenger.</p>
+    </details>
+  </section>
+</ArticleLayout>

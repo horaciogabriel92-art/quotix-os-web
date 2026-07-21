@@ -3,6 +3,7 @@ import { getAirlineByIATA, getAirlineLogoUrl } from '../../lib/pnr/airlines';
 import { getAirportByIATA } from '../../lib/pnr/airports';
 import type { ParsedFlight } from '../../lib/pnr/amadeus-parser';
 import { formatDuration } from '../../lib/pnr/amadeus-parser';
+import { type Lang, getTranslations } from './i18n';
 
 interface PnrFlightCardProps {
   flight: ParsedFlight;
@@ -11,6 +12,7 @@ interface PnrFlightCardProps {
   showClass: boolean;
   showAircraft: boolean;
   showDuration: boolean;
+  lang?: Lang;
 }
 
 export default function PnrFlightCard({
@@ -20,7 +22,9 @@ export default function PnrFlightCard({
   showClass,
   showAircraft,
   showDuration,
+  lang = 'es',
 }: PnrFlightCardProps) {
+  const t = getTranslations(lang);
   const airline = getAirlineByIATA(flight.aerolinea_codigo);
   const origin = getAirportByIATA(flight.origen_codigo);
   const destination = getAirportByIATA(flight.destino_codigo);
@@ -40,16 +44,14 @@ export default function PnrFlightCard({
 
   const formatTime12h = (time24: string) => {
     const [h, m] = time24.split(':').map(Number);
-    const ampm = h >= 12 ? 'p. m.' : 'a. m.';
+    const ampm = h >= 12 ? t.timePm : t.timeAm;
     const hour12 = h % 12 || 12;
     return `${hour12}:${m.toString().padStart(2, '0')} ${ampm}`;
   };
 
   const formatDay = (isoDate: string) => {
     const date = new Date(`${isoDate}T00:00:00`);
-    const days = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
-    const months = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
-    return `${days[date.getDay()]}, ${date.getDate()} ${months[date.getMonth()]}`;
+    return `${t.days[date.getDay()]}, ${date.getDate()} ${t.months[date.getMonth()]}`;
   };
 
   return (
@@ -72,7 +74,7 @@ export default function PnrFlightCard({
             </span>
             {showClass && flight.clase_codigo && (
               <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
-                Clase {flight.clase_codigo}
+                {t.classLabel} {flight.clase_codigo}
               </span>
             )}
             {showAircraft && flight.aeronave && (
@@ -100,7 +102,9 @@ export default function PnrFlightCard({
                 <div className="absolute right-0 -top-1 w-2 h-2 border-t border-r border-slate-300 rotate-45"></div>
               </div>
               {daysDiff > 0 && (
-                <span className="text-xs mt-1 text-amber-600 font-medium">+{daysDiff} día{daysDiff > 1 ? 's' : ''}</span>
+                <span className="text-xs mt-1 text-amber-600 font-medium">
+                  +{daysDiff} {daysDiff === 1 ? t.daySingular : t.dayPlural}
+                </span>
               )}
             </div>
 

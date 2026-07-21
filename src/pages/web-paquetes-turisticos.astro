@@ -1,0 +1,79 @@
+---
+import FeatureLayout from '@/layouts/FeatureLayout.astro';
+
+const title = 'Web de Paquetes Turísticos para Agencias | Publicá y Vendé — Quotix';
+const description = 'Publicá tus paquetes turísticos en una web propia. Catálogo con fotos, itinerarios, precios y consulta directa. Probá gratis 7 días.';
+const canonical = '/web-paquetes-turisticos/';
+const h1 = 'Web de paquetes turísticos para agencias';
+const subtitle = 'Mostrá tus paquetes en una web profesional con tu marca. Tus clientes consultan destinos, itinerarios y precios, y vos recibís leads directos en tu CRM.';
+const heroImage = '/images/blog/airport-checkin.jpg';
+const heroAlt = 'Mostrador de check-in en aeropuerto internacional';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Quotix Web de Paquetes',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  description: description,
+  url: 'https://www.quotixos.com/web-paquetes-turisticos/',
+  featureList: 'Catálogo de paquetes, Web pública, Leads directos, Cotización desde paquete, Marca propia',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD'
+  },
+  brand: {
+    '@type': 'Brand',
+    name: 'Quotix'
+  },
+  inLanguage: 'es'
+});
+---
+
+<FeatureLayout title={title} description={description} canonical={canonical} h1={h1} subtitle={subtitle} heroImage={heroImage} heroAlt={heroAlt} schema={schema}>
+  <section>
+    <p>Las agencias de viajes venden experiencias, pero muchas veces su presencia online no transmite el valor de sus paquetes. La web de paquetes turísticos de Quotix te permite publicar cada viaje con profesionalismo, generar consultas y convertir visitantes en clientes.</p>
+  </section>
+
+  <section>
+    <h2>Catálogo de paquetes</h2>
+    <p>Creá paquetes con título, destino, duración, galería de imágenes, itinerario día por día, servicios incluidos, precios y condiciones. Cada paquete tiene su propia URL para compartir en redes o email.</p>
+    <ul>
+      <li>Publicación de paquetes con foto e itinerario.</li>
+      <li>URL propia para cada paquete.</li>
+      <li>Categorías y destacados.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Diseño con tu marca</h2>
+    <p>La web usa el logo, los colores y la información de contacto de tu agencia. Tus clientes ven tu marca, no la de un marketplace genérico.</p>
+  </section>
+
+  <section>
+    <h2>De la consulta a la cotización</h2>
+    <p>Cada paquete tiene un botón de consulta. El interesado completa sus datos y el lead llega directamente a tu CRM. Desde ahí generás una cotización personalizada en PDF.</p>
+  </section>
+
+  <section>
+    <h2>Ideal para cualquier tipo de agencia</h2>
+    <p>Ya sea que vendas lunas de miel, viajes corporativos, turismo aventura o circuitos grupales, la web se adapta a tu modelo de negocio.</p>
+  </section>
+
+  <section>
+    <h2>Preguntas frecuentes</h2>
+    <details>
+      <summary>¿Necesito saber programar? <span class="text-magenta">▼</span></summary>
+      <p>No. La web se configura desde el panel de Quotix sin escribir código.</p>
+    </details>
+    <details>
+      <summary>¿Puedo usar mi dominio propio? <span class="text-magenta">▼</span></summary>
+      <p>Sí, se puede configurar un dominio o subdominio propio para tu web de paquetes.</p>
+    </details>
+    <details>
+      <summary>¿Los paquetes se integran con el cotizador? <span class="text-magenta">▼</span></summary>
+      <p>Sí. Desde un paquete público podés generar una cotización personalizada con un clic.</p>
+    </details>
+  </section>
+</FeatureLayout>

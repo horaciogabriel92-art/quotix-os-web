@@ -1,0 +1,79 @@
+---
+import FeatureLayout from '@/layouts/FeatureLayout.astro';
+
+const title = 'Cotizador PDF para Agencias de Viajes | Cotizá en 3 Minutos — Quotix';
+const description = 'Creá cotizaciones de viajes en PDF profesionales con tu marca. Vuelos, hoteles, traslados, seguros y comisiones. Probá gratis 7 días.';
+const canonical = '/cotizador-pdf-agencias-viajes/';
+const h1 = 'Cotizador PDF para agencias de viajes';
+const subtitle = 'Dejá de armar presupuestos en Word. Con Quotix armás cotizaciones profesionales en PDF con tu logo, precios y condiciones en minutos.';
+const heroImage = '/images/blog/airport-checkin.jpg';
+const heroAlt = 'Mostrador de check-in en aeropuerto internacional';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Quotix Cotizador PDF',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  description: description,
+  url: 'https://www.quotixos.com/cotizador-pdf-agencias-viajes/',
+  featureList: 'Cotizaciones PDF, Plantillas personalizables, Control de comisiones, PNR a PDF, Multi-vendedor',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD'
+  },
+  brand: {
+    '@type': 'Brand',
+    name: 'Quotix'
+  },
+  inLanguage: 'es'
+});
+---
+
+<FeatureLayout title={title} description={description} canonical={canonical} h1={h1} subtitle={subtitle} heroImage={heroImage} heroAlt={heroAlt} schema={schema}>
+  <section>
+    <p>Las cotizaciones son la primera impresión comercial de tu agencia. Un PDF bien armado, con logo, precios claros y condiciones, genera confianza y acelera la decisión del cliente. El cotizador PDF de Quotix te permite hacerlo en minutos, sin depender de plantillas de Word o Excel.</p>
+  </section>
+
+  <section>
+    <h2>¿Qué incluye cada cotización?</h2>
+    <p>Armá presupuestos completos con todos los servicios que necesites: vuelos, alojamiento, traslados, seguros, excursiones, comidas y cualquier otro ítem.</p>
+    <ul>
+      <li>Tabla de servicios con descripción y precios.</li>
+      <li>Resumen de condiciones, formas de pago y vigencia.</li>
+      <li>Logo, colores y datos de contacto de tu agencia.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Desde el PNR al PDF</h2>
+    <p>Si trabajás con vuelos, copiás el PNR de tu GDS y el <a href="/pnr-converter">PNR Converter</a> de Quotix arma automáticamente el itinerario visual. Luego agregás el resto de los servicios y generás el PDF final.</p>
+  </section>
+
+  <section>
+    <h2>Control de comisiones</h2>
+    <p>Definí markup por servicio o por proveedor. El cliente ve el precio final; vos ves el costo, la comisión y el margen real. Nada de costos internos queda expuesto en el PDF.</p>
+  </section>
+
+  <section>
+    <h2>Envío y seguimiento</h2>
+    <p>Descargá el PDF, envialo por email o WhatsApp y guardá la cotización en el CRM para hacer seguimiento hasta el cierre.</p>
+  </section>
+
+  <section>
+    <h2>Preguntas frecuentes</h2>
+    <details>
+      <summary>¿El PDF incluye marca de Quotix? <span class="text-magenta">▼</span></summary>
+      <p>No. El PDF lleva el logo, nombre y colores de tu agencia. Quotix es invisible para tu cliente.</p>
+    </details>
+    <details>
+      <summary>¿Puedo editar una cotización ya enviada? <span class="text-magenta">▼</span></summary>
+      <p>Sí, editás la cotización y generás una nueva versión del PDF. El cliente siempre recibe la versión actualizada.</p>
+    </details>
+    <details>
+      <summary>¿Funciona en celular? <span class="text-magenta">▼</span></summary>
+      <p>Sí, la plataforma es web y responsive. Podés cotizar desde cualquier dispositivo.</p>
+    </details>
+  </section>
+</FeatureLayout>

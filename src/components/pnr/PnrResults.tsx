@@ -3,15 +3,18 @@ import PnrFlightCard from './PnrFlightCard';
 import CopyResultButton from './CopyResultButton';
 import TrialCTA from './TrialCTA';
 import AdSlot from './AdSlot';
+import { type Lang, getTranslations } from './i18n';
 import type { ParsedFlight } from '../../lib/pnr/amadeus-parser';
 import { formatAllFlightsToText } from '../../lib/pnr/format-flight';
 import { Plane, Eye, EyeOff, Settings2 } from 'lucide-react';
 
 interface PnrResultsProps {
   flights: ParsedFlight[];
+  lang?: Lang;
 }
 
-export default function PnrResults({ flights }: PnrResultsProps) {
+export default function PnrResults({ flights, lang = 'es' }: PnrResultsProps) {
+  const t = getTranslations(lang);
   const [showLogo, setShowLogo] = useState(true);
   const [showClass, setShowClass] = useState(true);
   const [showAircraft, setShowAircraft] = useState(true);
@@ -29,27 +32,29 @@ export default function PnrResults({ flights }: PnrResultsProps) {
           className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-slate-900"
         >
           <Settings2 className="w-4 h-4" />
-          {showOptions ? 'Ocultar opciones' : 'Opciones de visualización'}
+          {showOptions ? t.optionsToggleHide : t.optionsToggleShow}
         </button>
 
         {showOptions && (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
-            <Toggle label="Mostrar logo" checked={showLogo} onChange={setShowLogo} />
-            <Toggle label="Mostrar duración" checked={showDuration} onChange={setShowDuration} />
-            <Toggle label="Mostrar clase" checked={showClass} onChange={setShowClass} />
-            <Toggle label="Mostrar aeronave" checked={showAircraft} onChange={setShowAircraft} />
+            <Toggle label={t.toggleLogo} checked={showLogo} onChange={setShowLogo} />
+            <Toggle label={t.toggleDuration} checked={showDuration} onChange={setShowDuration} />
+            <Toggle label={t.toggleClass} checked={showClass} onChange={setShowClass} />
+            <Toggle label={t.toggleAircraft} checked={showAircraft} onChange={setShowAircraft} />
           </div>
         )}
       </div>
 
       {/* Ad slot superior */}
-      <AdSlot slotId="pnr-converter-top" label="Publicidad" />
+      <AdSlot slotId="pnr-converter-top" lang={lang} />
 
       {/* Lista de vuelos */}
       <div className="space-y-4">
         <div className="flex items-center gap-2 text-slate-700">
           <Plane className="w-5 h-5" />
-          <h3 className="font-semibold">Itinerario ({flights.length} vuelo{flights.length > 1 ? 's' : ''})</h3>
+          <h3 className="font-semibold">
+            {t.itineraryTitle} ({flights.length} {flights.length === 1 ? t.flightSingular : t.flightPlural})
+          </h3>
         </div>
         {flights.map((flight, index) => (
           <PnrFlightCard
@@ -60,21 +65,22 @@ export default function PnrResults({ flights }: PnrResultsProps) {
             showClass={showClass}
             showAircraft={showAircraft}
             showDuration={showDuration}
+            lang={lang}
           />
         ))}
       </div>
 
       {/* Acciones */}
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <CopyResultButton text={copyText} />
-        <span className="text-xs text-slate-400">Formato visual para compartir o capturar pantalla.</span>
+        <CopyResultButton text={copyText} lang={lang} />
+        <span className="text-xs text-slate-400">{t.copyNote}</span>
       </div>
 
       {/* Ad slot inferior */}
-      <AdSlot slotId="pnr-converter-bottom" label="Publicidad" />
+      <AdSlot slotId="pnr-converter-bottom" lang={lang} />
 
       {/* CTA Trial */}
-      <TrialCTA />
+      <TrialCTA lang={lang} />
     </div>
   );
 }

@@ -1,0 +1,180 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+
+const title = 'Como Ler um PNR da Amadeus Passo a Passo | Guia 2026';
+const description = 'Aprenda como ler um PNR da Amadeus facilmente. Entenda os códigos enigmáticos e automatize suas cotações. Experimente o Quotix 7 dias grátis.';
+const canonical = '/pt/blog/como-ler-pnr-amadeus/';
+const heroImage = '/images/blog/flight-screen.jpg';
+const heroAlt = 'Tela de informações de voo em um aeroporto mostrando portão de embarque';
+const ogImage = 'https://www.quotixos.com/images/blog/flight-screen.jpg';
+const publishDate = '21 de julho de 2026';
+const readTime = '8 minutos';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: title,
+      description: 'Um guia técnico e detalhado para agentes de viagens sobre como ler e interpretar o formato enigmático de um PNR no sistema Amadeus.',
+      image: ogImage,
+      author: {
+        '@type': 'Person',
+        name: 'Horacio'
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Quotix',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://www.quotixos.com/assets/images/logo.png'
+        }
+      },
+      datePublished: '2026-07-21',
+      dateModified: '2026-07-21',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://www.quotixos.com/pt/blog/como-ler-pnr-amadeus/'
+      }
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Quais dados estão incluídos na linha de itinerário em um PNR da Amadeus?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'A linha de itinerário inclui o código da companhia aérea, número do voo, classe de reserva, data, aeroportos de origem e destino, status da reserva (ex. HK), número de assentos e horários de partida e chegada.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'O que significa HK em um código de reserva Amadeus?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'HK é o código de status que significa \'Holds Confirmed\' (Lugares Confirmados). Ele indica que a companhia aérea confirmou a reserva para aquele segmento de voo específico.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Como identifico o tempo limite de emissão em um PNR?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'O tempo limite é encontrado no campo \'T\' (Ticketing). Geralmente aparece com o formato TK TL seguido por uma data, indicando o prazo máximo para emitir o bilhete antes que a companhia aérea cancele os lugares.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Por que é importante não enviar o PNR enigmático para o cliente?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'O formato enigmático é difícil para os passageiros entenderem e pode conter campos de observações (RM) com informações internas da agência, como custos líquidos ou comissões, que devem ser mantidos privados.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Existe uma ferramenta para ler o PNR automaticamente?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Sim, usando um Conversor PNR. Você copia o texto do Amadeus, cola na ferramenta, e ela se encarrega de ler e interpretar os dados para gerar um PDF visual instantaneamente.'
+          }
+        }
+      ]
+    }
+  ]
+});
+---
+
+<ArticleLayout title={title} description={description} canonical={canonical} ogImage={ogImage} heroImage={heroImage} heroAlt={heroAlt} schema={schema} publishDate={publishDate} readTime={readTime} category="Guia PNR">
+  <section>
+    <p>Enfrentar a tela de um Sistema Global de Distribuição (GDS) pela primeira vez pode ser esmagador. Linhas de texto verde sobre um fundo preto, repletas de letras, números e siglas que parecem não fazer sentido. Para os agentes de viagem, dominar essa linguagem é um requisito indispensável para operar com agilidade. Compreender como ler um PNR (Passenger Name Record) permite que você gerencie reservas, verifique o status dos voos e garanta que seus clientes tenham seus itinerários em ordem.</p>
+
+    <p>Aprender a estrutura técnica por trás dessas reservas lhe dará segurança operacional. Neste artigo, vamos detalhar cada elemento de um PNR gerado no Amadeus para que você possa identificar rapidamente datas, voos, classes e tempos limites.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-6">
+      <a href="/pt/planos/" class="inline-flex items-center justify-center px-6 py-3 bg-magenta hover:bg-magenta-500 text-white font-semibold rounded-full transition-colors">Experimente grátis por 7 dias. Sem cartão de crédito. Setup em 24h.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>A Estrutura Base: O sistema PRINT</h2>
+    <p>Qualquer reserva criada no terminal Amadeus segue uma lógica estruturada. Como revisamos em nosso guia sobre <a href="/pt/blog/o-que-e-pnr/">o que é um PNR</a>, a informação obrigatória é organizada sob o acrônimo PRINT. Para ler o arquivo corretamente, você deve saber identificar onde cada um desses elementos está localizado dentro do bloco de texto.</p>
+
+    <p>Quando você recupera uma reserva usando o código localizador (exemplo: <code>RT ABCDEF</code>), a tela exibe uma lista numerada. Cada número de linha corresponde a um segmento de informação (nome, voo, telefone, etc.). Vamos analisar as linhas principais.</p>
+  </section>
+
+  <section>
+    <h2>Análise: Como Ler a Linha de Itinerário (Voos)</h2>
+    <p>O segmento do itinerário costuma ser a parte mais longa e complexa. Um erro de leitura aqui provavelmente fará com que um passageiro perca um voo. Vejamos um exemplo clássico de um voo de São Paulo para Lisboa com a TAP:</p>
+
+    <pre><code>2. TP 0088 Y 15NOV GRU LIS HK1 2145 1030+1</code></pre>
+
+    <p>Esta linha é lida da esquerda para a direita, dividindo-a nos seguintes blocos:</p>
+    <ul>
+      <li><strong>2.</strong> - É o número da linha dentro do PNR.</li>
+      <li><strong>TP</strong> - O código IATA da companhia aérea (TAP Air Portugal).</li>
+      <li><strong>0088</strong> - O número do voo.</li>
+      <li><strong>Y</strong> - A classe de reserva (Classe econômica cheia neste caso).</li>
+      <li><strong>15NOV</strong> - A data de partida (15 de Novembro).</li>
+      <li><strong>GRU LIS</strong> - Aeroporto de origem (Guarulhos, São Paulo) e aeroporto de destino (Lisboa).</li>
+      <li><strong>HK1</strong> - Código de status e quantidade de passageiros. "HK" significa <em>Holds Confirmed</em> (confirmado), e "1" indica que há um assento reservado.</li>
+      <li><strong>2145 1030+1</strong> - Horário de partida (21:45) e horário de chegada (10:30). O "+1" sugere que o voo aterrissa no dia seguinte à data de partida.</li>
+    </ul>
+
+    <p>Entender essa estrutura é vital. Se, em vez de "HK", você visse códigos como "HL" (Lista de espera) ou "UN" (Voo cancelado), saberia imediatamente que precisa agir para reacomodar seu cliente.</p>
+  </section>
+
+  <section>
+    <h2>Identificação de Nomes, Telefones e Tempos Limites</h2>
+    <p>Além dos voos, o sistema registra os dados do viajante com formatos específicos que você deve aprender a escanear visualmente.</p>
+
+    <h3>O Campo de Nome (Name)</h3>
+    <p>Geralmente aparece na primeira linha do PNR. O formato padrão no Amadeus é <code>1.SOBRENOME/NOME MR</code>. Se várias pessoas estiverem viajando, você verá <code>1.SILVA/JOAO MR 2.SILVA/MARIA MRS</code>. O número inicial associa esse passageiro ao restante dos serviços atribuídos no itinerário.</p>
+
+    <h3>O Campo de Emissão (Ticketing)</h3>
+    <p>O tempo limite é um dado crítico que define quando a reserva será cancelada se o bilhete não for emitido. Você o encontrará com o formato <code>TK TL</code> (Ticketing Time Limit) seguido pela data. Exemplo: <code>TK TL 10NOV/1200</code>. Isso indica que você tem até 10 de novembro às 12:00 para processar o pagamento; caso contrário, os assentos retornarão ao inventário da companhia aérea.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-6">
+      <a href="/pt/" class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-slate-700 hover:border-magenta hover:text-magenta font-semibold rounded-full transition-colors">Pronto para cotar como as agências que vendem a sério? Experimente o Quotix grátis por 7 dias.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>O Problema da Comunicação com o Cliente</h2>
+    <p>Saber ler isso transforma você em um especialista operacional. No entanto, enviar esse código enigmático para um passageiro gera um atrito comercial severo. O cliente não sabe que "HK" é confirmado, nem entende que "GRU" é Guarulhos. Quando um agente de viagens copia e cola esse texto em um e-mail ou WhatsApp, ele obriga o usuário a decodificar a informação por conta própria.</p>
+
+    <p>Além disso, existe um risco de privacidade. Os PNRs geralmente possuem linhas rotuladas como <code>RM</code> (Remarks) ou <code>FM</code> (Commission), onde a agência anota custos líquidos, lucratividade ou acordos privados com fornecedores. Compartilhar o bloco de texto completo pode expor sua margem comercial.</p>
+  </section>
+
+  <section>
+    <h2>A Automação: Usar um Conversor PNR</h2>
+    <p>A tecnologia atual permite agilizar esse processo de tradução. Em vez de ler manualmente cada linha e digitar um documento para o cliente, você pode usar nosso <a href="/pt/pnr-converter/">Conversor PNR</a>.</p>
+
+    <p>O fluxo de trabalho é simplificado drasticamente: você copia todo o bloco de texto do seu terminal Amadeus (ou qualquer GDS homologado pela <a href="https://amadeus.com" target="_blank" rel="nofollow noopener">documentação padrão</a>) e o cola na plataforma. O sistema se encarrega de ler as classes, os horários, os aeroportos e as datas, gerando automaticamente um PDF visual, com seu logotipo, pronto para enviar. Isso garante que a proposta seja compreensível, que suas comissões permaneçam ocultas e que cada cotação seja registrada no CRM para acompanhamento posterior.</p>
+  </section>
+
+  <section>
+    <h2>Perguntas Frequentes sobre a Leitura de PNRs</h2>
+    <details>
+      <summary>Quais dados estão incluídos na linha de itinerário em um PNR da Amadeus? <span class="text-magenta">▼</span></summary>
+      <p>A linha de itinerário inclui o código da companhia aérea, número do voo, classe de reserva, data, aeroportos de origem e destino, status da reserva (ex. HK), número de assentos e horários de partida e chegada.</p>
+    </details>
+    <details>
+      <summary>O que significa HK em um código de reserva Amadeus? <span class="text-magenta">▼</span></summary>
+      <p>HK é o código de status que significa 'Holds Confirmed' (Lugares Confirmados). Ele indica que a companhia aérea confirmou a reserva para aquele segmento de voo específico.</p>
+    </details>
+    <details>
+      <summary>Como identifico o tempo limite de emissão em um PNR? <span class="text-magenta">▼</span></summary>
+      <p>O tempo limite é encontrado no campo 'T' (Ticketing). Geralmente aparece com o formato TK TL seguido por uma data, indicando o prazo máximo para emitir o bilhete antes que a companhia aérea cancele os lugares.</p>
+    </details>
+    <details>
+      <summary>Por que é importante não enviar o PNR enigmático para o cliente? <span class="text-magenta">▼</span></summary>
+      <p>O formato enigmático é difícil para os passageiros entenderem e pode conter campos de observações (RM) com informações internas da agência, como custos líquidos ou comissões, que devem ser mantidos privados para proteger suas margens comerciais.</p>
+    </details>
+    <details>
+      <summary>Existe uma ferramenta para ler o PNR automaticamente? <span class="text-magenta">▼</span></summary>
+      <p>Sim, usando um Conversor PNR. Você copia o texto do Amadeus, cola na ferramenta, e ela se encarrega de ler e interpretar os dados para gerar um PDF visual instantaneamente, eliminando o trabalho manual.</p>
+    </details>
+  </section>
+</ArticleLayout>

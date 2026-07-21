@@ -1,0 +1,203 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import Header from '@/components/sections/Header.astro';
+import Footer from '@/components/sections/Footer.astro';
+import PnrConverterTool from '@/components/pnr/PnrConverterTool';
+
+const title = 'Conversor PNR Grátis para Amadeus | Decodifique para PDF';
+const description = 'Decodifique códigos PNR do Amadeus e crie cotações visuais em PDF. Comece seu teste de 7 dias grátis sem cartão de crédito.';
+const canonical = '/pt/pnr-converter';
+const ogImage = 'https://www.quotixos.com/pnr-converter-og.png';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Quotix PNR Converter',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD'
+      },
+      description: 'Ferramenta gratuita para agências de viagem que decodifica códigos PNR do Amadeus e os converte em itinerários visuais.',
+      url: 'https://www.quotixos.com/pt/pnr-converter',
+      brand: {
+        '@type': 'Brand',
+        name: 'Quotix'
+      },
+      inLanguage: 'pt'
+    },
+    {
+      '@type': 'HowTo',
+      name: 'Como converter um PNR da Amadeus',
+      description: 'Passos para decodificar um PNR da Amadeus com o conversor da Quotix.',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Copiar o PNR',
+          text: 'Copie o código PNR completo do seu sistema Amadeus.'
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Colar e converter',
+          text: 'Cole o texto no conversor e clique no botão Converter.'
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Compartilhar o itinerário',
+          text: 'Copie o resultado ou capture a tela para compartilhar com seu cliente.'
+        }
+      ]
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'O que é um PNR da Amadeus?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'PNR significa Passenger Name Record. É o código da reserva que contém todos os dados da viagem: voos, passageiros, horários e status da reserva.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'O Conversor PNR da Quotix é grátis?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Sim, é 100% gratuito. Cole o seu PNR da Amadeus e obtenha um itinerário visual sem se registrar.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'O PNR que eu colo é salvo?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Não. O conversor funciona no seu navegador. Não enviamos o PNR para nenhum servidor nem guardamos histórico.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Posso converter o PNR para PDF?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'O conversor gratuito mostra o itinerário visual pronto para capturar a tela. Para criar PDFs profissionais com a sua marca, experimente a Quotix grátis por 7 dias.'
+          }
+        }
+      ]
+    }
+  ]
+});
+---
+
+<MainLayout title={title} description={description} canonical={canonical} ogImage={ogImage} schema={schema}>
+  <Header />
+
+  <main class="pt-24 pb-16 bg-slate-50 min-h-screen">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center mb-10">
+        <span class="inline-block px-3 py-1 text-xs font-semibold tracking-wide text-magenta bg-magenta/10 rounded-full mb-4">
+          Ferramenta gratuita
+        </span>
+        <h1 class="heading-lg text-slate-900 mb-4">
+          Conversor PNR Grátis para <span class="text-magenta">Amadeus</span>
+        </h1>
+        <p class="body-lg text-slate-600">
+          Cole o código PNR da sua Amadeus e converta-o em um itinerário visual limpo para compartilhar com seus clientes. Rápido, privado e sem registro.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto mb-20">
+        <PnrConverterTool client:load lang="pt" />
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-12">
+        <section>
+          <h2 class="heading-md text-slate-900 mb-4">O que é um PNR da Amadeus?</h2>
+          <p class="body-md text-slate-600">
+            Um PNR (Passenger Name Record) é o código da reserva que contém todas as informações de uma viagem: voos, passageiros, horários, classes e status dos segmentos. Na Amadeus, esse código geralmente aparece como um bloco de texto denso e difícil de ler para um cliente final.
+          </p>
+          <p class="body-md text-slate-600 mt-4">
+            O <strong>Conversor PNR da Quotix</strong> pega esse texto enigmático e o transforma em um itinerário visual claro, com logotipos de companhias aéreas, horários, cidades e aeroportos. É ideal para agentes de viagem que precisam compartilhar informações rapidamente com seus clientes.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="heading-md text-slate-900 mb-4">Como funciona?</h2>
+          <ol class="space-y-4 body-md text-slate-600 list-decimal list-inside">
+            <li><strong>Copie o PNR</strong> da sua tela da Amadeus, incluindo os segmentos de voo.</li>
+            <li><strong>Cole no conversor</strong> e clique no botão "Converter PNR".</li>
+            <li><strong>Obtenha o itinerário visual</strong> pronto para capturar a tela ou copiar o texto.</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2 class="heading-md text-slate-900 mb-4">Por que usar o Conversor PNR da Quotix?</h2>
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 body-md text-slate-600">
+            <li class="flex items-start gap-2"><span class="text-magenta">✓</span> Grátis e sem registro</li>
+            <li class="flex items-start gap-2"><span class="text-magenta">✓</span> Funciona no navegador, sem enviar dados ao servidor</li>
+            <li class="flex items-start gap-2"><span class="text-magenta">✓</span> Compatível com PNRs da Amadeus</li>
+            <li class="flex items-start gap-2"><span class="text-magenta">✓</span> Visualização limpa para compartilhar</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="heading-md text-slate-900 mb-4">Perguntas frequentes</h2>
+          <div class="space-y-4">
+            <details class="group bg-white border border-slate-200 rounded-xl p-4">
+              <summary class="font-semibold text-slate-800 cursor-pointer list-none flex items-center justify-between">
+                O que é um PNR da Amadeus?
+                <span class="text-magenta group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-slate-600 mt-3 text-sm leading-relaxed">
+                É o código da reserva que contém os dados da viagem: voos, passageiros, horários e status da reserva.
+              </p>
+            </details>
+            <details class="group bg-white border border-slate-200 rounded-xl p-4">
+              <summary class="font-semibold text-slate-800 cursor-pointer list-none flex items-center justify-between">
+                O conversor é grátis?
+                <span class="text-magenta group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-slate-600 mt-3 text-sm leading-relaxed">
+                Sim, é 100% gratuito. Não é necessário registro nem cartão de crédito.
+              </p>
+            </details>
+            <details class="group bg-white border border-slate-200 rounded-xl p-4">
+              <summary class="font-semibold text-slate-800 cursor-pointer list-none flex items-center justify-between">
+                O PNR que eu colo é salvo?
+                <span class="text-magenta group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-slate-600 mt-3 text-sm leading-relaxed">
+                Não. O processamento acontece no seu navegador. Não guardamos histórico nem enviamos dados para servidor.
+              </p>
+            </details>
+            <details class="group bg-white border border-slate-200 rounded-xl p-4">
+              <summary class="font-semibold text-slate-800 cursor-pointer list-none flex items-center justify-between">
+                Posso gerar um PDF a partir do PNR?
+                <span class="text-magenta group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-slate-600 mt-3 text-sm leading-relaxed">
+                O conversor gratuito mostra o itinerário visual. Para criar PDFs profissionais com a sua marca, hotéis, traslados e seguros, experimente a Quotix grátis por 7 dias.
+              </p>
+            </details>
+          </div>
+        </section>
+
+        <div class="bg-gradient-to-br from-navy to-navy-800 rounded-2xl p-8 text-white text-center">
+          <h3 class="heading-md mb-3">Você faz cotações para agências de viagem?</h3>
+          <p class="body-md text-slate-300 mb-6">
+            Com a Quotix, você transforma PNRs em cotações PDF com sua marca, hotéis, traslados e seguros em minutos.
+          </p>
+          <a href="/pt/planos" class="inline-flex items-center justify-center px-8 py-3 bg-magenta hover:bg-magenta-500 text-white font-semibold rounded-full transition-colors">
+            Experimentar Quotix grátis 7 dias
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</MainLayout>

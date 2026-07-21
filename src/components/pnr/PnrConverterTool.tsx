@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { parseAmadeusPNR, isValidAmadeusText, type ParseResult } from '../../lib/pnr/amadeus-parser';
 import PnrResults from './PnrResults';
+import { type Lang, getTranslations } from './i18n';
 import { Plane, AlertCircle, Loader2, Wand2 } from 'lucide-react';
 
 const SAMPLE_PNR = `RP/ABC12345/ABC12345            EK/RM  26SEP26/1852Z   2B82OU
@@ -9,7 +10,12 @@ const SAMPLE_PNR = `RP/ABC12345/ABC12345            EK/RM  26SEP26/1852Z   2B82O
  1 UX  46 Z 17OCT 6 MVDMAD HK1  1220 0510+1  E 0 789
  2 UX  45 Z 02NOV 2 MADMVD HK1  2345 0825+1  E 0 789`;
 
-export default function PnrConverterTool() {
+interface PnrConverterToolProps {
+  lang?: Lang;
+}
+
+export default function PnrConverterTool({ lang = 'es' }: PnrConverterToolProps) {
+  const t = getTranslations(lang);
   const [text, setText] = useState('');
   const [result, setResult] = useState<ParseResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,12 +26,12 @@ export default function PnrConverterTool() {
     setResult(null);
 
     if (!text.trim()) {
-      setError('Pegá el código PNR de Amadeus para comenzar.');
+      setError(t.errorEmpty);
       return;
     }
 
     if (!isValidAmadeusText(text)) {
-      setError('El texto no parece ser un PNR de Amadeus válido. Verificá que incluya segmentos de vuelo con fechas, aeropuertos y códigos de estado (HK, DK, etc.).');
+      setError(t.errorInvalid);
       return;
     }
 
@@ -37,7 +43,7 @@ export default function PnrConverterTool() {
       setIsLoading(false);
 
       if (!parsed.success || parsed.flights.length === 0) {
-        setError(parsed.errors.join(' ') || 'No se pudieron encontrar vuelos válidos en el PNR.');
+        setError(parsed.errors.join(' ') || t.errorNoFlights);
         return;
       }
 
@@ -57,7 +63,7 @@ export default function PnrConverterTool() {
         <div className="flex items-center justify-between mb-3">
           <label htmlFor="pnr-input" className="text-sm font-semibold text-slate-700 flex items-center gap-2">
             <Plane className="w-4 h-4 text-magenta" />
-            Pegá el PNR de Amadeus
+            {t.inputLabel}
           </label>
           <button
             onClick={loadSample}
@@ -65,7 +71,7 @@ export default function PnrConverterTool() {
             className="text-xs font-medium text-slate-500 hover:text-magenta flex items-center gap-1"
           >
             <Wand2 className="w-3 h-3" />
-            Ver ejemplo
+            {t.loadSample}
           </button>
         </div>
 
@@ -73,10 +79,7 @@ export default function PnrConverterTool() {
           id="pnr-input"
           value={text}
           onChange={(e) => setText(e.target.value)}
-          placeholder={`Ejemplo:
-RP/ABC12345/ABC12345
- 1.GONZALEZ/MARIA MS
- 1 UX  46 Z 17OCT 6 MVDMAD HK1  1220 0510+1  E 0 789`}
+          placeholder={t.placeholder}
           className="w-full h-48 p-4 text-sm font-mono bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-magenta/20 focus:border-magenta outline-none resize-y text-slate-700"
         />
 
@@ -89,17 +92,17 @@ RP/ABC12345/ABC12345
             {isLoading ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
-                Decodificando...
+                {t.decoding}
               </>
             ) : (
               <>
                 <Wand2 className="w-4 h-4" />
-                Convertir PNR
+                {t.convertButton}
               </>
             )}
           </button>
           <span className="text-xs text-slate-400 text-center sm:text-left">
-            Gratis, sin registro y 100% privado: no guardamos tu PNR.
+            {t.privacyNote}
           </span>
         </div>
 
@@ -112,7 +115,7 @@ RP/ABC12345/ABC12345
       </div>
 
       {result && result.flights.length > 0 && (
-        <PnrResults flights={result.flights} />
+        <PnrResults flights={result.flights} lang={lang} />
       )}
     </div>
   );

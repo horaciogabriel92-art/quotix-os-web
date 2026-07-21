@@ -1,0 +1,79 @@
+---
+import FeatureLayout from '@/layouts/FeatureLayout.astro';
+
+const title = 'CRM para Agencias de Viajes | Pipeline y Clientes con Quotix';
+const description = 'Gestión de clientes, pipeline de cotizaciones y equipo multi-vendedor para agencias de viajes. Probá el CRM de Quotix gratis 7 días.';
+const canonical = '/crm-agencias-viajes/';
+const h1 = 'CRM para agencias de viajes';
+const subtitle = 'Organizá clientes, cotizaciones y vendedores en un solo tablero. Convertí oportunidades en ventas con el CRM que entiende el negocio de viajes.';
+const heroImage = '/images/blog/travel-counters.jpg';
+const heroAlt = 'Mostradores de agencia de viajes en aeropuerto';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Quotix CRM',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  description: description,
+  url: 'https://www.quotixos.com/crm-agencias-viajes/',
+  featureList: 'Pipeline de cotizaciones, Gestión de clientes, Multi-vendedor, Seguimiento comercial, Historial de cotizaciones',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD'
+  },
+  brand: {
+    '@type': 'Brand',
+    name: 'Quotix'
+  },
+  inLanguage: 'es'
+});
+---
+
+<FeatureLayout title={title} description={description} canonical={canonical} h1={h1} subtitle={subtitle} heroImage={heroImage} heroAlt={heroAlt} schema={schema}>
+  <section>
+    <p>Las agencias de viajes manejan cientos de consultas, cotizaciones, reservas y seguimientos. Una hoja de cálculo o un WhatsApp dejan pasar oportunidades. El CRM de Quotix está diseñado para que cada cotización tenga dueño, etapa y fecha de cierre.</p>
+  </section>
+
+  <section>
+    <h2>Pipeline visual de cotizaciones</h2>
+    <p>Movemos cada propuesta por columnas: Nueva, Enviada, Negociación, Aprobada o Perdida. En un vistazo sabés qué cotizaciones requieren atención y cuáles están listas para convertirse en venta.</p>
+    <ul>
+      <li>Etiquetas por estado de venta.</li>
+      <li>Arrastrar y soltar para cambiar de etapa.</li>
+      <li>Filtros por vendedor, fecha y destino.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Ficha de cliente completa</h2>
+    <p>Cada cliente tiene historial de cotizaciones, datos de contacto, preferencias, notas internas y documentos adjuntos. Cuando vuelve a consultar, tenés toda la información a mano.</p>
+  </section>
+
+  <section>
+    <h2>Multi-vendedor y permisos</h2>
+    <p>Asigná vendedores a cada cotización, controlá quién puede editar precios y visibilizá el rendimiento individual. Ideal para agencias con equipo de ventas o coordinadores.</p>
+  </section>
+
+  <section>
+    <h2>Seguimiento sin fricción</h2>
+    <p>Agregá recordatorios, comentarios y actividades sobre cada oportunidad. El CRM te ayuda a recordar cuándo contactar a un cliente para cerrar.</p>
+  </section>
+
+  <section>
+    <h2>Preguntas frecuentes</h2>
+    <details>
+      <summary>¿Es un CRM genérico? <span class="text-magenta">▼</span></summary>
+      <p>No. Está pensado para agencias de viajes: cotizaciones, paquetes, vuelos, comisiones y seguimiento de propuestas.</p>
+    </details>
+    <details>
+      <summary>¿Puedo migrar mis clientes? <span class="text-magenta">▼</span></summary>
+      <p>Sí, podés importar clientes desde Excel o CSV. También podemos ayudarte con la migración inicial.</p>
+    </details>
+    <details>
+      <summary>¿Cuántos vendedores puedo tener? <span class="text-magenta">▼</span></summary>
+      <p>Depende del plan. Desde 1 vendedor en Freelance hasta usuarios ilimitados en Pro Ilimitado.</p>
+    </details>
+  </section>
+</FeatureLayout>

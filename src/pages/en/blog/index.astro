@@ -3,27 +3,27 @@ import MainLayout from '@/layouts/MainLayout.astro';
 import Header from '@/components/sections/Header.astro';
 import Footer from '@/components/sections/Footer.astro';
 
-const title = 'Blog de Quotix | Software, PNR y Cotizaciones para Agencias de Viajes';
-const description = 'Guías prácticas para agencias de viajes: PNR Amadeus, cotizaciones PDF, software de gestión y mejores prácticas para vender más viajes.';
-const canonical = '/blog/';
+const title = 'Quotix Blog | Software, PNR and Travel Agency Quotes';
+const description = 'Practical guides for travel agencies: Amadeus PNR, PDF quotes, travel agency software, and best practices to sell more trips.';
+const canonical = '/en/blog/';
 
 const posts = [
   {
-    slug: '/blog/que-es-pnr/',
-    title: '¿Qué es un PNR? Guía Completa para Agentes de Viajes 2026',
-    excerpt: 'Descubrí qué es el Passenger Name Record, cómo se estructura en Amadeus y por qué no deberías enviarlo en bruto a tus clientes.',
+    slug: '/en/blog/what-is-pnr/',
+    title: 'What is a PNR? Complete Guide for Travel Agents 2026',
+    excerpt: 'Discover what a Passenger Name Record is, how it is structured in Amadeus, and why you should not send it raw to your clients.',
     image: '/images/blog/boarding-pass.jpg',
-    category: 'Guía PNR',
-    date: '21 jul 2026',
+    category: 'PNR Guide',
+    date: 'Jul 21, 2026',
     readTime: '8 min'
   },
   {
-    slug: '/blog/como-leer-pnr-amadeus/',
-    title: 'Cómo Leer un PNR de Amadeus Paso a Paso | Guía 2026',
-    excerpt: 'Aprendé a interpretar el formato críptico de Amadeus: itinerarios, códigos de estado, tiempos límite y campos de nombre.',
+    slug: '/en/blog/how-to-read-amadeus-pnr/',
+    title: 'How to Read an Amadeus PNR Step by Step | Guide 2026',
+    excerpt: 'Learn to interpret the cryptic Amadeus format: itineraries, status codes, time limits, and name fields.',
     image: '/images/blog/flight-screen.jpg',
-    category: 'Tutorial PNR',
-    date: '21 jul 2026',
+    category: 'PNR Tutorial',
+    date: 'Jul 21, 2026',
     readTime: '10 min'
   }
 ];
@@ -31,8 +31,8 @@ const posts = [
 const schema = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Blog',
-  name: 'Blog de Quotix',
-  url: 'https://www.quotixos.com/blog/',
+  name: 'Quotix Blog',
+  url: 'https://www.quotixos.com/en/blog/',
   description: description,
   blogPost: posts.map(post => ({
     '@type': 'BlogPosting',
@@ -56,9 +56,9 @@ const schema = JSON.stringify({
         <span class="inline-block px-3 py-1 text-xs font-semibold tracking-wide text-magenta bg-magenta/10 rounded-full mb-4">
           Blog
         </span>
-        <h1 class="heading-lg text-slate-900 mb-4">Blog de Quotix</h1>
+        <h1 class="heading-lg text-slate-900 mb-4">Quotix Blog</h1>
         <p class="body-lg text-slate-600">
-          Guías prácticas para agencias de viajes: PNR Amadeus, cotizaciones PDF, software de gestión y mejores prácticas para vender más viajes.
+          Practical guides for travel agencies: Amadeus PNR, PDF quotes, travel agency software, and best practices to sell more trips.
         </p>
       </div>
 
@@ -79,7 +79,7 @@ const schema = JSON.stringify({
                 </h2>
                 <p class="text-slate-600 mb-4 leading-relaxed">{post.excerpt}</p>
                 <a href={post.slug} class="inline-flex items-center text-sm font-semibold text-magenta hover:text-magenta-500 transition-colors">
-                  Leer artículo
+                  Read article
                   <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                   </svg>

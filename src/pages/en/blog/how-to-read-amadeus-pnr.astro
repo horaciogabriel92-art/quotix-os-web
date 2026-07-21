@@ -1,0 +1,180 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+
+const title = 'How to Read an Amadeus PNR Step by Step | Guide 2026';
+const description = 'Learn how to read an Amadeus PNR easily. Understand the cryptic codes and automate your travel quotes. Start your 7-day free trial of Quotix today.';
+const canonical = '/en/blog/how-to-read-amadeus-pnr/';
+const heroImage = '/images/blog/flight-screen.jpg';
+const heroAlt = 'Flight information screen at an airport showing a boarding gate';
+const ogImage = 'https://www.quotixos.com/images/blog/flight-screen.jpg';
+const publishDate = 'July 21, 2026';
+const readTime = '8 minutes';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: title,
+      description: 'A detailed technical guide for travel agents on how to read and interpret the cryptic format of a PNR in the Amadeus system.',
+      image: ogImage,
+      author: {
+        '@type': 'Person',
+        name: 'Horacio'
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Quotix',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://www.quotixos.com/assets/images/logo.png'
+        }
+      },
+      datePublished: '2026-07-21',
+      dateModified: '2026-07-21',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://www.quotixos.com/en/blog/how-to-read-amadeus-pnr/'
+      }
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What data is included in the itinerary line of an Amadeus PNR?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'The itinerary line includes the airline code, flight number, booking class, date, origin and destination airports, booking status (e.g., HK), number of seats, and departure and arrival times.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'What does HK mean in an Amadeus booking code?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'HK is the status code that means \'Holds Confirmed\'. It indicates that the airline has confirmed the reservation for that specific flight segment.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'How do I identify the ticketing time limit in a PNR?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'The time limit is found in the \'T\' (Ticketing) field. It usually appears with the format TK TL followed by a date, indicating the maximum time to issue the ticket before the airline cancels the seats.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Why is it important not to send the cryptic PNR to the client?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'The cryptic format is difficult for passengers to understand and may contain remark fields (RM) with internal agency information, such as net costs or commissions, which must be kept private.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Is there a tool to read the PNR automatically?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes, using a PNR Converter. You copy the Amadeus text, paste it into the tool, and it takes care of reading and interpreting the data to generate a visual PDF instantly.'
+          }
+        }
+      ]
+    }
+  ]
+});
+---
+
+<ArticleLayout title={title} description={description} canonical={canonical} ogImage={ogImage} heroImage={heroImage} heroAlt={heroAlt} schema={schema} publishDate={publishDate} readTime={readTime} category="PNR Guide">
+  <section>
+    <p>Facing the screen of a Global Distribution System (GDS) for the first time can be overwhelming. Lines of green text on a black background, filled with letters, numbers, and acronyms that seem to make no sense. For travel agents, mastering this language is an absolute requirement to operate efficiently. Understanding how to read a PNR (Passenger Name Record) allows you to manage reservations, check flight statuses, and ensure your clients have their itinerary in perfect order.</p>
+
+    <p>Learning the technical structure behind these reservations will give you operational confidence. In this article, we will break down every element of an Amadeus-generated PNR so you can quickly identify dates, flights, classes, and time limits.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-6">
+      <a href="/en/pricing/" class="inline-flex items-center justify-center px-6 py-3 bg-magenta hover:bg-magenta-500 text-white font-semibold rounded-full transition-colors">Start your 7-day free trial. No credit card. Setup in 24h.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Base Structure: The PRINT System</h2>
+    <p>Any reservation created in the Amadeus terminal follows a highly structured logic. As we reviewed in our guide on <a href="/en/blog/what-is-pnr/">what a PNR is</a>, the mandatory information is organized under the acronym PRINT. To read the file correctly, you must know how to identify where each of these elements is located within the text block.</p>
+
+    <p>When you retrieve a reservation using the locator code (example: <code>RT ABCDEF</code>), the screen displays a numbered list. Each line number corresponds to a segment of information (name, flight, phone, etc.). Let's analyze the core lines.</p>
+  </section>
+
+  <section>
+    <h2>Breakdown: How to Read the Itinerary Line (Flights)</h2>
+    <p>The itinerary segment is usually the longest and most complex part. A reading error here will likely result in a passenger missing a flight. Let's look at a classic example of a flight from New York to London with British Airways:</p>
+
+    <pre><code>2. BA 0112 Y 15NOV JFK LHR HK1 1830 0630+1</code></pre>
+
+    <p>This line is read from left to right, dividing it into the following blocks:</p>
+    <ul>
+      <li><strong>2.</strong> - This is the line number within the PNR.</li>
+      <li><strong>BA</strong> - The IATA code for the airline (British Airways).</li>
+      <li><strong>0112</strong> - The specific flight number.</li>
+      <li><strong>Y</strong> - The booking class (Full economy class in this case).</li>
+      <li><strong>15NOV</strong> - The departure date (November 15th).</li>
+      <li><strong>JFK LHR</strong> - Origin airport (John F. Kennedy, New York) and destination airport (Heathrow, London).</li>
+      <li><strong>HK1</strong> - Status code and number of passengers. "HK" stands for <em>Holds Confirmed</em>, and "1" indicates there is one reserved seat.</li>
+      <li><strong>1830 0630+1</strong> - Departure time (18:30) and arrival time (06:30). The "+1" suggests that the flight lands the day after the departure date.</li>
+    </ul>
+
+    <p>Understanding this structure is vital. If instead of "HK" you saw codes like "HL" (Waitlist) or "UN" (Flight cancelled), you would immediately know you need to take action to re-accommodate your client.</p>
+  </section>
+
+  <section>
+    <h2>Identifying Names, Phones, and Time Limits</h2>
+    <p>In addition to flights, the system records traveler data using specific formats that you must learn to scan visually.</p>
+
+    <h3>The Name Field</h3>
+    <p>It usually appears on the first line of the PNR. The standard format in Amadeus is <code>1.SURNAME/FIRSTNAME MR</code>. If several people are traveling, you will see <code>1.SMITH/JOHN MR 2.SMITH/MARY MRS</code>. The initial number associates that passenger with the rest of the assigned services in the itinerary.</p>
+
+    <h3>The Ticketing Field</h3>
+    <p>The time limit is critical data that defines when the reservation will be cancelled if the ticket is not issued. You will find it with the format <code>TK TL</code> (Ticketing Time Limit) followed by the date. Example: <code>TK TL 10NOV/1200</code>. This indicates you have until November 10 at 12:00 PM to process the payment; otherwise, the seats will return to the airline's inventory.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-6">
+      <a href="/" class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-slate-700 hover:border-magenta hover:text-magenta font-semibold rounded-full transition-colors">Ready to quote like agencies that sell seriously? Try Quotix free for 7 days.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Problem with Client Communication</h2>
+    <p>Knowing how to read this turns you into an operational expert. However, sending this cryptic code to a passenger creates severe commercial friction. The client doesn't know that "HK" means confirmed, nor do they understand that "LHR" is Heathrow. When a travel agent copies and pastes this text into an email or WhatsApp, they force the user to decode the information on their own.</p>
+
+    <p>Furthermore, there is a serious privacy risk. PNRs often have lines labeled <code>RM</code> (Remarks) or <code>FM</code> (Commission), where the agency notes down net costs, profitability margins, or private agreements with suppliers. Sharing the entire text block could expose your commercial data.</p>
+  </section>
+
+  <section>
+    <h2>Automation: Using a PNR Converter</h2>
+    <p>Current technology allows you to streamline this translation process. Instead of manually reading each line and typing out a document for the client, you can use our <a href="/en/pnr-converter/">PNR Converter</a>.</p>
+
+    <p>The workflow is drastically simplified: you copy the entire text block from your Amadeus terminal (or any GDS following the <a href="https://amadeus.com" target="_blank" rel="nofollow noopener">standard documentation</a>) and paste it into the platform. The system takes care of reading the classes, schedules, airports, and dates, automatically generating a visual PDF, complete with your logo, ready to be sent. This guarantees that the proposal is understandable, your commissions remain hidden, and every quote is registered in the CRM for proper follow-up.</p>
+  </section>
+
+  <section>
+    <h2>Frequently Asked Questions about Reading PNRs</h2>
+    <details>
+      <summary>What data is included in the itinerary line of an Amadeus PNR? <span class="text-magenta">▼</span></summary>
+      <p>The itinerary line includes the airline code, flight number, booking class, date, origin and destination airports, booking status (e.g., HK), number of seats, and departure and arrival times.</p>
+    </details>
+    <details>
+      <summary>What does HK mean in an Amadeus booking code? <span class="text-magenta">▼</span></summary>
+      <p>HK is the status code that means 'Holds Confirmed'. It indicates that the airline has confirmed the reservation for that specific flight segment.</p>
+    </details>
+    <details>
+      <summary>How do I identify the ticketing time limit in a PNR? <span class="text-magenta">▼</span></summary>
+      <p>The time limit is found in the 'T' (Ticketing) field. It usually appears with the format TK TL followed by a date, indicating the maximum time to issue the ticket before the airline cancels the seats.</p>
+    </details>
+    <details>
+      <summary>Why is it important not to send the cryptic PNR to the client? <span class="text-magenta">▼</span></summary>
+      <p>The cryptic format is difficult for passengers to understand and may contain remark fields (RM) with internal agency information, such as net costs or commissions, which must be kept private.</p>
+    </details>
+    <details>
+      <summary>Is there a tool to read the PNR automatically? <span class="text-magenta">▼</span></summary>
+      <p>Yes, using a PNR Converter. You copy the Amadeus text, paste it into the tool, and it takes care of reading and interpreting the data to generate a visual PDF instantly.</p>
+    </details>
+  </section>
+</ArticleLayout>
