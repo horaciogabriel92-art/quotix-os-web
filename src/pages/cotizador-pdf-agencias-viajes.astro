@@ -6,8 +6,8 @@ const description = 'Creá cotizaciones de viajes en PDF profesionales con tu ma
 const canonical = '/cotizador-pdf-agencias-viajes/';
 const h1 = 'Cotizador PDF para agencias de viajes';
 const subtitle = 'Dejá de armar presupuestos en Word. Con Quotix armás cotizaciones profesionales en PDF con tu logo, precios y condiciones en minutos.';
-const heroImage = '/images/blog/airport-checkin.jpg';
-const heroAlt = 'Mostrador de check-in en aeropuerto internacional';
+const heroImage = '';
+const heroAlt = '';
 
 const schema = JSON.stringify({
   '@context': 'https://schema.org',
@@ -32,8 +32,157 @@ const schema = JSON.stringify({
 ---
 
 <FeatureLayout title={title} description={description} canonical={canonical} h1={h1} subtitle={subtitle} heroImage={heroImage} heroAlt={heroAlt} schema={schema}>
-  <section>
-    <p>Las cotizaciones son la primera impresión comercial de tu agencia. Un PDF bien armado, con logo, precios claros y condiciones, genera confianza y acelera la decisión del cliente. El cotizador PDF de Quotix te permite hacerlo en minutos, sin depender de plantillas de Word o Excel.</p>
+  <section class="pdf-demo-scope">
+    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 md:p-8 mb-10">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-xl font-bold text-slate-900">Así se ve tu cotización en PDF</h2>
+          <p class="text-slate-600 text-sm mt-1">Compará el PDF profesional de Quotix vs. un presupuesto común.</p>
+        </div>
+        <div class="inline-flex bg-white rounded-full p-1 border border-slate-200 shadow-sm">
+          <button type="button" class="preview-tab active px-4 py-2 text-sm font-medium rounded-full transition-all" data-target="pdf">PDF profesional</button>
+          <button type="button" class="preview-tab px-4 py-2 text-sm font-medium rounded-full text-slate-500 transition-all" data-target="word">Word/Excel común</button>
+        </div>
+      </div>
+
+      <div class="relative min-h-[420px] md:min-h-[480px]">
+        <!-- PDF Preview -->
+        <div id="preview-pdf" class="preview-panel absolute inset-0 flex items-center justify-center">
+          <div class="pdf-card w-full max-w-2xl bg-white shadow-2xl rounded-xl overflow-hidden border border-slate-200 transform transition-all duration-700">
+            <!-- PDF Header -->
+            <div class="bg-slate-900 text-white px-6 py-4 flex justify-between items-center">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center font-bold text-sm">QT</div>
+                <div>
+                  <div class="font-bold text-sm leading-tight">Quotix Travel</div>
+                  <div class="text-xs text-slate-400">Tu agencia de viajes</div>
+                </div>
+              </div>
+              <div class="text-right text-xs">
+                <div class="text-slate-300">COT-2026-43709</div>
+                <div class="text-slate-500">Válida hasta 04/04/2026</div>
+              </div>
+            </div>
+
+            <!-- PDF Body -->
+            <div class="p-6 md:p-8">
+              <div class="flex justify-between items-start border-b-2 border-emerald-500 pb-4 mb-5">
+                <div>
+                  <div class="text-emerald-700 font-bold text-lg">Viaje a Madrid</div>
+                  <div class="text-slate-500 text-sm">Montevideo ⇄ Madrid • 7 días</div>
+                </div>
+                <div class="text-right">
+                  <div class="text-2xl font-bold text-emerald-700">$3.980</div>
+                  <div class="text-xs text-slate-500">Total por 2 pasajeros</div>
+                </div>
+              </div>
+
+              <div class="pdf-section space-y-4">
+                <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+                  <div class="flex justify-between text-xs font-bold text-emerald-700 mb-2">
+                    <span>MONTEVIDEO → MADRID</span>
+                    <span class="bg-emerald-600 text-white px-2 py-0.5 rounded">AV UX078</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm font-bold text-slate-900">
+                    <span class="text-center">09:30<br><span class="text-xs font-normal text-slate-500">MVD</span></span>
+                    <span class="flex-1 border-b-2 border-emerald-300 mx-3 mb-2 relative">
+                      <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-emerald-500 text-xs">✈</span>
+                    </span>
+                    <span class="text-center">20:45<br><span class="text-xs font-normal text-slate-500">MAD</span></span>
+                  </div>
+                </div>
+
+                <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+                  <div class="flex justify-between text-xs font-bold text-emerald-700 mb-2">
+                    <span>MADRID → MONTEVIDEO</span>
+                    <span class="bg-emerald-600 text-white px-2 py-0.5 rounded">AV UX087</span>
+                  </div>
+                  <div class="flex items-center justify-between text-sm font-bold text-slate-900">
+                    <span class="text-center">10:20<br><span class="text-xs font-normal text-slate-500">MAD</span></span>
+                    <span class="flex-1 border-b-2 border-emerald-300 mx-3 mb-2 relative">
+                      <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-emerald-500 text-xs">✈</span>
+                    </span>
+                    <span class="text-center">21:30<br><span class="text-xs font-normal text-slate-500">MVD</span></span>
+                  </div>
+                </div>
+
+                <table class="w-full text-sm mt-4">
+                  <thead>
+                    <tr class="text-left text-slate-500 border-b border-slate-200">
+                      <th class="py-2 font-medium">Servicio</th>
+                      <th class="py-2 font-medium text-right">Precio</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-slate-700">
+                    <tr class="border-b border-slate-100">
+                      <td class="py-2">Vuelos ida y vuelta</td>
+                      <td class="py-2 text-right font-medium">$2.840</td>
+                    </tr>
+                    <tr class="border-b border-slate-100">
+                      <td class="py-2">Alojamiento 6 noches</td>
+                      <td class="py-2 text-right font-medium">$780</td>
+                    </tr>
+                    <tr>
+                      <td class="py-2">Traslados aeropuerto</td>
+                      <td class="py-2 text-right font-medium">$360</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div class="flex justify-between items-center pt-4 border-t border-slate-200">
+                  <span class="text-xs text-slate-500">Incluye tasas e impuestos</span>
+                  <div class="text-right">
+                    <div class="text-xl font-bold text-emerald-700">$3.980</div>
+                    <div class="text-xs text-slate-500">Total a pagar</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Word/Excel Preview -->
+        <div id="preview-word" class="preview-panel absolute inset-0 flex items-center justify-center hidden opacity-0">
+          <div class="word-card w-full max-w-2xl bg-white shadow-xl rounded-xl border border-slate-200 p-6 md:p-8">
+            <div class="text-slate-400 text-xs font-mono mb-4">cotizacion_madrid_v2.docx</div>
+            <div class="space-y-3 font-mono text-sm text-slate-700">
+              <p class="border-b border-slate-200 pb-2">COTIZACIÓN: VIAJE A MADRID</p>
+              <p>Pasajeros: 2</p>
+              <p>Fechas: 10/10/2026 - 17/10/2026</p>
+              <p>--------------------------------</p>
+              <p>Vuelos: MVD-MAD 09:30 - precio?</p>
+              <p>Hotel: 6 noches - a confirmar</p>
+              <p>Traslados: incluidos</p>
+              <p>--------------------------------</p>
+              <p>TOTAL: $3.980 (precio aproximado)</p>
+              <p class="text-xs text-slate-500 mt-4">* Los precios pueden variar. Condiciones sujetas a disponibilidad.</p>
+            </div>
+            <div class="mt-6 flex items-center gap-2 text-xs text-slate-400">
+              <span class="w-2 h-2 rounded-full bg-red-400"></span>
+              <span>Sin logo, sin formato, difícil de cerrar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white border border-slate-200 rounded-xl p-4 text-center">
+          <div class="text-2xl mb-2">🎨</div>
+          <div class="font-semibold text-slate-900 text-sm">Con tu marca</div>
+          <div class="text-xs text-slate-500">Logo, colores y datos de tu agencia</div>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-xl p-4 text-center">
+          <div class="text-2xl mb-2">✈️</div>
+          <div class="font-semibold text-slate-900 text-sm">Itinerario visual</div>
+          <div class="text-xs text-slate-500">Vuelos con logos y horarios claros</div>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-xl p-4 text-center">
+          <div class="text-2xl mb-2">💰</div>
+          <div class="font-semibold text-slate-900 text-sm">Comisiones claras</div>
+          <div class="text-xs text-slate-500">Precio final + margen real interno</div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section>
@@ -76,4 +225,79 @@ const schema = JSON.stringify({
       <p>Sí, la plataforma es web y responsive. Podés cotizar desde cualquier dispositivo.</p>
     </details>
   </section>
+
+  <style is:global>
+    .feature-content .pdf-demo-scope p {
+      font-size: inherit;
+      line-height: inherit;
+      color: inherit;
+      margin-bottom: 0;
+    }
+    .feature-content .pdf-demo-scope h2 {
+      margin-top: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .preview-tab.active {
+      background-color: #bf3480;
+      color: white;
+    }
+    .preview-panel {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .preview-panel.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+    }
+    .preview-panel:not(.hidden) {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .pdf-section .pdf-line {
+      position: relative;
+    }
+    .pdf-section .pdf-line::after {
+      content: '✈';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #10b981;
+      font-size: 0.75rem;
+    }
+  </style>
+
+  <script is:inline>
+    (function() {
+      const tabs = document.querySelectorAll('.preview-tab');
+      const panels = document.querySelectorAll('.preview-panel');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = tab.dataset.target;
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          panels.forEach(p => {
+            if (p.id === 'preview-' + target) {
+              p.classList.remove('hidden');
+            } else {
+              p.classList.add('hidden');
+            }
+          });
+        });
+      });
+
+      // Animate PDF sections on load
+      const sections = document.querySelectorAll('.pdf-section > *');
+      sections.forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(12px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        setTimeout(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, 300 + i * 150);
+      });
+    })();
+  </script>
 </FeatureLayout>
