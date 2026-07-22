@@ -1,0 +1,52 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import Header from '@/components/sections/Header.astro';
+import Footer from '@/components/sections/Footer.astro';
+
+const title = 'Política de Cookies | Quotix';
+const description = 'Política de cookies de Quotix. Conocé qué cookies usamos y para qué.';
+const canonical = '/cookies';
+---
+
+<MainLayout title={title} description={description} canonical={canonical}>
+  <Header />
+  <main>
+    <section class="section-padding bg-white">
+      <div class="container-custom max-w-3xl">
+        <div class="text-center mb-12">
+          <h1 class="heading-xl text-slate-900 mb-4">Política de Cookies</h1>
+          <p class="text-slate-500">Última actualización: julio de 2026</p>
+        </div>
+
+        <div class="prose prose-lg max-w-none text-slate-700">
+          <p>
+            Esta política explica qué son las cookies, cómo las usamos en <strong>Quotix</strong> y cómo podés gestionarlas.
+          </p>
+
+          <h2 class="heading-md text-slate-900 mt-10 mb-4">1. ¿Qué son las cookies?</h2>
+          <p>
+            Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitás un sitio web. Sirven para recordar preferencias, mejorar la experiencia y analizar el tráfico.
+          </p>
+
+          <h2 class="heading-md text-slate-900 mt-10 mb-4">2. Cookies que usamos</h2>
+          <ul class="list-disc pl-6 space-y-2">
+            <li><strong>Cookies esenciales:</strong> necesarias para el funcionamiento del sitio, como la autenticación y la seguridad.</li>
+            <li><strong>Cookies de rendimiento:</strong> nos ayudan a entender cómo se usa el sitio (Google Analytics). No identifican a personas individuales.</li>
+            <li><strong>Cookies de preferencias:</strong> recuerdan opciones como el idioma seleccionado.</li>
+          </ul>
+
+          <h2 class="heading-md text-slate-900 mt-10 mb-4">3. Cómo gestionar las cookies</h2>
+          <p>
+            Podés configurar tu navegador para bloquear o eliminar cookies en cualquier momento. Tené en cuenta que algunas funciones del sitio pueden verse afectadas.
+          </p>
+
+          <h2 class="heading-md text-slate-900 mt-10 mb-4">4. Cambios en esta política</h2>
+          <p>
+            Podemos actualizar esta política ocasionalmente. Te recomendamos revisarla periódicamente.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</MainLayout>

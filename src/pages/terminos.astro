@@ -1,0 +1,55 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import Header from '@/components/sections/Header.astro';
+import Footer from '@/components/sections/Footer.astro';
+
+const title = 'Términos y Condiciones | Quotix';
+const description = 'Términos y condiciones de uso de Quotix. Reglas para agencias de viajes que utilizan nuestra plataforma de cotización y CRM.';
+const canonical = '/terminos';
+---
+
+<MainLayout title={title} description={description} canonical={canonical}>
+  <Header />
+  <main>
+    <section class="section-padding bg-white">
+      <div class="container-custom max-w-3xl">
+        <div class="text-center mb-12">
+          <h1 class="heading-xl text-slate-900 mb-4">Términos y Condiciones</h1>
+          <p class="text-slate-500">Última actualización: julio de 2026</p>
+        </div>
+
+        <div class="prose prose-lg max-w-none text-slate-700">
+          <p>
+            Al acceder y utilizar <strong>Quotix</strong>, aceptás estos términos. Si no estás de acuerdo, no uses el servicio.
+          </p>
+
+          <h2 class="heading-md text-slate-900 mt-10 mb-4">1. Servicio</h2>
+          <p>
+            Quotix es una plataforma SaaS para agencias de viajes que incluye conversor de PNR, generación de cotizaciones en PDF, CRM, web de paquetes y control de comisiones.
+          </p>
+
+          <h2 class="heading-md text-slate-900 mt-10 mb-4">2. Cuentas y acceso</h2>
+          <p>
+            La agencia es responsable de mantener la confidencialidad de sus credenciales y de la actividad realizada en su cuenta.
+          </p>
+
+          <h2 class="heading-md text-slate-900 mt-10 mb-4">3. Uso permitido</h2>
+          <p>
+            El servicio debe usarse para fines comerciales legítimos de la agencia. Está prohibido el uso para actividades fraudulentas, ilegales o que infrinjan derechos de terceros.
+          </p>
+
+          <h2 class="heading-md text-slate-900 mt-10 mb-4">4. Pagos y cancelaciones</h2>
+          <p>
+            Las suscripciones se facturan de forma recurrente. Podés cancelar en cualquier momento desde tu panel de administración. No se realizan reembolsos parciales por periodos no utilizados, salvo excepciones a criterio de Quotix.
+          </p>
+
+          <h2 class="heading-md text-slate-900 mt-10 mb-4">5. Limitación de responsabilidad</h2>
+          <p>
+            Quotix no se hace responsable por errores en cotizaciones generadas por datos incorrectos ingresados por el usuario. El usuario debe verificar la información antes de confirmar reservas.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</MainLayout>

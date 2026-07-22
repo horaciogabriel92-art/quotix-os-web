@@ -1,0 +1,57 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import Header from '@/components/sections/Header.astro';
+import Footer from '@/components/sections/Footer.astro';
+
+const title = 'Sobre Nosotros | Quotix - Software para Agencias de Viajes';
+const description = 'Quotix nació para simplificar la cotización en agencias de viajes de LATAM. Conoce nuestra misión, equipo y por qué creamos el conversor PNR y cotizador PDF.';
+const canonical = '/sobre-nosotros';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Quotix',
+  url: 'https://www.quotixos.com',
+  logo: 'https://www.quotixos.com/assets/images/logo.png',
+  description: 'Software para agencias de viajes que convierte PNR de Amadeus en cotizaciones PDF profesionales.',
+  sameAs: [
+    'https://www.linkedin.com/company/quotix'
+  ]
+});
+---
+
+<MainLayout title={title} description={description} canonical={canonical} schema={schema}>
+  <Header />
+  <main>
+    <section class="section-padding bg-white">
+      <div class="container-custom max-w-3xl">
+        <div class="text-center mb-12">
+          <h1 class="heading-xl text-slate-900 mb-4">Sobre Quotix</h1>
+          <p class="body-lg text-slate-600">El sistema operativo que las agencias de viajes de LATAM necesitaban.</p>
+        </div>
+
+        <div class="prose prose-lg max-w-none text-slate-700">
+          <p>
+            <strong>Quotix</strong> nació de una necesidad concreta: los agentes de viajes pasaban demasiado tiempo traduciendo códigos PNR de Amadeus a cotizaciones que los clientes pudieran entender. Horas entre Excel, PDFs manuales y errores que costaban ventas.
+          </p>
+          <p>
+            Decidimos construir una herramienta simple, rápida y accesible: pegás el PNR, obtenés una cotización visual profesional en segundos, con logos de aerolíneas, tramos claros y precios ordenados. Sin integraciones complejas, sin cambiar tu GDS y sin depender de hojas de cálculo.
+          </p>
+          <h2 class="heading-md text-slate-900 mt-10 mb-4">Nuestra misión</h2>
+          <p>
+            Reducir el tiempo de cotización de las agencias de viajes de 45 minutos a 3 minutos, dándoles un CRM, web de paquetes y control de comisiones en una sola plataforma asequible.
+          </p>
+          <h2 class="heading-md text-slate-900 mt-10 mb-4">¿Por qué elegirnos?</h2>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>El único PNR converter pensado para agencias de viajes de LATAM.</li>
+            <li>Cotizaciones PDF con marca propia en minutos.</li>
+            <li>CRM integrado sin costos enterprise.</li>
+            <li>Web de paquetes lista para compartir con clientes.</li>
+            <li>Soporte humano y setup en 24 horas.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</MainLayout>

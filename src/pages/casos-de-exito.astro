@@ -1,0 +1,81 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import Header from '@/components/sections/Header.astro';
+import Footer from '@/components/sections/Footer.astro';
+
+const title = 'Casos de Éxito | Agencias de Viajes que usan Quotix';
+const description = 'Descubrí cómo agencias de viajes de LATAM reducen errores, acortan tiempos de cotización y mejoran sus ventas con Quotix.';
+const canonical = '/casos-de-exito';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      item: {
+        '@type': 'Article',
+        name: 'Agencia uruguaya reduce errores de cotización con Quotix',
+        description: 'Caso de éxito de una agencia que pasó de Excel a cotizaciones PDF automáticas.'
+      }
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      item: {
+        '@type': 'Article',
+        name: 'Mayorista centraliza cotizaciones para su red',
+        description: 'Caso de éxito de un mayorista que distribuye precios y cupos a su red de minoristas.'
+      }
+    }
+  ]
+});
+---
+
+<MainLayout title={title} description={description} canonical={canonical} schema={schema}>
+  <Header />
+  <main>
+    <section class="section-padding bg-white">
+      <div class="container-custom max-w-4xl">
+        <div class="text-center mb-12">
+          <h1 class="heading-xl text-slate-900 mb-4">Casos de éxito</h1>
+          <p class="body-lg text-slate-600">Agencias de viajes que cotizan más rápido y con menos errores gracias a Quotix.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <article class="p-8 rounded-2xl bg-slate-50 border border-slate-100">
+            <div class="text-sm font-semibold text-[#bf3480] uppercase tracking-wider mb-2">Agencia de viajes • Uruguay</div>
+            <h2 class="heading-md text-slate-900 mb-4">De 45 minutos a 3 minutos por cotización</h2>
+            <p class="text-slate-600 mb-6">
+              Antes copiaban a mano cada PNR de Amadeus a Excel y luego a un PDF. Con Quotix pegan el código y obtienen una cotización profesional con la marca de la agencia lista para enviar.
+            </p>
+            <ul class="space-y-2 text-sm text-slate-700">
+              <li class="flex items-center gap-2"><span class="text-[#d4f542]">✓</span> 90% menos errores de tipeo</li>
+              <li class="flex items-center gap-2"><span class="text-[#d4f542]">✓</span> 3x más cotizaciones por día</li>
+              <li class="flex items-center gap-2"><span class="text-[#d4f542]">✓</span> PDFs con marca propia</li>
+            </ul>
+          </article>
+
+          <article class="p-8 rounded-2xl bg-slate-50 border border-slate-100">
+            <div class="text-sm font-semibold text-[#bf3480] uppercase tracking-wider mb-2">Mayorista • Argentina</div>
+            <h2 class="heading-md text-slate-900 mb-4">Red de minoristas sincronizada</h2>
+            <p class="text-slate-600 mb-6">
+              Publica paquetes, controla cupos y distribuye comisiones a su red de agencias sin depender de mails ni hojas de cálculo desactualizadas.
+            </p>
+            <ul class="space-y-2 text-sm text-slate-700">
+              <li class="flex items-center gap-2"><span class="text-[#d4f542]">✓</span> Catálogo centralizado</li>
+              <li class="flex items-center gap-2"><span class="text-[#d4f542]">✓</span> Comisiones calculadas automáticamente</li>
+              <li class="flex items-center gap-2"><span class="text-[#d4f542]">✓</span> Web de paquetes propia</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="/precios" class="btn-primary btn-filled-dark">Probá gratis 7 días</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</MainLayout>
