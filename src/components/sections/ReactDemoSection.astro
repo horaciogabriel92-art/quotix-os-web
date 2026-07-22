@@ -13,21 +13,21 @@
       </p>
     </div>
 
-    <div class="flex justify-center relative z-10">
+    <!-- Desktop Animation -->
+    <div class="hidden lg:flex justify-center relative z-10">
       <div id="demo-animation-root" class="demo-app-wrapper">
-        <div class="demo-app-scale-wrapper">
-          <!-- Explanation Bubbles -->
-          <div id="bubble-phase1" class="demo-bubble bubble-bottom" style="top:150px;left:50%;transform:translateX(-50%);">
-            <span class="bubble-icon">✦</span>
-            Pegas el PNR en crudo desde tu GDS (Amadeus, Sabre o Galileo).
-          </div>
-          <div id="bubble-phase2" class="demo-bubble bubble-right" style="top:350px;left:120px;display:none;">
-            <span class="bubble-icon">✈</span>
-            El sistema lee y estructura al instante los vuelos, fechas, escalas y horarios. ¡Sin cargarlos a mano!
-          </div>
+        <!-- Explanation Bubbles -->
+        <div id="bubble-phase1" class="demo-bubble bubble-bottom" style="top:150px;left:50%;transform:translateX(-50%);">
+          <span class="bubble-icon">✦</span>
+          Pegas el PNR en crudo desde tu GDS (Amadeus, Sabre o Galileo).
+        </div>
+        <div id="bubble-phase2" class="demo-bubble bubble-right" style="top:350px;left:120px;display:none;">
+          <span class="bubble-icon">✈</span>
+          El sistema lee y estructura al instante los vuelos, fechas, escalas y horarios. ¡Sin cargarlos a mano!
+        </div>
 
-          <!-- Main Frame -->
-          <div id="demo-frame" class="demo-app-frame zoom-phase-1">
+        <!-- Main Frame -->
+        <div id="demo-frame" class="demo-app-frame zoom-phase-1">
             <!-- Sidebar -->
           <aside class="demo-sidebar">
             <div class="demo-sidebar-logo">
@@ -295,6 +295,91 @@
       </div>
     </div>
 
+    <!-- Mobile Fallback -->
+    <div class="lg:hidden relative z-10 px-4">
+      <div class="max-w-md mx-auto space-y-6">
+        <!-- PNR Input -->
+        <div class="bg-slate-900/80 border border-slate-700 rounded-2xl p-5 shadow-2xl backdrop-blur-sm">
+          <div class="flex items-center gap-2 mb-4 text-slate-200 text-sm font-semibold">
+            <span class="text-[#bf3480]">✦</span>
+            Código PNR de Amadeus
+          </div>
+          <div class="bg-slate-950 rounded-xl p-4 font-mono text-xs text-slate-400 overflow-x-auto whitespace-pre leading-relaxed">
+RP/DZOUY2100/
+ 1  UX 046 T 16MAY 6 MVDMAD DK1  1220 0510  17MAY  E  0 789 M
+    SEE RTSVC
+ 2  UX 045 N 01JUN 1 MADMVD DK1  2355 0735  02JUN  E  0 789 M
+    SEE RTSVC
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="flex justify-center">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#bf3480] to-[#d4f542] flex items-center justify-center text-white shadow-lg">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+          </div>
+        </div>
+
+        <!-- PDF Result -->
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+          <div class="bg-[#0f766e] text-white px-5 py-3 flex justify-between items-center text-sm font-medium">
+            <span>Vista Previa: COT-2026-43709.pdf</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          </div>
+          <div class="p-5">
+            <div class="flex justify-between items-start border-b-2 border-emerald-500 pb-3 mb-4">
+              <div>
+                <div class="text-[#0f766e] font-bold text-base">Vendedor Test</div>
+                <div class="text-slate-500 text-xs">Viajes y Turismo</div>
+              </div>
+              <div class="text-right text-xs text-slate-600">
+                <div class="font-bold text-[#0f766e]">COT-2026-43709</div>
+                <div>Fecha: 28/3/2026</div>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3">
+                <div class="flex justify-between text-xs font-bold text-emerald-700 mb-2">
+                  <span>MONTEVIDEO → MADRID</span>
+                  <span class="bg-emerald-600 text-white px-2 py-0.5 rounded">AV UX078</span>
+                </div>
+                <div class="flex items-center justify-between text-sm font-bold text-slate-900">
+                  <span class="text-center">09:30<br><span class="text-xs font-normal text-slate-500">MVD</span></span>
+                  <span class="flex-1 border-b-2 border-emerald-300 mx-3 mb-2 relative">
+                    <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-emerald-500 text-xs">✈</span>
+                  </span>
+                  <span class="text-center">20:45<br><span class="text-xs font-normal text-slate-500">MAD</span></span>
+                </div>
+              </div>
+
+              <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3">
+                <div class="flex justify-between text-xs font-bold text-emerald-700 mb-2">
+                  <span>MADRID → MONTEVIDEO</span>
+                  <span class="bg-emerald-600 text-white px-2 py-0.5 rounded">AV UX087</span>
+                </div>
+                <div class="flex items-center justify-between text-sm font-bold text-slate-900">
+                  <span class="text-center">10:20<br><span class="text-xs font-normal text-slate-500">MAD</span></span>
+                  <span class="flex-1 border-b-2 border-emerald-300 mx-3 mb-2 relative">
+                    <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-emerald-500 text-xs">✈</span>
+                  </span>
+                  <span class="text-center">21:30<br><span class="text-xs font-normal text-slate-500">MVD</span></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-slate-200 flex justify-between items-end">
+              <span class="text-xs text-slate-500">Incluye tasas e impuestos</span>
+              <div class="text-right">
+                <div class="text-2xl font-bold text-[#0f766e]">$3.980</div>
+                <div class="text-xs text-slate-500">Total a pagar</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Decorative background elements -->
     <div class="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-[#bf3480]/10 to-transparent rounded-full blur-3xl opacity-50 pointer-events-none"></div>
     <div class="absolute top-1/2 right-0 -translate-y-1/2 w-96 h-96 bg-gradient-to-bl from-[#d4f542]/5 to-transparent rounded-full blur-3xl opacity-50 pointer-events-none"></div>
@@ -306,23 +391,12 @@
 .demo-app-wrapper {
   perspective: 1000px;
   width: 100%;
-  min-height: 820px;
-  height: auto;
+  height: 820px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   position: relative;
-}
-
-.demo-app-scale-wrapper {
-  width: 1024px;
-  height: 760px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform-origin: center center;
-  transition: transform 0.3s ease;
 }
 
 .demo-app-frame {
@@ -338,24 +412,6 @@
   transition: transform 2.5s cubic-bezier(0.25, 1, 0.5, 1);
   transform-origin: center center;
   flex-shrink: 0;
-}
-
-/* Responsive scaling: keep the full demo visible on small screens */
-@media (max-width: 1100px) {
-  .demo-app-wrapper { min-height: 620px; }
-  .demo-app-scale-wrapper { transform: scale(0.75); }
-}
-@media (max-width: 768px) {
-  .demo-app-wrapper { min-height: 480px; }
-  .demo-app-scale-wrapper { transform: scale(0.55); }
-}
-@media (max-width: 480px) {
-  .demo-app-wrapper { min-height: 360px; }
-  .demo-app-scale-wrapper { transform: scale(0.38); }
-}
-@media (max-width: 360px) {
-  .demo-app-wrapper { min-height: 300px; }
-  .demo-app-scale-wrapper { transform: scale(0.30); }
 }
 
 .zoom-phase-1 { transform: scale(1.15) translateY(40px) translateX(-50px); }
