@@ -1,0 +1,248 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+
+const title = 'Melhores Software para Agências de Viagem na LATAM 2026';
+const description = 'Comparativa dos melhores software para agências de viagem na LATAM: funcionalidades, preços e qual convém segundo o tamanho da sua agência. Experimente o Quotix grátis por 7 dias.';
+const canonical = '/pt/blog/melhores-software-agencias-viagem/';
+const heroImage = '/images/blog/travel-counters.jpg';
+const heroAlt = 'Equipe de agência de viagens trabalhando com software em computadores';
+const heroCaption = 'Escolher o software certo pode reduzir drasticamente o tempo de cotação';
+const ogImage = 'https://www.quotixos.com/images/blog/travel-counters.jpg';
+const publishDate = '21 de julho de 2026';
+const readTime = '11 min';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: title,
+      description: 'Análise comparativa dos principais software para agências de viagem na LATAM, com funcionalidades, preços e recomendações por tipo de agência.',
+      image: ogImage,
+      author: {
+        '@type': 'Person',
+        name: 'Horacio'
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Quotix',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://www.quotixos.com/assets/images/logo.png'
+        }
+      },
+      datePublished: '2026-07-21',
+      dateModified: '2026-07-21',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://www.quotixos.com/pt/blog/melhores-software-agencias-viagem/'
+      }
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Que software uma agência de viagens precisa?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'No mínimo, uma agência de viagens precisa de um sistema para cotar, gerenciar clientes, controlar comissões e emitir documentos. Dependendo do tamanho, também pode precisar de CRM, site de pacotes e relatórios.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Qual é o melhor software para agências pequenas?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Para agências pequenas ou agentes independentes, o ideal é uma ferramenta fácil de usar, com cotações em PDF, controle de comissões e preços acessíveis, como o Quotix Freelance.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'É melhor usar Excel ou um software especializado?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Excel funciona para agências muito pequenas com poucas cotações, mas torna-se inseguro e lento quando os clientes crescem. Um software especializado reduz erros e economiza tempo.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'O que é mais importante ao escolher software para agência de viagens?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'A facilidade de uso, o suporte local, a capacidade de personalizar cotações, o controle de comissões e o preço em relação ao tamanho da agência.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'O Quotix serve para agências de qualquer tamanho?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Sim. O Quotix tem planos desde agentes independentes até agências com múltiplos vendedores e domínio próprio.'
+          }
+        }
+      ]
+    }
+  ]
+});
+---
+
+<ArticleLayout title={title} description={description} canonical={canonical} ogImage={ogImage} heroImage={heroImage} heroAlt={heroAlt} heroCaption={heroCaption} schema={schema} publishDate={publishDate} readTime={readTime} category="Comparativos">
+  <section>
+    <p>Escolher o <strong>melhor software para agências de viagem</strong> não é apenas uma decisão técnica: é uma decisão de negócio. O sistema que você usará vai definir quanto tempo leva para cotar, quantos erros comete, quantas vendas perde por falta de acompanhamento e, em última instância, quanto sua agência pode crescer.</p>
+
+    <p>Em 2026, o mercado da LATAM tem opções para todos os tamanhos e orçamentos. Nesta comparativa, revisamos as ferramentas mais relevantes, seus pontos fortes, fraquezas e para qual tipo de agência cada uma convém.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+      <a href="/precios/" class="inline-flex items-center justify-center px-6 py-3 bg-magenta hover:bg-magenta-500 text-white font-semibold rounded-full transition-colors">Experimente grátis por 7 dias. Sem cartão de crédito. Setup em 24h.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>O que um bom software para agências de viagens deve ter?</h2>
+    <p>Antes de comparar opções, convém definir quais funcionalidades são realmente importantes. Nem todas as agências precisam do mesmo, mas há capacidades básicas que hoje são inegociáveis:</p>
+    <ul>
+      <li><strong>Cotações em PDF</strong> com imagem profissional.</li>
+      <li><strong>Gestão de clientes</strong> com histórico de cotações.</li>
+      <li><strong>Controle de comissões</strong> e markup.</li>
+      <li><strong>Conversor PNR</strong> para Amadeus e outros GDS.</li>
+      <li><strong>Site de pacotes turísticos</strong> para vender online.</li>
+      <li><strong>Suporte em português</strong> e horário da LATAM.</li>
+      <li><strong>Preço adequado</strong> ao tamanho da agência.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>As 5 opções mais destacadas na LATAM</h2>
+
+    <h3>1. Quotix</h3>
+    <p><a href="/">Quotix</a> é uma plataforma SaaS pensada para agências de viagens da LATAM. Seu diferencial é o <strong>Conversor PNR</strong>: você cola o código da Amadeus e em segundos tem um itinerário visual e uma cotação PDF com sua marca. Além disso, inclui CRM, cálculo de comissões, site de pacotes e multi-vendedor.</p>
+    <p><strong>Ideal para:</strong> agências que cotam com frequência e querem reduzir o tempo de cotação sem perder a imagem profissional.</p>
+    <p><strong>Preço:</strong> a partir de USD 29/mês. Teste grátis de 7 dias.</p>
+
+    <h3>2. Ezus</h3>
+    <p>Ezus é uma plataforma francesa muito conhecida na Europa. Permite montar itinerários detalhados, cotações e documentos de viagem. É visual e poderosa, mas seu preço e sua orientação ao mercado europeu podem ser barreiras para agências pequenas da LATAM.</p>
+    <p><strong>Ideal para:</strong> agências grandes com orçamento para software enterprise e operações complexas.</p>
+    <p><strong>Preço:</strong> enterprise, geralmente acima de USD 100/mês.</p>
+
+    <h3>3. TravelPerk / corporativo</h3>
+    <p>Ferramentas como TravelPerk estão focadas em viagens corporativas e gestão de políticas de empresa. São excelentes para esse nicho, mas não para agências de pacotes turísticos nem cotações comerciais personalizadas.</p>
+    <p><strong>Ideal para:</strong> agências B2B que gerenciam grandes volumes de viagens corporativas.</p>
+
+    <h3>4. Excel / Google Sheets</h3>
+    <p>Continua sendo a opção mais usada por agentes independentes. É gratuito, flexível e todos conhecem. O problema aparece quando os clientes crescem: erros de fórmulas, versões desatualizadas, falta de acompanhamento e propostas pouco profissionais.</p>
+    <p><strong>Ideal para:</strong> agentes que estão começando e fazem poucas cotações mensais.</p>
+    <p><strong>Preço:</strong> grátis, mas com custo oculto em tempo e erros.</p>
+
+    <h3>5. Soluções customizadas ou sistemas legados</h3>
+    <p>Algumas agências grandes têm sistemas próprios desenvolvidos há anos. Funcionam, mas geralmente são rígidos, caros de manter e difíceis de atualizar. Além disso, a capacitação de novos funcionários costuma ser mais complexa.</p>
+    <p><strong>Ideal para:</strong> agências com processos muito específicos e recursos para desenvolvimento próprio.</p>
+  </section>
+
+  <section>
+    <h2>Tabela comparativa rápida</h2>
+    <div class="overflow-x-auto my-8">
+      <table class="w-full text-left border-collapse border border-slate-200 rounded-xl overflow-hidden">
+        <thead>
+          <tr class="bg-slate-100">
+            <th class="p-4 border-b border-slate-200 font-semibold">Software</th>
+            <th class="p-4 border-b border-slate-200 font-semibold text-center">Cotações PDF</th>
+            <th class="p-4 border-b border-slate-200 font-semibold text-center">Conversor PNR</th>
+            <th class="p-4 border-b border-slate-200 font-semibold text-center">CRM</th>
+            <th class="p-4 border-b border-slate-200 font-semibold text-center">Site pacotes</th>
+            <th class="p-4 border-b border-slate-200 font-semibold text-center">Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-slate-100">
+            <td class="p-4 font-semibold">Quotix</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">$29/mês</td>
+          </tr>
+          <tr class="border-b border-slate-100 bg-slate-50">
+            <td class="p-4 font-semibold">Ezus</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">$100+/mês</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="p-4 font-semibold">TravelPerk</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">Enterprise</td>
+          </tr>
+          <tr class="border-b border-slate-100 bg-slate-50">
+            <td class="p-4 font-semibold">Excel</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">Grátis</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-semibold">Sistema próprio</td>
+            <td class="p-4 text-center">Variável</td>
+            <td class="p-4 text-center">Variável</td>
+            <td class="p-4 text-center">Variável</td>
+            <td class="p-4 text-center">Variável</td>
+            <td class="p-4 text-center">Alto</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Qual escolher segundo sua agência?</h2>
+
+    <h3>Agente independente ou freelancer</h3>
+    <p>Você precisa de algo simples, econômico e que te faça parecer profissional com seus clientes. <a href="/precios/">Quotix Freelance</a> ou até mesmo o Conversor PNR gratuito podem ser o ponto de partida. A chave é parar de usar Excel antes que os erros te custem uma venda.</p>
+
+    <h3>Agência em crescimento</h3>
+    <p>Quando você já tem vários vendedores, clientes recorrentes e cotações diárias, precisa de CRM, controle de comissões e um site de pacotes. O Quotix Pro Agência é uma opção pensada para este momento.</p>
+
+    <h3>Agência grande ou atacadista</h3>
+    <p>Você precisa de volume, controle de rede de varejistas, relatórios e domínio próprio. Aqui pode avaliar entre Quotix Pro Ilimitado ou plataformas enterprise como Ezus, dependendo do seu orçamento e complexidade.</p>
+  </section>
+
+  <section>
+    <h2>Por que muitas agências da LATAM escolhem o Quotix</h2>
+    <p>As agências da LATAM têm particularidades que soluções europeias ou corporativas nem sempre resolvem bem: preços em dólares, comunicação por WhatsApp, orçamentos compartilhados em PDF e a necessidade de trabalhar com PNR da Amadeus.</p>
+    <p>O Quotix nasceu com essa realidade em mente: copiar e colar o PNR, gerar uma cotação profissional em PDF, calcular comissões e acompanhar tudo de um só lugar. Sem trocar de sistema, sem integrações técnicas complexas.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+      <a href="/funcionalidades/" class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-slate-700 hover:border-magenta hover:text-magenta font-semibold rounded-full transition-colors">Conheça todas as funcionalidades do Quotix</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Perguntas frequentes</h2>
+    <details>
+      <summary>Que software uma agência de viagens precisa? <span class="text-magenta">▼</span></summary>
+      <p>No mínimo, cotações, gestão de clientes, controle de comissões e emissão de documentos. Dependendo do tamanho, também CRM, site de pacotes e relatórios.</p>
+    </details>
+    <details>
+      <summary>Qual é o melhor software para agências pequenas? <span class="text-magenta">▼</span></summary>
+      <p>Para agências pequenas, o ideal é uma ferramenta fácil de usar, com cotações em PDF, controle de comissões e preços acessíveis, como o Quotix Freelance.</p>
+    </details>
+    <details>
+      <summary>É melhor usar Excel ou um software especializado? <span class="text-magenta">▼</span></summary>
+      <p>Excel funciona para agências muito pequenas com poucas cotações, mas torna-se inseguro e lento quando os clientes crescem. Um software especializado reduz erros e economiza tempo.</p>
+    </details>
+    <details>
+      <summary>O que é mais importante ao escolher software para agência de viagens? <span class="text-magenta">▼</span></summary>
+      <p>A facilidade de uso, o suporte local, a capacidade de personalizar cotações, o controle de comissões e o preço em relação ao tamanho da agência.</p>
+    </details>
+    <details>
+      <summary>O Quotix serve para agências de qualquer tamanho? <span class="text-magenta">▼</span></summary>
+      <p>Sim. O Quotix tem planos desde agentes independentes até agências com múltiplos vendedores e domínio próprio.</p>
+    </details>
+  </section>
+</ArticleLayout>

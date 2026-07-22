@@ -1,0 +1,257 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+
+const title = 'PNR Converter vs Quotix: ¿Cuál Elegir para tu Agencia?';
+const description = 'Comparativa honesta: PNR Converter gratuito vs Quotix. Descubrí cuál conviene según el tamaño de tu agencia y por qué. Probá Quotix gratis 7 días.';
+const canonical = '/blog/pnr-converter-vs-quotix/';
+const heroImage = '/images/blog/flight-screen.jpg';
+const heroAlt = 'Comparativa entre PNR Converter gratuito y la plataforma Quotix para agencias de viajes';
+const heroCaption = 'PNR Converter te da un itinerario bonito; Quotix te da un sistema de ventas';
+const ogImage = 'https://www.quotixos.com/images/blog/flight-screen.jpg';
+const publishDate = '21 de julio de 2026';
+const readTime = '10 minutos';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: title,
+      description: 'Comparativa detallada entre PNR Converter y Quotix para agencias de viajes que necesitan convertir PNR en cotizaciones comerciales.',
+      image: ogImage,
+      author: {
+        '@type': 'Person',
+        name: 'Horacio'
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Quotix',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://www.quotixos.com/assets/images/logo.png'
+        }
+      },
+      datePublished: '2026-07-21',
+      dateModified: '2026-07-21',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://www.quotixos.com/blog/pnr-converter-vs-quotix/'
+      }
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: '¿Qué es PNR Converter?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'PNR Converter es una herramienta gratuita online que decodifica códigos PNR de Amadeus y otros GDS en itinerarios visuales para compartir con clientes.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: '¿Cuál es la diferencia entre PNR Converter y Quotix?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'PNR Converter convierte PNR en itinerarios bonitos. Quotix hace lo mismo pero además permite generar cotizaciones PDF con tu marca, calcular comisiones, gestionar clientes con CRM y administrar paquetes turísticos.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: '¿Para qué agencias sirve PNR Converter?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Es ideal para agentes que ocasionalmente necesitan convertir un PNR en un formato más legible y no requieren guardar historial ni personalizar cotizaciones.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: '¿Cuándo conviene usar Quotix?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Cuando tu agencia envía cotizaciones frecuentemente, necesita seguimiento de clientes, control de comisiones y una imagen profesional consistente.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: '¿Quotix incluye un PNR Converter gratuito?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Sí. Quotix tiene un PNR Converter gratuito en su web. La versión de pago agrega PDFs personalizados, CRM, comisiones automáticas y cotizaciones ilimitadas.'
+          }
+        }
+      ]
+    }
+  ]
+});
+---
+
+<ArticleLayout title={title} description={description} canonical={canonical} ogImage={ogImage} heroImage={heroImage} heroAlt={heroAlt} heroCaption={heroCaption} schema={schema} publishDate={publishDate} readTime={readTime} category="Comparativas">
+  <section>
+    <p>Si llegaste hasta este artículo, probablemente estás buscando una herramienta para convertir códigos PNR de Amadeus en algo que tus clientes puedan entender. Es muy probable que hayas probado <strong>PNR Converter</strong> o que al menos lo hayas visto en los primeros resultados de Google. Es una herramienta útil y gratuita, pero no es la única opción.</p>
+
+    <p>En esta comparativa vamos a ser honestos: <strong>PNR Converter vs Quotix</strong> no es una batalla de "cuál es mejor" en términos absolutos, sino de cuál se ajusta mejor a lo que tu agencia necesita hoy. A veces una agencia necesita solo un itinerario bonito; otras veces, necesita un sistema completo de ventas.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+      <a href="/precios/" class="inline-flex items-center justify-center px-6 py-3 bg-magenta hover:bg-magenta-500 text-white font-semibold rounded-full transition-colors">Probá gratis por 7 días. Sin tarjeta de crédito. Setup en 24hs.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>¿Qué es PNR Converter?</h2>
+    <p><a href="https://www.pnrconverter.com" target="_blank" rel="nofollow noopener">PNR Converter</a> es una herramienta web gratuita que toma un código PNR de Amadeus, Sabre, Galileo o Worldspan y lo transforma en un itinerario visual más amigable. Es rápida, no requiere registro y funciona directamente desde el navegador.</p>
+
+    <h3>Fortalezas de PNR Converter</h3>
+    <ul>
+      <li>100% gratuita para uso básico.</li>
+      <li>Soporta varios GDS.</li>
+      <li>Interfaz simples: copiás, pegás y listo.</li>
+      <li>Resultado visual con logos de aerolíneas, horarios y duración.</li>
+    </ul>
+
+    <h3>Limitaciones de PNR Converter</h3>
+    <ul>
+      <li>No genera cotizaciones comerciales con precios.</li>
+      <li>No permite agregar tu logo ni datos de agencia.</li>
+      <li>No guarda historial ni clientes.</li>
+      <li>No calcula comisiones ni markup.</li>
+      <li>No tiene seguimiento de ventas.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>¿Qué es Quotix?</h2>
+    <p><a href="/">Quotix</a> es una plataforma SaaS para agencias de viajes que incluye un <strong>Conversor PNR</strong>, pero va mucho más allá. Su objetivo no es solo "embellecer" el PNR, sino convertirlo en una cotización comercial que puedas enviar, seguir y convertir en venta.</p>
+
+    <h3>Fortalezas de Quotix</h3>
+    <ul>
+      <li><strong>Conversor PNR gratuito</strong> incluido en la web.</li>
+      <li>PDFs de cotización con tu logo, colores y condiciones.</li>
+      <li>Cálculo automático de comisiones y markup.</li>
+      <li>CRM para gestionar clientes y seguimiento.</li>
+      <li>Kanban de cotizaciones para ver el estado de cada venta.</li>
+      <li>Web de paquetes turísticos para vender online.</li>
+      <li>Multi-vendedor y reportes.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Tabla comparativa: PNR Converter vs Quotix</h2>
+    <div class="overflow-x-auto my-8">
+      <table class="w-full text-left border-collapse border border-slate-200 rounded-xl overflow-hidden">
+        <thead>
+          <tr class="bg-slate-100">
+            <th class="p-4 border-b border-slate-200 font-semibold">Característica</th>
+            <th class="p-4 border-b border-slate-200 font-semibold text-center">PNR Converter</th>
+            <th class="p-4 border-b border-slate-200 font-semibold text-center">Quotix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-slate-100">
+            <td class="p-4">Decodificar PNR de Amadeus</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">✅</td>
+          </tr>
+          <tr class="border-b border-slate-100 bg-slate-50">
+            <td class="p-4">Itinerario visual con logos</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">✅</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="p-4">PDF personalizado con tu marca</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">✅</td>
+          </tr>
+          <tr class="border-b border-slate-100 bg-slate-50">
+            <td class="p-4">Cálculo de comisiones</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">✅</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="p-4">CRM y seguimiento de clientes</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">✅</td>
+          </tr>
+          <tr class="border-b border-slate-100 bg-slate-50">
+            <td class="p-4">Guardar historial de cotizaciones</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">✅</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="p-4">Web de paquetes turísticos</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">✅</td>
+          </tr>
+          <tr class="border-b border-slate-100 bg-slate-50">
+            <td class="p-4">Multi-vendedor</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">✅</td>
+          </tr>
+          <tr>
+            <td class="p-4">Precio</td>
+            <td class="p-4 text-center">Gratis</td>
+            <td class="p-4 text-center">Desde USD 29/mes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>¿Cuál elegir según tu situación?</h2>
+
+    <h3>Elegí PNR Converter si:</h3>
+    <ul>
+      <li>Sos agente independiente y hacés pocas cotizaciones al mes.</li>
+      <li>Solo necesitás un itinerario visual rápido para un cliente puntual.</li>
+      <li>No necesitás guardar historial ni personalizar el documento.</li>
+      <li>Tu presupuesto es cero y no te importa la imagen de marca.</li>
+    </ul>
+
+    <h3>Elegí Quotix si:</h3>
+    <ul>
+      <li>Tu agencia envía cotizaciones todos los días.</li>
+      <li>Querés que cada propuesta tenga tu logo y datos de contacto.</li>
+      <li>Necesitás controlar comisiones, markup y rentabilidad.</li>
+      <li>Querés hacer seguimiento de clientes y no perder ventas.</li>
+      <li>Tenés un equipo de vendedores y necesitás visibilidad.</li>
+    </ul>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+      <a href="/pnr-converter/" class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-slate-700 hover:border-magenta hover:text-magenta font-semibold rounded-full transition-colors">Probá el Conversor PNR gratuito de Quotix</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>La frase que lo resume todo</h2>
+    <blockquote>
+      <p>PNR Converter te da un itinerario bonito. Quotix te da un negocio.</p>
+    </blockquote>
+    <p>Ambas herramientas resuelven un problema similar, pero con objetivos diferentes. Si tu trabajo termina en "enviar el itinerario", PNR Converter puede ser suficiente. Si tu trabajo sigue con "cerrar la venta, cobrar y fidelizar al cliente", Quotix es la opción que te acompaña en todo el proceso.</p>
+  </section>
+
+  <section>
+    <h2>Preguntas frecuentes</h2>
+    <details>
+      <summary>¿Qué es PNR Converter? <span class="text-magenta">▼</span></summary>
+      <p>Es una herramienta gratuita online que decodifica códigos PNR de Amadeus y otros GDS en itinerarios visuales para compartir con clientes.</p>
+    </details>
+    <details>
+      <summary>¿Cuál es la diferencia entre PNR Converter y Quotix? <span class="text-magenta">▼</span></summary>
+      <p>PNR Converter convierte PNR en itinerarios bonitos. Quotix hace lo mismo pero además permite generar cotizaciones PDF con tu marca, calcular comisiones, gestionar clientes con CRM y administrar paquetes turísticos.</p>
+    </details>
+    <details>
+      <summary>¿Para qué agencias sirve PNR Converter? <span class="text-magenta">▼</span></summary>
+      <p>Es ideal para agentes que ocasionalmente necesitan convertir un PNR en un formato más legible y no requieren guardar historial ni personalizar cotizaciones.</p>
+    </details>
+    <details>
+      <summary>¿Cuándo conviene usar Quotix? <span class="text-magenta">▼</span></summary>
+      <p>Cuando tu agencia envía cotizaciones frecuentemente, necesita seguimiento de clientes, control de comisiones y una imagen profesional consistente.</p>
+    </details>
+    <details>
+      <summary>¿Quotix incluye un PNR Converter gratuito? <span class="text-magenta">▼</span></summary>
+      <p>Sí. Quotix tiene un PNR Converter gratuito en su web. La versión de pago agrega PDFs personalizados, CRM, comisiones automáticas y cotizaciones ilimitadas.</p>
+    </details>
+  </section>
+</ArticleLayout>

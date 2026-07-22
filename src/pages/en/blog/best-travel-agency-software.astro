@@ -1,0 +1,248 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+
+const title = 'Best Travel Agency Software in LATAM 2026';
+const description = 'Comparison of the best travel agency software in LATAM: features, pricing, and which one fits your agency size. Try Quotix free for 7 days.';
+const canonical = '/en/blog/best-travel-agency-software/';
+const heroImage = '/images/blog/travel-counters.jpg';
+const heroAlt = 'Travel agency team working with software on computers';
+const heroCaption = 'Choosing the right software can drastically reduce quoting time';
+const ogImage = 'https://www.quotixos.com/images/blog/travel-counters.jpg';
+const publishDate = 'July 21, 2026';
+const readTime = '11 min';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: title,
+      description: 'Comparative analysis of the main travel agency software in LATAM, with features, pricing, and recommendations by agency type.',
+      image: ogImage,
+      author: {
+        '@type': 'Person',
+        name: 'Horacio'
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Quotix',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://www.quotixos.com/assets/images/logo.png'
+        }
+      },
+      datePublished: '2026-07-21',
+      dateModified: '2026-07-21',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': 'https://www.quotixos.com/en/blog/best-travel-agency-software/'
+      }
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What software does a travel agency need?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'At minimum, a travel agency needs a system to quote, manage clients, control commissions, and issue documents. Depending on size, it may also need CRM, a travel package website, and reports.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'What is the best software for small agencies?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'For small agencies or independent agents, the best tool is easy to use, offers branded PDF quotes, commission control, and affordable pricing, such as Quotix Freelance.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Is Excel or specialized software better?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Excel works for very small agencies with few quotes, but becomes unsafe and slow as clients grow. Specialized software reduces errors and saves time.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'What is most important when choosing travel agency software?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Ease of use, local support, ability to customize quotes, commission control, and price relative to agency size.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Does Quotix work for agencies of any size?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. Quotix has plans from independent agents to agencies with multiple sellers and their own domain.'
+          }
+        }
+      ]
+    }
+  ]
+});
+---
+
+<ArticleLayout title={title} description={description} canonical={canonical} ogImage={ogImage} heroImage={heroImage} heroAlt={heroAlt} heroCaption={heroCaption} schema={schema} publishDate={publishDate} readTime={readTime} category="Comparisons">
+  <section>
+    <p>Choosing the <strong>best travel agency software</strong> is not just a technical decision: it is a business decision. The system you use will define how long it takes to quote, how many errors you make, how many sales you lose due to lack of follow-up, and ultimately how much your agency can grow.</p>
+
+    <p>In 2026, the LATAM market has options for every size and budget. In this comparison, we review the most relevant tools, their strengths, weaknesses, and which agency type each one suits.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+      <a href="/precios/" class="inline-flex items-center justify-center px-6 py-3 bg-magenta hover:bg-magenta-500 text-white font-semibold rounded-full transition-colors">Start your 7-day free trial. No credit card. Setup in 24h.</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>What should good travel agency software include?</h2>
+    <p>Before comparing options, it is worth defining which features are truly important. Not all agencies need the same thing, but there are baseline capabilities that are now non-negotiable:</p>
+    <ul>
+      <li><strong>Branded PDF quotes.</strong></li>
+      <li><strong>Client management</strong> with quote history.</li>
+      <li><strong>Commission and markup control.</strong></li>
+      <li><strong>PNR converter</strong> for Amadeus and other GDS.</li>
+      <li><strong>Travel package website</strong> to sell online.</li>
+      <li><strong>Spanish support</strong> and LATAM timezone.</li>
+      <li><strong>Price aligned</strong> with agency size.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>The 5 most notable options in LATAM</h2>
+
+    <h3>1. Quotix</h3>
+    <p><a href="/">Quotix</a> is a SaaS platform designed for LATAM travel agencies. Its differentiator is the <strong>PNR Converter</strong>: paste the Amadeus code and in seconds you have a visual itinerary and a branded PDF quote. It also includes CRM, commission calculation, travel package website, and multi-vendor support.</p>
+    <p><strong>Best for:</strong> agencies that quote frequently and want to reduce quoting time without losing professional image.</p>
+    <p><strong>Price:</strong> from USD 29/mo. 7-day free trial.</p>
+
+    <h3>2. Ezus</h3>
+    <p>Ezus is a French platform well known in Europe. It allows building detailed itineraries, quotes, and travel documents. It is visual and powerful, but its price and European market focus can be barriers for small LATAM agencies.</p>
+    <p><strong>Best for:</strong> large agencies with budget for enterprise software and complex operations.</p>
+    <p><strong>Price:</strong> enterprise, generally above USD 100/mo.</p>
+
+    <h3>3. TravelPerk / corporate tools</h3>
+    <p>Tools like TravelPerk are focused on corporate travel and company policy management. They are excellent for that niche, but not for leisure package agencies or customized commercial quotes.</p>
+    <p><strong>Best for:</strong> B2B agencies managing large corporate travel volumes.</p>
+
+    <h3>4. Excel / Google Sheets</h3>
+    <p>It remains the most used option by independent agents. It is free, flexible, and everyone knows it. The problem appears when clients grow: formula errors, outdated versions, lack of follow-up, and unprofessional proposals.</p>
+    <p><strong>Best for:</strong> agents just starting out and making few monthly quotes.</p>
+    <p><strong>Price:</strong> free, but with hidden costs in time and errors.</p>
+
+    <h3>5. Custom or legacy systems</h3>
+    <p>Some large agencies have their own systems developed years ago. They work, but are often rigid, expensive to maintain, and hard to update. Training new employees also tends to be harder.</p>
+    <p><strong>Best for:</strong> agencies with very specific processes and resources for in-house development.</p>
+  </section>
+
+  <section>
+    <h2>Quick comparison table</h2>
+    <div class="overflow-x-auto my-8">
+      <table class="w-full text-left border-collapse border border-slate-200 rounded-xl overflow-hidden">
+        <thead>
+          <tr class="bg-slate-100">
+            <th class="p-4 border-b border-slate-200 font-semibold">Software</th>
+            <th class="p-4 border-b border-slate-200 font-semibold text-center">PDF Quotes</th>
+            <th class="p-4 border-b border-slate-200 font-semibold text-center">PNR Converter</th>
+            <th class="p-4 border-b border-slate-200 font-semibold text-center">CRM</th>
+            <th class="p-4 border-b border-slate-200 font-semibold text-center">Package Website</th>
+            <th class="p-4 border-b border-slate-200 font-semibold text-center">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-slate-100">
+            <td class="p-4 font-semibold">Quotix</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">$29/mo</td>
+          </tr>
+          <tr class="border-b border-slate-100 bg-slate-50">
+            <td class="p-4 font-semibold">Ezus</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">$100+/mo</td>
+          </tr>
+          <tr class="border-b border-slate-100">
+            <td class="p-4 font-semibold">TravelPerk</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">✅</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">Enterprise</td>
+          </tr>
+          <tr class="border-b border-slate-100 bg-slate-50">
+            <td class="p-4 font-semibold">Excel</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">❌</td>
+            <td class="p-4 text-center">Free</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-semibold">Custom system</td>
+            <td class="p-4 text-center">Variable</td>
+            <td class="p-4 text-center">Variable</td>
+            <td class="p-4 text-center">Variable</td>
+            <td class="p-4 text-center">Variable</td>
+            <td class="p-4 text-center">High</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Which one to choose based on your agency?</h2>
+
+    <h3>Independent agent or freelancer</h3>
+    <p>You need something simple, affordable, and that makes you look good with clients. <a href="/precios/">Quotix Freelance</a> or even the free PNR Converter can be a starting point. The key is to stop using Excel before errors cost you a sale.</p>
+
+    <h3>Growing agency</h3>
+    <p>When you have multiple sellers, recurring clients, and daily quotes, you need a CRM, commission control, and a travel package website. Quotix Pro Agency is an option designed for this stage.</p>
+
+    <h3>Large agency or wholesaler</h3>
+    <p>You need volume, retailer network control, reports, and your own domain. Here you can evaluate between Quotix Pro Unlimited or enterprise platforms like Ezus, depending on your budget and complexity.</p>
+  </section>
+
+  <section>
+    <h2>Why many LATAM agencies choose Quotix</h2>
+    <p>LATAM agencies have particularities that European or corporate solutions do not always solve well: USD pricing, WhatsApp communication, shared PDF budgets, and the need to work with Amadeus PNRs.</p>
+    <p>Quotix was built with that reality in mind: copy and paste the PNR, generate a professional PDF quote, calculate commissions, and follow up from one place. No system changes, no complex technical integrations.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+      <a href="/funcionalidades/" class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-slate-700 hover:border-magenta hover:text-magenta font-semibold rounded-full transition-colors">See all Quotix features</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Frequently asked questions</h2>
+    <details>
+      <summary>What software does a travel agency need? <span class="text-magenta">▼</span></summary>
+      <p>At minimum, quoting, client management, commission control, and document issuance. Depending on size, also CRM, travel package website, and reports.</p>
+    </details>
+    <details>
+      <summary>What is the best software for small agencies? <span class="text-magenta">▼</span></summary>
+      <p>For small agencies, the best tool is easy to use, offers branded PDF quotes, commission control, and affordable pricing, such as Quotix Freelance.</p>
+    </details>
+    <details>
+      <summary>Is Excel or specialized software better? <span class="text-magenta">▼</span></summary>
+      <p>Excel works for very small agencies with few quotes, but becomes unsafe and slow as clients grow. Specialized software reduces errors and saves time.</p>
+    </details>
+    <details>
+      <summary>What is most important when choosing travel agency software? <span class="text-magenta">▼</span></summary>
+      <p>Ease of use, local support, ability to customize quotes, commission control, and price relative to agency size.</p>
+    </details>
+    <details>
+      <summary>Does Quotix work for agencies of any size? <span class="text-magenta">▼</span></summary>
+      <p>Yes. Quotix has plans from independent agents to agencies with multiple sellers and their own domain.</p>
+    </details>
+  </section>
+</ArticleLayout>
