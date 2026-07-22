@@ -1,5 +1,63 @@
 ---
 import Logo from '@/components/ui/Logo.astro';
+
+const pathname = Astro.url.pathname;
+const path = pathname.replace(/\/$/, '') || '/';
+
+let currentLang: 'es' | 'en' | 'pt' = 'es';
+if (path.startsWith('/en')) currentLang = 'en';
+else if (path.startsWith('/pt')) currentLang = 'pt';
+
+const translations: Record<string, Record<'es' | 'en' | 'pt', string>> = {
+  '/pnr-converter': { es: '/pnr-converter', en: '/en/pnr-converter', pt: '/pt/pnr-converter' },
+  '/en/pnr-converter': { es: '/pnr-converter', en: '/en/pnr-converter', pt: '/pt/pnr-converter' },
+  '/pt/pnr-converter': { es: '/pnr-converter', en: '/en/pnr-converter', pt: '/pt/pnr-converter' },
+
+  '/blog': { es: '/blog', en: '/en/blog', pt: '/pt/blog' },
+  '/en/blog': { es: '/blog', en: '/en/blog', pt: '/pt/blog' },
+  '/pt/blog': { es: '/blog', en: '/en/blog', pt: '/pt/blog' },
+
+  '/blog/que-es-pnr': { es: '/blog/que-es-pnr', en: '/en/blog/what-is-pnr', pt: '/pt/blog/o-que-e-pnr' },
+  '/en/blog/what-is-pnr': { es: '/blog/que-es-pnr', en: '/en/blog/what-is-pnr', pt: '/pt/blog/o-que-e-pnr' },
+  '/pt/blog/o-que-e-pnr': { es: '/blog/que-es-pnr', en: '/en/blog/what-is-pnr', pt: '/pt/blog/o-que-e-pnr' },
+
+  '/blog/como-leer-pnr-amadeus': { es: '/blog/como-leer-pnr-amadeus', en: '/en/blog/how-to-read-amadeus-pnr', pt: '/pt/blog/como-ler-pnr-amadeus' },
+  '/en/blog/how-to-read-amadeus-pnr': { es: '/blog/como-leer-pnr-amadeus', en: '/en/blog/how-to-read-amadeus-pnr', pt: '/pt/blog/como-ler-pnr-amadeus' },
+  '/pt/blog/como-ler-pnr-amadeus': { es: '/blog/como-leer-pnr-amadeus', en: '/en/blog/how-to-read-amadeus-pnr', pt: '/pt/blog/como-ler-pnr-amadeus' },
+
+  '/blog/convertir-pnr-pdf': { es: '/blog/convertir-pnr-pdf', en: '/en/blog/convert-pnr-to-pdf', pt: '/pt/blog/converter-pnr-pdf' },
+  '/en/blog/convert-pnr-to-pdf': { es: '/blog/convertir-pnr-pdf', en: '/en/blog/convert-pnr-to-pdf', pt: '/pt/blog/converter-pnr-pdf' },
+  '/pt/blog/converter-pnr-pdf': { es: '/blog/convertir-pnr-pdf', en: '/en/blog/convert-pnr-to-pdf', pt: '/pt/blog/converter-pnr-pdf' },
+
+  '/blog/calcular-comisiones-pnr': { es: '/blog/calcular-comisiones-pnr', en: '/en/blog/calculate-commissions-pnr', pt: '/pt/blog/calcular-comissoes-pnr' },
+  '/en/blog/calculate-commissions-pnr': { es: '/blog/calcular-comisiones-pnr', en: '/en/blog/calculate-commissions-pnr', pt: '/pt/blog/calcular-comissoes-pnr' },
+  '/pt/blog/calcular-comissoes-pnr': { es: '/blog/calcular-comisiones-pnr', en: '/en/blog/calculate-commissions-pnr', pt: '/pt/blog/calcular-comissoes-pnr' },
+
+  '/blog/mejores-software-agencias-viajes': { es: '/blog/mejores-software-agencias-viajes', en: '/en/blog/best-travel-agency-software', pt: '/pt/blog/melhores-software-agencias-viagem' },
+  '/en/blog/best-travel-agency-software': { es: '/blog/mejores-software-agencias-viajes', en: '/en/blog/best-travel-agency-software', pt: '/pt/blog/melhores-software-agencias-viagem' },
+  '/pt/blog/melhores-software-agencias-viagem': { es: '/blog/mejores-software-agencias-viajes', en: '/en/blog/best-travel-agency-software', pt: '/pt/blog/melhores-software-agencias-viagem' },
+
+  '/blog/pnr-converter-vs-quotix': { es: '/blog/pnr-converter-vs-quotix', en: '/en/blog/pnr-converter-vs-quotix', pt: '/pt/blog/pnr-converter-vs-quotix' },
+  '/en/blog/pnr-converter-vs-quotix': { es: '/blog/pnr-converter-vs-quotix', en: '/en/blog/pnr-converter-vs-quotix', pt: '/pt/blog/pnr-converter-vs-quotix' },
+  '/pt/blog/pnr-converter-vs-quotix': { es: '/blog/pnr-converter-vs-quotix', en: '/en/blog/pnr-converter-vs-quotix', pt: '/pt/blog/pnr-converter-vs-quotix' },
+};
+
+const fallback: Record<'es' | 'en' | 'pt', string> = {
+  es: '/pnr-converter',
+  en: '/en/pnr-converter',
+  pt: '/pt/pnr-converter'
+};
+
+const getUrl = (lang: 'es' | 'en' | 'pt') => {
+  const mapped = translations[path];
+  if (mapped?.[lang]) return mapped[lang];
+  return fallback[lang];
+};
+
+const urls = { es: getUrl('es'), en: getUrl('en'), pt: getUrl('pt') };
+
+const labels = { es: 'Español', en: 'English', pt: 'Português' };
+const flags = { es: '🇪🇸', en: '🇬🇧', pt: '🇵🇹' };
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200/80">
@@ -12,9 +70,9 @@ import Logo from '@/components/ui/Logo.astro';
 
       <!-- Desktop Nav -->
       <nav class="hidden lg:flex items-center gap-1">
-        <a href="#producto" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors">Producto</a>
-        <a href="#soluciones" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors">Soluciones</a>
-        <a href="#recursos" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors">Recursos</a>
+        <a href="/#producto" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors">Producto</a>
+        <a href="/#soluciones" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors">Soluciones</a>
+        <a href="/#recursos" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors">Recursos</a>
         <a href="/precios" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors">Precios</a>
         <a href="/pnr-converter" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors">Conversor PNR</a>
         <a href="/blog" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-50 transition-colors">Blog</a>
@@ -22,6 +80,20 @@ import Logo from '@/components/ui/Logo.astro';
 
       <!-- CTAs -->
       <div class="flex items-center gap-3">
+        <!-- Language Selector (Desktop) -->
+        <div class="hidden lg:block relative">
+          <label for="lang-select-desktop" class="sr-only">Seleccionar idioma</label>
+          <div class="relative">
+            <select id="lang-select-desktop" class="lang-select appearance-none bg-slate-50 border border-slate-200 text-slate-700 text-sm font-medium rounded-lg pl-9 pr-8 py-2 hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-200 cursor-pointer">
+              <option value={urls.es} selected={currentLang === 'es'}>{flags.es} {labels.es}</option>
+              <option value={urls.en} selected={currentLang === 'en'}>{flags.en} {labels.en}</option>
+              <option value={urls.pt} selected={currentLang === 'pt'}>{flags.pt} {labels.pt}</option>
+            </select>
+            <svg class="w-4 h-4 text-slate-500 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-sm pointer-events-none">{flags[currentLang]}</span>
+          </div>
+        </div>
+
         <a href="https://travel.quotixos.com/login" class="hidden md:block text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Ingresar</a>
         <a href="/precios" class="btn-primary btn-filled-dark text-xs px-4 py-2">
           Probar gratis 7 días
@@ -38,12 +110,27 @@ import Logo from '@/components/ui/Logo.astro';
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-200">
     <div class="container-custom py-4 space-y-1">
-      <a href="#producto" class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg transition-colors">Producto</a>
-      <a href="#soluciones" class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg transition-colors">Soluciones</a>
-      <a href="#recursos" class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg transition-colors">Recursos</a>
+      <a href="/#producto" class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg transition-colors">Producto</a>
+      <a href="/#soluciones" class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg transition-colors">Soluciones</a>
+      <a href="/#recursos" class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg transition-colors">Recursos</a>
       <a href="/precios" class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg transition-colors">Precios</a>
       <a href="/pnr-converter" class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg transition-colors">Conversor PNR</a>
       <a href="/blog" class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg transition-colors">Blog</a>
+      
+      <!-- Language Selector (Mobile) -->
+      <div class="px-4 py-3">
+        <label for="lang-select-mobile" class="block text-xs font-medium text-slate-500 mb-2">Idioma</label>
+        <div class="relative">
+          <select id="lang-select-mobile" class="lang-select w-full appearance-none bg-slate-50 border border-slate-200 text-slate-700 text-sm font-medium rounded-lg pl-9 pr-8 py-2.5 hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-200 cursor-pointer">
+            <option value={urls.es} selected={currentLang === 'es'}>{flags.es} {labels.es}</option>
+            <option value={urls.en} selected={currentLang === 'en'}>{flags.en} {labels.en}</option>
+            <option value={urls.pt} selected={currentLang === 'pt'}>{flags.pt} {labels.pt}</option>
+          </select>
+          <svg class="w-4 h-4 text-slate-500 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          <span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-sm pointer-events-none">{flags[currentLang]}</span>
+        </div>
+      </div>
+
       <div class="pt-4 mt-4 border-t border-slate-200 space-y-2">
         <a href="https://travel.quotixos.com/login" class="block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg transition-colors">Ingresar</a>
         <a href="/precios" class="block w-full text-center py-3 text-sm font-semibold text-white bg-[#0f172a] rounded-full">Probar gratis 7 días</a>
@@ -53,6 +140,13 @@ import Logo from '@/components/ui/Logo.astro';
 </header>
 
 <script>
+  document.querySelectorAll('.lang-select').forEach(select => {
+    select.addEventListener('change', (e) => {
+      const target = e.target as HTMLSelectElement;
+      if (target.value) window.location.href = target.value;
+    });
+  });
+
   document.getElementById('menu-btn')?.addEventListener('click', () => {
     document.getElementById('mobile-menu')?.classList.toggle('hidden');
   });
