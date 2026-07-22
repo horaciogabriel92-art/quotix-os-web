@@ -36,9 +36,65 @@ const schema = JSON.stringify({
     <p>Las agencias de viajes venden experiencias, pero muchas veces su presencia online no transmite el valor de sus paquetes. La web de paquetes turísticos de Quotix te permite publicar cada viaje con profesionalismo, generar consultas y convertir visitantes en clientes.</p>
   </section>
 
-  <section>
+  <section class="web-demo-scope">
     <h2>Catálogo de paquetes</h2>
     <p>Creá paquetes con título, destino, duración, galería de imágenes, itinerario día por día, servicios incluidos, precios y condiciones. Cada paquete tiene su propia URL para compartir en redes o email.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-6 mb-6">
+      <!-- Filtros -->
+      <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-magenta text-white text-[10px] sm:text-xs font-semibold rounded-full">Todos</span>
+        <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[10px] sm:text-xs font-semibold rounded-full">Lunas de miel</span>
+        <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[10px] sm:text-xs font-semibold rounded-full">Aventura</span>
+        <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[10px] sm:text-xs font-semibold rounded-full">Corporativos</span>
+      </div>
+
+      <!-- Grid de paquetes -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+        <div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm group hover:shadow-md transition-shadow">
+          <div class="h-28 sm:h-32 bg-gradient-to-br from-emerald-400 to-teal-600 relative">
+            <div class="absolute top-3 left-3 px-2 py-0.5 bg-white/90 text-emerald-700 text-[10px] font-bold rounded-full">7 días</div>
+          </div>
+          <div class="p-3 sm:p-4">
+            <div class="text-xs text-slate-500 mb-1">Montevideo ⇄ Madrid</div>
+            <div class="font-bold text-slate-900 text-sm mb-2">Europa clásica</div>
+            <div class="flex items-center justify-between">
+              <span class="text-emerald-700 font-bold text-sm">desde $3.980</span>
+              <span class="text-[10px] text-slate-500">por persona</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm group hover:shadow-md transition-shadow">
+          <div class="h-28 sm:h-32 bg-gradient-to-br from-blue-400 to-indigo-600 relative">
+            <div class="absolute top-3 left-3 px-2 py-0.5 bg-white/90 text-blue-700 text-[10px] font-bold rounded-full">5 días</div>
+          </div>
+          <div class="p-3 sm:p-4">
+            <div class="text-xs text-slate-500 mb-1">Punta del Este</div>
+            <div class="font-bold text-slate-900 text-sm mb-2">Luna de miel premium</div>
+            <div class="flex items-center justify-between">
+              <span class="text-emerald-700 font-bold text-sm">desde $2.100</span>
+              <span class="text-[10px] text-slate-500">por pareja</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm group hover:shadow-md transition-shadow">
+          <div class="h-28 sm:h-32 bg-gradient-to-br from-amber-400 to-orange-600 relative">
+            <div class="absolute top-3 left-3 px-2 py-0.5 bg-white/90 text-amber-700 text-[10px] font-bold rounded-full">4 días</div>
+          </div>
+          <div class="p-3 sm:p-4">
+            <div class="text-xs text-slate-500 mb-1">Cataratas del Iguazú</div>
+            <div class="font-bold text-slate-900 text-sm mb-2">Aventura en grupo</div>
+            <div class="flex items-center justify-between">
+              <span class="text-emerald-700 font-bold text-sm">desde $1.450</span>
+              <span class="text-[10px] text-slate-500">por persona</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <ul>
       <li>Publicación de paquetes con foto e itinerario.</li>
       <li>URL propia para cada paquete.</li>
@@ -46,14 +102,96 @@ const schema = JSON.stringify({
     </ul>
   </section>
 
-  <section>
+  <section class="web-demo-scope">
     <h2>Diseño con tu marca</h2>
     <p>La web usa el logo, los colores y la información de contacto de tu agencia. Tus clientes ven tu marca, no la de un marketplace genérico.</p>
+
+    <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm mb-6">
+      <!-- Header del sitio demo -->
+      <div class="px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-100 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-slate-900 flex items-center justify-center text-white font-bold text-xs">QT</div>
+          <span class="font-bold text-slate-900 text-sm sm:text-base">Quotix Travel</span>
+        </div>
+        <div class="hidden sm:flex items-center gap-4 text-xs text-slate-500">
+          <span>Paquetes</span>
+          <span>Nosotros</span>
+          <span>Contacto</span>
+        </div>
+      </div>
+
+      <!-- Paquete destacado -->
+      <div class="p-4 sm:p-6">
+        <div class="grid md:grid-cols-2 gap-4 sm:gap-6 items-center">
+          <div class="h-40 sm:h-48 rounded-xl bg-gradient-to-br from-emerald-400 via-teal-500 to-blue-600 flex items-end p-4">
+            <div class="text-white">
+              <div class="text-xs font-medium opacity-90">Europa</div>
+              <div class="text-lg font-bold">Europa clásica</div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[10px] font-bold rounded-full">7 días</span>
+              <span class="px-2 py-0.5 bg-blue-100 text-blue-700 text-[10px] font-bold rounded-full">Todo incluido</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2">Madrid, París y Roma</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mb-3">Itinerario completo con vuelos, hoteles 4★, traslados y excursiones guiadas.</p>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-xl sm:text-2xl font-bold text-emerald-700">$3.980</span>
+              <span class="text-xs text-slate-500">por persona</span>
+            </div>
+            <button class="w-full sm:w-auto px-4 py-2 bg-magenta text-white text-xs sm:text-sm font-semibold rounded-lg">Consultar paquete</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section>
+  <section class="web-demo-scope">
     <h2>De la consulta a la cotización</h2>
     <p>Cada paquete tiene un botón de consulta. El interesado completa sus datos y el lead llega directamente a tu CRM. Desde ahí generás una cotización personalizada en PDF.</p>
+
+    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-6 mb-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-center">
+        <div>
+          <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Flujo del lead</div>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-magenta text-white flex items-center justify-center text-[10px] font-bold flex-shrink-0">1</div>
+              <div>
+                <div class="text-xs font-semibold text-slate-900">Cliente consulta en la web</div>
+                <div class="text-[10px] sm:text-xs text-slate-500">Completa nombre, email y fecha de viaje.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-magenta text-white flex items-center justify-center text-[10px] font-bold flex-shrink-0">2</div>
+              <div>
+                <div class="text-xs font-semibold text-slate-900">Lead llega al CRM</div>
+                <div class="text-[10px] sm:text-xs text-slate-500">Se asigna automáticamente al vendedor.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-magenta text-white flex items-center justify-center text-[10px] font-bold flex-shrink-0">3</div>
+              <div>
+                <div class="text-xs font-semibold text-slate-900">Generás cotización en PDF</div>
+                <div class="text-[10px] sm:text-xs text-slate-500">Convertís el paquete en propuesta personalizada.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
+          <div class="text-xs font-semibold text-slate-900 mb-3">Consultar por Europa clásica</div>
+          <div class="space-y-2.5">
+            <div class="h-8 bg-slate-50 rounded-lg border border-slate-200 flex items-center px-3 text-[10px] sm:text-xs text-slate-500">Nombre completo</div>
+            <div class="h-8 bg-slate-50 rounded-lg border border-slate-200 flex items-center px-3 text-[10px] sm:text-xs text-slate-500">Email</div>
+            <div class="h-8 bg-slate-50 rounded-lg border border-slate-200 flex items-center px-3 text-[10px] sm:text-xs text-slate-500">Fecha estimada de viaje</div>
+            <div class="h-16 bg-slate-50 rounded-lg border border-slate-200 flex items-start px-3 py-2 text-[10px] sm:text-xs text-slate-500">Mensaje</div>
+            <button class="w-full py-2 bg-magenta text-white text-xs font-semibold rounded-lg">Enviar consulta</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section>
@@ -76,4 +214,18 @@ const schema = JSON.stringify({
       <p>Sí. Desde un paquete público podés generar una cotización personalizada con un clic.</p>
     </details>
   </section>
+
+  <style is:global>
+    .feature-content .web-demo-scope p {
+      font-size: inherit;
+      line-height: inherit;
+      color: inherit;
+      margin-bottom: 0;
+    }
+    .feature-content .web-demo-scope h2 {
+      margin-top: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  </style>
 </FeatureLayout>
