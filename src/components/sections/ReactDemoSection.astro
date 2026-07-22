@@ -15,19 +15,20 @@
 
     <div class="flex justify-center relative z-10">
       <div id="demo-animation-root" class="demo-app-wrapper">
-        <!-- Explanation Bubbles -->
-        <div id="bubble-phase1" class="demo-bubble bubble-bottom" style="top:150px;left:50%;transform:translateX(-50%);">
-          <span class="bubble-icon">✦</span>
-          Pegas el PNR en crudo desde tu GDS (Amadeus, Sabre o Galileo).
-        </div>
-        <div id="bubble-phase2" class="demo-bubble bubble-right" style="top:350px;left:120px;display:none;">
-          <span class="bubble-icon">✈</span>
-          El sistema lee y estructura al instante los vuelos, fechas, escalas y horarios. ¡Sin cargarlos a mano!
-        </div>
+        <div class="demo-app-scale-wrapper">
+          <!-- Explanation Bubbles -->
+          <div id="bubble-phase1" class="demo-bubble bubble-bottom" style="top:150px;left:50%;transform:translateX(-50%);">
+            <span class="bubble-icon">✦</span>
+            Pegas el PNR en crudo desde tu GDS (Amadeus, Sabre o Galileo).
+          </div>
+          <div id="bubble-phase2" class="demo-bubble bubble-right" style="top:350px;left:120px;display:none;">
+            <span class="bubble-icon">✈</span>
+            El sistema lee y estructura al instante los vuelos, fechas, escalas y horarios. ¡Sin cargarlos a mano!
+          </div>
 
-        <!-- Main Frame -->
-        <div id="demo-frame" class="demo-app-frame zoom-phase-1">
-          <!-- Sidebar -->
+          <!-- Main Frame -->
+          <div id="demo-frame" class="demo-app-frame zoom-phase-1">
+            <!-- Sidebar -->
           <aside class="demo-sidebar">
             <div class="demo-sidebar-logo">
               <div class="demo-sidebar-logo-icon">✈</div>
@@ -305,12 +306,23 @@
 .demo-app-wrapper {
   perspective: 1000px;
   width: 100%;
-  height: 820px;
+  min-height: 820px;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   position: relative;
+}
+
+.demo-app-scale-wrapper {
+  width: 1024px;
+  height: 760px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  transition: transform 0.3s ease;
 }
 
 .demo-app-frame {
@@ -326,6 +338,24 @@
   transition: transform 2.5s cubic-bezier(0.25, 1, 0.5, 1);
   transform-origin: center center;
   flex-shrink: 0;
+}
+
+/* Responsive scaling: keep the full demo visible on small screens */
+@media (max-width: 1100px) {
+  .demo-app-wrapper { min-height: 620px; }
+  .demo-app-scale-wrapper { transform: scale(0.75); }
+}
+@media (max-width: 768px) {
+  .demo-app-wrapper { min-height: 480px; }
+  .demo-app-scale-wrapper { transform: scale(0.55); }
+}
+@media (max-width: 480px) {
+  .demo-app-wrapper { min-height: 360px; }
+  .demo-app-scale-wrapper { transform: scale(0.38); }
+}
+@media (max-width: 360px) {
+  .demo-app-wrapper { min-height: 300px; }
+  .demo-app-scale-wrapper { transform: scale(0.30); }
 }
 
 .zoom-phase-1 { transform: scale(1.15) translateY(40px) translateX(-50px); }

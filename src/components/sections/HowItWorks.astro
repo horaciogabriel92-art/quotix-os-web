@@ -44,7 +44,7 @@ const steps = [
       <!-- Dots -->
       <div class="flex justify-around">
         {steps.map((s, i) => (
-          <div class="step-dot w-12 h-12 rounded-full bg-gradient-to-br {s.accent} flex items-center justify-center text-white font-bold text-sm shadow-lg opacity-0 scale-75 transition-all duration-400 ease-out z-10">
+          <div class="step-dot w-12 h-12 rounded-full bg-gradient-to-br {s.accent} flex items-center justify-center text-white font-bold text-sm shadow-lg transition-all duration-400 ease-out z-10">
             {s.num}
           </div>
         ))}
@@ -54,7 +54,7 @@ const steps = [
     <!-- Cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {steps.map((step, i) => (
-        <div class="how-card group text-center p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300" style={`opacity:0; transform: translateY(40px);`}>
+        <div class="how-card group text-center p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300">
           <!-- Icon -->
           <div class="text-5xl mb-5 block group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">{step.icon}</div>
           <!-- Number (mobile) -->
@@ -78,8 +78,9 @@ const steps = [
 </section>
 
 <style>
-.how-card { transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s; }
+.how-card { opacity: 0; transform: translateY(40px); transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s; }
 .how-card.active { opacity: 1 !important; transform: translateY(0) !important; }
+.step-dot { opacity: 0; transform: scale(0.75); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
 .step-dot.active { opacity: 1; transform: scale(1); }
 </style>
 
