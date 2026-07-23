@@ -1,0 +1,58 @@
+---
+import TenantLayout from '@/layouts/TenantLayout.astro';
+import { API_URL } from '@/lib/publicApi';
+
+export async function getStaticPaths() {
+  try {
+    const res = await fetch(`${API_URL}/public/landings`);
+    const data = await res.json();
+    const slugs = data.slugs || [];
+    return slugs.map((slug: string) => ({ params: { slug } }));
+  } catch (err) {
+    console.error('[landing] Error fetching landings for static paths:', err);
+    return [];
+  }
+}
+
+const { slug } = Astro.params;
+let data: any = null;
+let error = '';
+
+try {
+  const res = await fetch(`${API_URL}/public/landing/${slug}`);
+  if (!res.ok) throw new Error('Página no encontrada');
+  data = await res.json();
+} catch (err: any) {
+  error = err.message || 'Error al cargar la página';
+}
+
+if (error || !data) {
+  return new Response(
+    `<!DOCTYPE html><html><head><meta charset="utf-8"><title>No encontrado</title></head><body><h1>${error || 'Página no encontrada'}</h1></body></html>`,
+    { status: 404, headers: { 'Content-Type': 'text/html' } }
+  );
+}
+
+const { tenant, landing } = data;
+---
+
+<TenantLayout tenant={tenant} landing={landing} title={`Gracias — ${landing.titulo || tenant.nombre}`} description="Consulta enviada correctamente" canonical={`/${slug}/gracias/`}>
+  <section class="container-custom mx-auto px-6 py-24 text-center" style="background-color: var(--brand-bg);">
+    <div class="max-w-xl mx-auto bg-white rounded-2xl border border-black/10 p-10 md:p-12">
+      <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl" style={`background-color: var(--brand-primary);`}>
+        ✓
+      </div>
+      <h1 class="heading-md mb-4" style="color: var(--brand-text);">¡Consulta enviada!</h1>
+      <p class="opacity-70 mb-8">
+        Un asesor de {landing.titulo || tenant.nombre} se pondrá en contacto con vos a la brevedad.
+      </p>
+      <a
+        href={`/${slug}/`}
+        class="inline-flex items-center justify-center font-semibold px-6 py-3 rounded-full text-white transition-opacity hover:opacity-90"
+        style={`background-color: var(--brand-primary);`}
+      >
+        Volver al catálogo
+      </a>
+    </div>
+  </section>
+</TenantLayout>

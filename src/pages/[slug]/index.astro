@@ -1,0 +1,126 @@
+---
+import TenantLayout from '@/layouts/TenantLayout.astro';
+import PackageCard from '@/components/tenant/PackageCard.astro';
+import { API_URL } from '@/lib/publicApi';
+
+export async function getStaticPaths() {
+  try {
+    const res = await fetch(`${API_URL}/public/landings`);
+    const data = await res.json();
+    const slugs = data.slugs || [];
+    return slugs.map((slug: string) => ({ params: { slug } }));
+  } catch (err) {
+    console.error('[landing] Error fetching landings for static paths:', err);
+    return [];
+  }
+}
+
+const { slug } = Astro.params;
+let data: any = null;
+let error = '';
+
+try {
+  const res = await fetch(`${API_URL}/public/landing/${slug}`);
+  if (!res.ok) throw new Error('Página no encontrada');
+  data = await res.json();
+} catch (err: any) {
+  error = err.message || 'Error al cargar la página';
+}
+
+if (error || !data) {
+  return new Response(
+    `<!DOCTYPE html><html><head><meta charset="utf-8"><title>No encontrado</title></head><body><h1>${error || 'Página no encontrada'}</h1></body></html>`,
+    { status: 404, headers: { 'Content-Type': 'text/html' } }
+  );
+}
+
+const { tenant, landing, paquetes } = data;
+const destinos = [...new Set((paquetes || []).map((p: any) => p.destino).filter(Boolean))];
+
+const title = landing.seo?.title || `${landing.titulo || tenant.nombre} — Paquetes turísticos`;
+const description = landing.seo?.description || landing.descripcion || `Catálogo de paquetes turísticos de ${tenant.nombre}`;
+---
+
+<TenantLayout tenant={tenant} landing={landing} title={title} description={description} canonical={`/${slug}/`}>
+  <!-- Hero -->
+  <section class="border-b" style="background-color: var(--brand-bg); border-color: rgba(0,0,0,0.06);">
+    <div class="container-custom mx-auto px-6 py-16 md:py-24 text-center">
+      <h1 class="heading-lg md:heading-xl max-w-3xl mx-auto mb-5" style="color: var(--brand-text);">
+        {landing.titulo || tenant.nombre}
+      </h1>
+      <p class="body-lg max-w-2xl mx-auto opacity-70">
+        {landing.descripcion || `Descubrí los mejores paquetes turísticos de ${tenant.nombre}.`}
+      </p>
+      {landing.whatsapp && (
+        <a
+          href={`https://wa.me/${landing.whatsapp.replace(/\D/g, '')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 mt-8 font-semibold px-6 py-3 rounded-full text-white transition-opacity hover:opacity-90"
+          style={`background-color: var(--brand-primary);`}
+        >
+          Consultar por WhatsApp
+        </a>
+      )}
+    </div>
+  </section>
+
+  <!-- Filtros y catálogo -->
+  <section class="container-custom mx-auto px-6 py-16" style="background-color: var(--brand-bg);">
+    {paquetes.length === 0 ? (
+      <div class="text-center py-20">
+        <p class="opacity-60">Todavía no hay paquetes publicados.</p>
+      </div>
+    ) : (
+      <>
+        {destinos.length > 1 && (
+          <div class="flex flex-wrap gap-2 mb-10 justify-center" data-filter-list>
+            <button class="filter-btn active px-4 py-2 rounded-full text-sm font-medium border transition-colors" data-destino="todos" style="border-color: rgba(0,0,0,0.1);">
+              Todos
+            </button>
+            {destinos.map((destino: string) => (
+              <button
+                key={destino}
+                class="filter-btn px-4 py-2 rounded-full text-sm font-medium border transition-colors opacity-70 hover:opacity-100"
+                data-destino={destino}
+                style="border-color: rgba(0,0,0,0.1);"
+              >
+                {destino}
+              </button>
+            ))}
+          </div>
+        )}
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="paquetes-grid">
+          {paquetes.map((paquete: any) => (
+            <div key={paquete.id} class="paquete-card" data-destino={paquete.destino}>
+              <PackageCard paquete={paquete} slug={slug} mostrarPrecios={landing.mostrar_precios !== false} />
+            </div>
+          ))}
+        </div>
+      </>
+    )}
+  </section>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.paquete-card');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const destino = btn.getAttribute('data-destino');
+          buttons.forEach(b => b.classList.remove('active', 'opacity-100'));
+          btn.classList.add('active', 'opacity-100');
+          cards.forEach(card => {
+            const cardDestino = card.getAttribute('data-destino');
+            if (destino === 'todos' || cardDestino === destino) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</TenantLayout>
