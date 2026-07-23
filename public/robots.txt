@@ -3,4 +3,5 @@ Allow: /
 Disallow: /pnr-converter?pnr=*
 Disallow: /pnr-converter/?pnr=*
 
-Sitemap: https://www.quotixos.com/sitemap.xml
+Sitemap: https://www.quotixos.com/sitemap-index.xml
+Sitemap: https://www.quotixos.com/sitemap-0.xml
