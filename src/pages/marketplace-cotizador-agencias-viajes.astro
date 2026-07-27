@@ -1,7 +1,7 @@
 ---
 import FeatureLayout from '@/layouts/FeatureLayout.astro';
 import MarketplaceDemo from '@/components/react/MarketplaceDemo.jsx';
-import DemoRequestForm from '@/components/react/DemoRequestForm.jsx';
+
 
 const title = 'Marketplace + Cotizador PDF para Agencias de Viajes | Quotix';
 const description = 'Convertí tu catálogo de paquetes en una tienda online, cotizá con PDF profesionales en minutos y gestioná todo en un CRM. Probá gratis 7 días.';
@@ -234,8 +234,11 @@ const schema = JSON.stringify({
 
   <section>
     <h2>¿Preferís una demostración con un asesor?</h2>
-    <p>Agendá una videollamada gratuita. Te mostramos el cotizador PDF, el marketplace y el CRM paso a paso.</p>
-    <DemoRequestForm client:load />
+    <p>Cuando creés tu cuenta, te vamos a ofrecer una demo guiada gratis para que aproveches Quotix al máximo desde el primer día.</p>
+    <a href="/precios" class="inline-flex items-center justify-center px-8 py-3.5 bg-magenta hover:bg-magenta-500 text-white font-semibold rounded-full transition-all shadow-lg hover:shadow-xl">
+      Ver planes y probar gratis
+      <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+    </a>
   </section>
 
   <section>
