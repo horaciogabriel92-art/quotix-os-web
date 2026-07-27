@@ -12,7 +12,7 @@ const packagesDemo = [
     currency: 'USD',
     category: ['europa'],
     featured: true,
-    image: 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=800&q=80',
+    image: '/images/marketplace-demo/europe.jpg',
   },
   {
     id: 'demo-car',
@@ -24,7 +24,7 @@ const packagesDemo = [
     currency: 'USD',
     category: ['playa'],
     featured: false,
-    image: 'https://images.unsplash.com/photo-1552074291-ad4df87b13ce?auto=format&fit=crop&w=800&q=80',
+    image: '/images/marketplace-demo/beach.jpg',
   },
   {
     id: 'demo-pat',
@@ -36,7 +36,7 @@ const packagesDemo = [
     currency: 'USD',
     category: ['aventura'],
     featured: false,
-    image: 'https://images.unsplash.com/photo-1518182170546-0766aa6f31e6?auto=format&fit=crop&w=800&q=80',
+    image: '/images/marketplace-demo/patagonia.jpg',
   },
 ];
 
@@ -156,7 +156,7 @@ function GridDemo({ packages, onSelect }) {
               <div className="flex items-center gap-1 text-xs font-medium text-white/90 mb-1">
                 <MapPin className="w-3 h-3" /> {pkg.destination}
               </div>
-              <h3 className="text-2xl font-bold leading-tight drop-shadow-sm">{pkg.title}</h3>
+              <h3 className="text-2xl font-bold leading-tight drop-shadow-md !text-white">{pkg.title}</h3>
             </div>
           </div>
           <div className="p-5 flex flex-col flex-1">
@@ -232,7 +232,7 @@ function MagazineDemo({ packages, onSelect }) {
             <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/95 text-slate-900 text-xs font-bold z-10">Destacado</div>
             <div className="relative z-10 p-6 text-white">
               <div className="text-xs font-medium text-white/90 mb-1">{featured.destination}</div>
-              <h3 className="text-2xl font-bold mb-2 drop-shadow-sm">{featured.title}</h3>
+              <h3 className="text-2xl font-bold mb-2 drop-shadow-md !text-white">{featured.title}</h3>
               <p className="text-sm text-white/90 line-clamp-2 mb-4">{featured.description}</p>
               <div className="flex items-center justify-between">
                 <span className="text-2xl font-black drop-shadow-sm">${featured.price.toLocaleString()} {featured.currency}</span>
