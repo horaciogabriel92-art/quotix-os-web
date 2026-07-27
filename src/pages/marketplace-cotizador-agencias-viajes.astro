@@ -1,0 +1,317 @@
+---
+import FeatureLayout from '@/layouts/FeatureLayout.astro';
+import MarketplaceDemo from '@/components/react/MarketplaceDemo.jsx';
+import DemoRequestForm from '@/components/react/DemoRequestForm.jsx';
+
+const title = 'Marketplace + Cotizador PDF para Agencias de Viajes | Quotix';
+const description = 'Convertí tu catálogo de paquetes en una tienda online, cotizá con PDF profesionales en minutos y gestioná todo en un CRM. Probá gratis 7 días.';
+const canonical = '/marketplace-cotizador-agencias-viajes/';
+const h1 = 'Marketplace de paquetes + cotizador PDF para agencias de viajes';
+const subtitle = 'Publicá tu catálogo como tienda online, dejá que tus clientes cotizen desde la web y gestioná todo en un solo CRM con PDF profesionales.';
+const heroImage = '';
+const heroAlt = '';
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Quotix Marketplace y Cotizador PDF',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  description: description,
+  url: 'https://www.quotixos.com/marketplace-cotizador-agencias-viajes/',
+  featureList: 'Marketplace de paquetes, Cotizaciones PDF, PNR a PDF, CRM para agencias, Control de comisiones, Multi-vendedor',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD'
+  },
+  brand: {
+    '@type': 'Brand',
+    name: 'Quotix'
+  },
+  inLanguage: 'es'
+});
+---
+
+<FeatureLayout title={title} description={description} canonical={canonical} h1={h1} subtitle={subtitle} heroImage={heroImage} heroAlt={heroAlt} schema={schema}>
+  <section class="marketplace-demo-scope">
+    <!-- PDF Demo -->
+    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-6 md:p-8 mb-12">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4 mb-4 md:mb-6">
+        <div>
+          <h2 class="text-lg md:text-xl font-bold text-slate-900">Así se ve tu cotización en PDF</h2>
+          <p class="text-slate-600 text-sm mt-1">Compará el PDF profesional de Quotix vs. un presupuesto común.</p>
+        </div>
+        <div class="inline-flex self-start md:self-auto bg-white rounded-full p-1 border border-slate-200 shadow-sm flex-wrap">
+          <button type="button" class="preview-tab active px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-full transition-all" data-target="pdf">PDF profesional</button>
+          <button type="button" class="preview-tab px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-full text-slate-500 transition-all" data-target="word">Word/Excel común</button>
+        </div>
+      </div>
+
+      <div class="relative">
+        <!-- PDF Preview -->
+        <div id="preview-pdf" class="preview-panel">
+          <div class="w-full max-w-2xl mx-auto bg-white shadow-xl sm:shadow-2xl rounded-xl overflow-hidden border border-slate-200 transform transition-all duration-700">
+            <div class="bg-slate-900 text-white px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center gap-3">
+              <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-white/10 flex items-center justify-center font-bold text-xs sm:text-sm flex-shrink-0">QT</div>
+                <div class="min-w-0">
+                  <div class="font-bold text-xs sm:text-sm leading-tight truncate">Quotix Travel</div>
+                  <div class="text-[10px] sm:text-xs text-slate-400 truncate">Tu agencia de viajes</div>
+                </div>
+              </div>
+              <div class="text-right text-[10px] sm:text-xs flex-shrink-0">
+                <div class="text-slate-300">COT-2026-43709</div>
+                <div class="text-slate-500 hidden sm:block">Válida hasta 04/04/2026</div>
+              </div>
+            </div>
+            <div class="p-4 sm:p-6 md:p-8">
+              <div class="flex justify-between items-start border-b-2 border-emerald-500 pb-3 sm:pb-4 mb-4 sm:mb-5 gap-3">
+                <div class="min-w-0">
+                  <div class="text-emerald-700 font-bold text-base sm:text-lg truncate">Viaje a Madrid</div>
+                  <div class="text-slate-500 text-xs sm:text-sm">Montevideo ⇄ Madrid • 7 días</div>
+                </div>
+                <div class="text-right flex-shrink-0">
+                  <div class="text-xl sm:text-2xl font-bold text-emerald-700">$3.980</div>
+                  <div class="text-[10px] sm:text-xs text-slate-500">Total por 2 pasajeros</div>
+                </div>
+              </div>
+
+              <div class="space-y-3 sm:space-y-4">
+                <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3 sm:p-4">
+                  <div class="flex justify-between text-[10px] sm:text-xs font-bold text-emerald-700 mb-1 sm:mb-2">
+                    <span class="truncate mr-2">MONTEVIDEO → MADRID</span>
+                    <span class="bg-emerald-600 text-white px-1.5 sm:px-2 py-0.5 rounded whitespace-nowrap">AV UX078</span>
+                  </div>
+                  <div class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-900">
+                    <span class="text-center">09:30<br><span class="text-[10px] sm:text-xs font-normal text-slate-500">MVD</span></span>
+                    <span class="flex-1 border-b-2 border-emerald-300 mx-2 sm:mx-3 mb-1 sm:mb-2 relative">
+                      <span class="absolute -top-1.5 sm:-top-2 left-1/2 -translate-x-1/2 text-emerald-500 text-[10px] sm:text-xs">✈</span>
+                    </span>
+                    <span class="text-center">20:45<br><span class="text-[10px] sm:text-xs font-normal text-slate-500">MAD</span></span>
+                  </div>
+                </div>
+
+                <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3 sm:p-4">
+                  <div class="flex justify-between text-[10px] sm:text-xs font-bold text-emerald-700 mb-1 sm:mb-2">
+                    <span class="truncate mr-2">MADRID → MONTEVIDEO</span>
+                    <span class="bg-emerald-600 text-white px-1.5 sm:px-2 py-0.5 rounded whitespace-nowrap">AV UX087</span>
+                  </div>
+                  <div class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-900">
+                    <span class="text-center">10:20<br><span class="text-[10px] sm:text-xs font-normal text-slate-500">MAD</span></span>
+                    <span class="flex-1 border-b-2 border-emerald-300 mx-2 sm:mx-3 mb-1 sm:mb-2 relative">
+                      <span class="absolute -top-1.5 sm:-top-2 left-1/2 -translate-x-1/2 text-emerald-500 text-[10px] sm:text-xs">✈</span>
+                    </span>
+                    <span class="text-center">21:30<br><span class="text-[10px] sm:text-xs font-normal text-slate-500">MVD</span></span>
+                  </div>
+                </div>
+
+                <div class="overflow-x-auto -mx-1 px-1">
+                  <table class="w-full text-xs sm:text-sm min-w-[260px]">
+                    <thead>
+                      <tr class="text-left text-slate-500 border-b border-slate-200">
+                        <th class="py-1.5 sm:py-2 font-medium">Servicio</th>
+                        <th class="py-1.5 sm:py-2 font-medium text-right">Precio</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-slate-700">
+                      <tr class="border-b border-slate-100"><td class="py-1.5 sm:py-2">Vuelos ida y vuelta</td><td class="py-1.5 sm:py-2 text-right font-medium">$2.840</td></tr>
+                      <tr class="border-b border-slate-100"><td class="py-1.5 sm:py-2">Alojamiento 6 noches</td><td class="py-1.5 sm:py-2 text-right font-medium">$780</td></tr>
+                      <tr><td class="py-1.5 sm:py-2">Traslados aeropuerto</td><td class="py-1.5 sm:py-2 text-right font-medium">$360</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="flex justify-between items-center pt-2 sm:pt-4 border-t border-slate-200 gap-3">
+                  <span class="text-[10px] sm:text-xs text-slate-500">Incluye tasas e impuestos</span>
+                  <div class="text-right">
+                    <div class="text-lg sm:text-xl font-bold text-emerald-700">$3.980</div>
+                    <div class="text-[10px] sm:text-xs text-slate-500">Total a pagar</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Word/Excel Preview -->
+        <div id="preview-word" class="preview-panel hidden">
+          <div class="w-full max-w-2xl mx-auto bg-white shadow-xl rounded-xl border border-slate-200 p-4 sm:p-6 md:p-8">
+            <div class="text-slate-400 text-[10px] sm:text-xs font-mono mb-3 sm:mb-4">cotizacion_madrid_v2.docx</div>
+            <div class="space-y-2 sm:space-y-3 font-mono text-xs sm:text-sm text-slate-700">
+              <p class="border-b border-slate-200 pb-2">COTIZACIÓN: VIAJE A MADRID</p>
+              <p>Pasajeros: 2</p>
+              <p>Fechas: 10/10/2026 - 17/10/2026</p>
+              <p>--------------------------------</p>
+              <p>Vuelos: MVD-MAD 09:30 - precio?</p>
+              <p>Hotel: 6 noches - a confirmar</p>
+              <p>Traslados: incluidos</p>
+              <p>--------------------------------</p>
+              <p>TOTAL: $3.980 (precio aproximado)</p>
+              <p class="text-[10px] sm:text-xs text-slate-500 mt-3 sm:mt-4">* Los precios pueden variar. Condiciones sujetas a disponibilidad.</p>
+            </div>
+            <div class="mt-4 sm:mt-6 flex items-center gap-2 text-[10px] sm:text-xs text-slate-400">
+              <span class="w-2 h-2 rounded-full bg-red-400"></span>
+              <span>Sin logo, sin formato, difícil de cerrar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 sm:mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+        <div class="bg-white border border-slate-200 rounded-xl p-3 sm:p-4 text-center">
+          <div class="text-xl sm:text-2xl mb-1 sm:mb-2">🎨</div>
+          <div class="font-semibold text-slate-900 text-sm">Con tu marca</div>
+          <div class="text-[11px] sm:text-xs text-slate-500">Logo, colores y datos de tu agencia</div>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-xl p-3 sm:p-4 text-center">
+          <div class="text-xl sm:text-2xl mb-1 sm:mb-2">✈️</div>
+          <div class="font-semibold text-slate-900 text-sm">Itinerario visual</div>
+          <div class="text-[11px] sm:text-xs text-slate-500">Vuelos con logos y horarios claros</div>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-xl p-3 sm:p-4 text-center">
+          <div class="text-xl sm:text-2xl mb-1 sm:mb-2">💰</div>
+          <div class="font-semibold text-slate-900 text-sm">Comisiones claras</div>
+          <div class="text-[11px] sm:text-xs text-slate-500">Precio final + margen real interno</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tu catálogo de paquetes como tienda online</h2>
+    <p>Cada agencia elige el estilo visual de su marketplace. Tus clientes entran, eligen un paquete y cotizan sin salir de tu web. El lead llega directo al CRM.</p>
+    <MarketplaceDemo client:load />
+  </section>
+
+  <section>
+    <h2>Del cliente al CRM, sin perder nada</h2>
+    <p>Cuando un visitante cotiza un paquete, su solicitud aparece instantáneamente en tu panel con todos los datos: destino, pasajeros, habitación, fecha preferida y contacto.</p>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6 not-prose">
+      <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+        <div class="text-2xl mb-2">🛒</div>
+        <div class="font-semibold text-slate-900 text-sm">Cliente entra</div>
+        <div class="text-xs text-slate-500">Desde tu web o redes sociales</div>
+      </div>
+      <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+        <div class="text-2xl mb-2">📦</div>
+        <div class="font-semibold text-slate-900 text-sm">Elige paquete</div>
+        <div class="text-xs text-slate-500">Navega tu catálogo</div>
+      </div>
+      <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+        <div class="text-2xl mb-2">📝</div>
+        <div class="font-semibold text-slate-900 text-sm">Cotiza</div>
+        <div class="text-xs text-slate-500">Pasajeros, habitación y fecha</div>
+      </div>
+      <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+        <div class="text-2xl mb-2">📩</div>
+        <div class="font-semibold text-slate-900 text-sm">Deja datos</div>
+        <div class="text-xs text-slate-500">Email y WhatsApp</div>
+      </div>
+      <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+        <div class="text-2xl mb-2">🧑‍💼</div>
+        <div class="font-semibold text-slate-900 text-sm">Llega al CRM</div>
+        <div class="text-xs text-slate-500">Con el paquete y datos</div>
+      </div>
+      <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+        <div class="text-2xl mb-2">🤝</div>
+        <div class="font-semibold text-slate-900 text-sm">Vos cerrás</div>
+        <div class="text-xs text-slate-500">Contactás y vendés</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>CRM integrado para agencias de viajes</h2>
+    <p>Todas las cotizaciones, clientes y pagos en un solo lugar. Sabés en qué estado está cada venta, cuánto falta cobrar y cuándo seguir a cada cliente.</p>
+    <ul>
+      <li>Leads automáticos desde el marketplace.</li>
+      <li>Estados de cotización: nueva, enviada, vendida, pagada.</li>
+      <li>Historial de pagos y saldos pendientes.</li>
+      <li>Recordatorios de seguimiento para vendedores.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>¿Preferís una demostración con un asesor?</h2>
+    <p>Agendá una videollamada gratuita. Te mostramos el cotizador PDF, el marketplace y el CRM paso a paso.</p>
+    <DemoRequestForm client:load />
+  </section>
+
+  <section>
+    <h2>Preguntas frecuentes</h2>
+    <details>
+      <summary>¿El PDF lleva marca de Quotix? <span class="text-magenta">▼</span></summary>
+      <p>No. El PDF lleva el logo, nombre y colores de tu agencia. Quotix es invisible para tu cliente.</p>
+    </details>
+    <details>
+      <summary>¿Qué es el marketplace de paquetes? <span class="text-magenta">▼</span></summary>
+      <p>Es una vitrina web donde publicás tus paquetes turísticos. Tus clientes eligen un destino, cotizan y dejan sus datos. Ese lead llega automáticamente a tu CRM.</p>
+    </details>
+    <details>
+      <summary>¿Puedo usar mi propio dominio? <span class="text-magenta">▼</span></summary>
+      <p>Sí. Los planes superiores permiten asociar tu dominio propio para que el marketplace y el panel respondan en tu marca.</p>
+    </details>
+    <details>
+      <summary>¿Cómo funciona la demo guiada? <span class="text-magenta">▼</span></summary>
+      <p>Completás el formulario con tu WhatsApp y fecha preferida. Un asesor se contacta para confirmar y mostrarte la plataforma por videollamada.</p>
+    </details>
+    <details>
+      <summary>¿Qué pasa después de los 7 días gratis? <span class="text-magenta">▼</span></summary>
+      <p>Elegís el plan que se ajuste a tu agencia o cancelás sin costo. No te pedimos tarjeta durante la prueba.</p>
+    </details>
+  </section>
+
+  <style is:global>
+    .feature-content .marketplace-demo-scope p {
+      font-size: inherit;
+      line-height: inherit;
+      color: inherit;
+      margin-bottom: 0;
+    }
+    .feature-content .marketplace-demo-scope h2 {
+      margin-top: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .preview-tab.active {
+      background-color: #bf3480;
+      color: white;
+    }
+    .preview-panel {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      transform: translateY(10px);
+    }
+    .preview-panel:not(.hidden) {
+      opacity: 1;
+      pointer-events: auto;
+      position: relative;
+      transform: translateY(0);
+    }
+  </style>
+
+  <script is:inline>
+    (function() {
+      const tabs = document.querySelectorAll('.preview-tab');
+      const panels = document.querySelectorAll('.preview-panel');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = tab.dataset.target;
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          panels.forEach(p => {
+            if (p.id === 'preview-' + target) {
+              p.classList.remove('hidden');
+            } else {
+              p.classList.add('hidden');
+            }
+          });
+        });
+      });
+    })();
+  </script>
+</FeatureLayout>
