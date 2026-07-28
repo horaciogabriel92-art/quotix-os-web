@@ -19,6 +19,7 @@ const { title, description, canonical, ogImage, schema, h1, subtitle, heroImage,
 ---
 
 <MainLayout title={title} description={description} canonical={canonical} ogImage={ogImage} schema={schema}>
+  <slot name="head" slot="head" />
   <Header />
 
   <main class="pt-24 pb-16 bg-slate-50 min-h-screen">

@@ -34,6 +34,16 @@ const schema = JSON.stringify({
 ---
 
 <FeatureLayout title={title} description={description} canonical={canonical} h1={h1} subtitle={subtitle} heroImage={heroImage} heroAlt={heroAlt} schema={schema}>
+  <Fragment slot="head">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "xt9die8gg7");
+    </script>
+  </Fragment>
+
   <section class="marketplace-demo-scope">
     <!-- PDF Demo -->
     <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-6 md:p-8 mb-12">
