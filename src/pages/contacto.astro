@@ -65,3 +65,12 @@ const schema = JSON.stringify({
   </main>
   <Footer />
 </MainLayout>
+
+<script is:inline>
+  const contactForm = document.querySelector('form[action*="formspree"]');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function () {
+      if (typeof fbq === 'function') fbq('track', 'Contact');
+    });
+  }
+</script>

@@ -400,6 +400,8 @@ import MainLayout from '@/layouts/MainLayout.astro';
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
 
+      if (typeof fbq === 'function') fbq('track', 'CompleteRegistration');
+
       window.location.href = `${PANEL_URL}/dashboard`;
     } catch (err: any) {
       showError(err.message || 'Error al crear la cuenta');
