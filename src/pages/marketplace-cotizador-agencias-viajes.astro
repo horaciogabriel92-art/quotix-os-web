@@ -414,7 +414,7 @@ const schema = JSON.stringify({
     :root {
       --ql-bg: #0a0f1c;
       --ql-bg-alt: #0f172a;
-      --ql-card: rgba(30, 41, 59, 0.65);
+      --ql-card: rgba(30, 41, 59, 0.92);
       --ql-card-solid: #1e293b;
       --ql-card-hover: #334155;
       --ql-text: #ffffff;
@@ -451,6 +451,12 @@ const schema = JSON.stringify({
 
     .ql-section { padding: 80px 0; }
     @media (min-width: 1024px) { .ql-section { padding: 120px 0; } }
+
+    /* Render off-screen sections lazily to cut main-thread layout/paint work */
+    #problema, #flujo, #pilares, #social, #precios, #faq, #cta-final {
+      content-visibility: auto;
+      contain-intrinsic-size: auto 300px;
+    }
 
     .ql-section-dark { background: var(--ql-bg); }
     .ql-section-alt { background: var(--ql-bg-alt); }
@@ -719,7 +725,6 @@ const schema = JSON.stringify({
       border-radius: 16px;
       padding: 24px;
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-      backdrop-filter: blur(4px);
       will-change: transform;
     }
     .ql-card:hover {
@@ -804,7 +809,6 @@ const schema = JSON.stringify({
       border-radius: 20px;
       padding: 32px;
       transition: border-color 0.3s ease, transform 0.3s ease;
-      backdrop-filter: blur(4px);
     }
     .ql-pillar:hover { border-color: var(--ql-accent); transform: translateY(-4px); }
     @media (min-width: 1024px) { .ql-pillar:nth-child(2):hover { transform: translateY(36px); } }
@@ -920,7 +924,6 @@ const schema = JSON.stringify({
       border-radius: 16px;
       padding: 28px;
       overflow: hidden;
-      backdrop-filter: blur(4px);
     }
     .ql-testimonial .ql-quote {
       position: absolute; top: 8px; left: 16px;
@@ -950,7 +953,6 @@ const schema = JSON.stringify({
       border-radius: 20px;
       padding: 32px;
       display: flex; flex-direction: column;
-      backdrop-filter: blur(4px);
     }
     .ql-pricing-card.featured {
       border-color: var(--ql-accent);
@@ -1018,7 +1020,7 @@ const schema = JSON.stringify({
     }
   </style>
 
-  <script is:inline>
+  <script is:inline type="module">
     (function() {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } });
