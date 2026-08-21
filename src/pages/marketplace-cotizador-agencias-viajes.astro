@@ -1,39 +1,26 @@
 ---
-import FeatureLayout from '@/layouts/FeatureLayout.astro';
-import MarketplaceDemo from '@/components/react/MarketplaceDemo.jsx';
+import MainLayout from '@/layouts/MainLayout.astro';
+import Header from '@/components/sections/Header.astro';
+import Footer from '@/components/sections/Footer.astro';
 
-
-const title = 'Marketplace + Cotizador PDF para Agencias de Viajes | Quotix';
-const description = 'Convertí tu catálogo de paquetes en una tienda online, cotizá con PDF profesionales en minutos y gestioná todo en un CRM. Probá gratis 7 días.';
+const title = 'Quotix — Sistema de ventas para agencias de viajes';
+const description = 'Cotizaciones en 5 min, marketplace de paquetes y CRM integrado para agencias de viajes.';
 const canonical = '/marketplace-cotizador-agencias-viajes/';
-const h1 = 'Marketplace de paquetes + cotizador PDF para agencias de viajes';
-const subtitle = 'Publicá tu catálogo como tienda online, dejá que tus clientes cotizen desde la web y gestioná todo en un solo CRM con PDF profesionales.';
-const heroImage = '';
-const heroAlt = '';
 
 const schema = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'Quotix Marketplace y Cotizador PDF',
+  name: 'Quotix',
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web',
   description: description,
   url: 'https://www.quotixos.com/marketplace-cotizador-agencias-viajes/',
-  featureList: 'Marketplace de paquetes, Cotizaciones PDF, PNR a PDF, CRM para agencias, Control de comisiones, Multi-vendedor',
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'USD'
-  },
-  brand: {
-    '@type': 'Brand',
-    name: 'Quotix'
-  },
+  brand: { '@type': 'Brand', name: 'Quotix' },
   inLanguage: 'es'
 });
 ---
 
-<FeatureLayout title={title} description={description} canonical={canonical} h1={h1} subtitle={subtitle} heroImage={heroImage} heroAlt={heroAlt} schema={schema}>
+<MainLayout title={title} description={description} canonical={canonical} schema={schema}>
   <Fragment slot="head">
     <script type="text/javascript">
       (function(c,l,a,r,i,t,y){
@@ -44,336 +31,1118 @@ const schema = JSON.stringify({
     </script>
   </Fragment>
 
-  <section class="marketplace-demo-scope">
-    <!-- PDF Demo -->
-    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-6 md:p-8 mb-12">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4 mb-4 md:mb-6">
-        <div>
-          <h2 class="text-lg md:text-xl font-bold text-slate-900">Así se ve tu cotización en PDF</h2>
-          <p class="text-slate-600 text-sm mt-1">Compará el PDF profesional de Quotix vs. un presupuesto común.</p>
-        </div>
-        <div class="inline-flex self-start md:self-auto bg-white rounded-full p-1 border border-slate-200 shadow-sm flex-wrap">
-          <button type="button" class="preview-tab active px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-full transition-all" data-target="pdf">PDF profesional</button>
-          <button type="button" class="preview-tab px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-full text-slate-500 transition-all" data-target="word">Word/Excel común</button>
-        </div>
+  <Header />
+
+  <main class="ql-page">
+    <!-- SECCIÓN 1: HERO -->
+    <section class="ql-hero" id="hero">
+      <div class="ql-hero-bg" aria-hidden="true">
+        <div class="ql-grid"></div>
       </div>
-
-      <div class="relative">
-        <!-- PDF Preview -->
-        <div id="preview-pdf" class="preview-panel">
-          <div class="w-full max-w-2xl mx-auto bg-white shadow-xl sm:shadow-2xl rounded-xl overflow-hidden border border-slate-200 transform transition-all duration-700">
-            <div class="bg-slate-900 text-white px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center gap-3">
-              <div class="flex items-center gap-2 sm:gap-3 min-w-0">
-                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-white/10 flex items-center justify-center font-bold text-xs sm:text-sm flex-shrink-0">QT</div>
-                <div class="min-w-0">
-                  <div class="font-bold text-xs sm:text-sm leading-tight truncate">Quotix Travel</div>
-                  <div class="text-[10px] sm:text-xs text-slate-400 truncate">Tu agencia de viajes</div>
-                </div>
-              </div>
-              <div class="text-right text-[10px] sm:text-xs flex-shrink-0">
-                <div class="text-slate-300">COT-2026-43709</div>
-                <div class="text-slate-500 hidden sm:block">Válida hasta 04/04/2026</div>
-              </div>
-            </div>
-            <div class="p-4 sm:p-6 md:p-8">
-              <div class="flex justify-between items-start border-b-2 border-emerald-500 pb-3 sm:pb-4 mb-4 sm:mb-5 gap-3">
-                <div class="min-w-0">
-                  <div class="text-emerald-700 font-bold text-base sm:text-lg truncate">Viaje a Madrid</div>
-                  <div class="text-slate-500 text-xs sm:text-sm">Montevideo ⇄ Madrid • 7 días</div>
-                </div>
-                <div class="text-right flex-shrink-0">
-                  <div class="text-xl sm:text-2xl font-bold text-emerald-700">$3.980</div>
-                  <div class="text-[10px] sm:text-xs text-slate-500">Total por 2 pasajeros</div>
-                </div>
-              </div>
-
-              <div class="space-y-3 sm:space-y-4">
-                <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3 sm:p-4">
-                  <div class="flex justify-between text-[10px] sm:text-xs font-bold text-emerald-700 mb-1 sm:mb-2">
-                    <span class="truncate mr-2">MONTEVIDEO → MADRID</span>
-                    <span class="bg-emerald-600 text-white px-1.5 sm:px-2 py-0.5 rounded whitespace-nowrap">AV UX078</span>
-                  </div>
-                  <div class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-900">
-                    <span class="text-center">09:30<br><span class="text-[10px] sm:text-xs font-normal text-slate-500">MVD</span></span>
-                    <span class="flex-1 border-b-2 border-emerald-300 mx-2 sm:mx-3 mb-1 sm:mb-2 relative">
-                      <span class="absolute -top-1.5 sm:-top-2 left-1/2 -translate-x-1/2 text-emerald-500 text-[10px] sm:text-xs">✈</span>
-                    </span>
-                    <span class="text-center">20:45<br><span class="text-[10px] sm:text-xs font-normal text-slate-500">MAD</span></span>
-                  </div>
-                </div>
-
-                <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3 sm:p-4">
-                  <div class="flex justify-between text-[10px] sm:text-xs font-bold text-emerald-700 mb-1 sm:mb-2">
-                    <span class="truncate mr-2">MADRID → MONTEVIDEO</span>
-                    <span class="bg-emerald-600 text-white px-1.5 sm:px-2 py-0.5 rounded whitespace-nowrap">AV UX087</span>
-                  </div>
-                  <div class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-900">
-                    <span class="text-center">10:20<br><span class="text-[10px] sm:text-xs font-normal text-slate-500">MAD</span></span>
-                    <span class="flex-1 border-b-2 border-emerald-300 mx-2 sm:mx-3 mb-1 sm:mb-2 relative">
-                      <span class="absolute -top-1.5 sm:-top-2 left-1/2 -translate-x-1/2 text-emerald-500 text-[10px] sm:text-xs">✈</span>
-                    </span>
-                    <span class="text-center">21:30<br><span class="text-[10px] sm:text-xs font-normal text-slate-500">MVD</span></span>
-                  </div>
-                </div>
-
-                <div class="overflow-x-auto -mx-1 px-1">
-                  <table class="w-full text-xs sm:text-sm min-w-[260px]">
-                    <thead>
-                      <tr class="text-left text-slate-500 border-b border-slate-200">
-                        <th class="py-1.5 sm:py-2 font-medium">Servicio</th>
-                        <th class="py-1.5 sm:py-2 font-medium text-right">Precio</th>
-                      </tr>
-                    </thead>
-                    <tbody class="text-slate-700">
-                      <tr class="border-b border-slate-100"><td class="py-1.5 sm:py-2">Vuelos ida y vuelta</td><td class="py-1.5 sm:py-2 text-right font-medium">$2.840</td></tr>
-                      <tr class="border-b border-slate-100"><td class="py-1.5 sm:py-2">Alojamiento 6 noches</td><td class="py-1.5 sm:py-2 text-right font-medium">$780</td></tr>
-                      <tr><td class="py-1.5 sm:py-2">Traslados aeropuerto</td><td class="py-1.5 sm:py-2 text-right font-medium">$360</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <div class="flex justify-between items-center pt-2 sm:pt-4 border-t border-slate-200 gap-3">
-                  <span class="text-[10px] sm:text-xs text-slate-500">Incluye tasas e impuestos</span>
-                  <div class="text-right">
-                    <div class="text-lg sm:text-xl font-bold text-emerald-700">$3.980</div>
-                    <div class="text-[10px] sm:text-xs text-slate-500">Total a pagar</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Word/Excel Preview -->
-        <div id="preview-word" class="preview-panel hidden">
-          <div class="w-full max-w-2xl mx-auto bg-white shadow-xl rounded-xl border border-slate-200 p-4 sm:p-6 md:p-8">
-            <div class="text-slate-400 text-[10px] sm:text-xs font-mono mb-3 sm:mb-4">cotizacion_madrid_v2.docx</div>
-            <div class="space-y-2 sm:space-y-3 font-mono text-xs sm:text-sm text-slate-700">
-              <p class="border-b border-slate-200 pb-2">COTIZACIÓN: VIAJE A MADRID</p>
-              <p>Pasajeros: 2</p>
-              <p>Fechas: 10/10/2026 - 17/10/2026</p>
-              <p>--------------------------------</p>
-              <p>Vuelos: MVD-MAD 09:30 - precio?</p>
-              <p>Hotel: 6 noches - a confirmar</p>
-              <p>Traslados: incluidos</p>
-              <p>--------------------------------</p>
-              <p>TOTAL: $3.980 (precio aproximado)</p>
-              <p class="text-[10px] sm:text-xs text-slate-500 mt-3 sm:mt-4">* Los precios pueden variar. Condiciones sujetas a disponibilidad.</p>
-            </div>
-            <div class="mt-4 sm:mt-6 flex items-center gap-2 text-[10px] sm:text-xs text-slate-400">
-              <span class="w-2 h-2 rounded-full bg-red-400"></span>
-              <span>Sin logo, sin formato, difícil de cerrar</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-4 sm:mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-        <div class="bg-white border border-slate-200 rounded-xl p-3 sm:p-4 text-center">
-          <div class="text-xl sm:text-2xl mb-1 sm:mb-2">🎨</div>
-          <div class="font-semibold text-slate-900 text-sm">Con tu marca</div>
-          <div class="text-[11px] sm:text-xs text-slate-500">Logo, colores y datos de tu agencia</div>
-        </div>
-        <div class="bg-white border border-slate-200 rounded-xl p-3 sm:p-4 text-center">
-          <div class="text-xl sm:text-2xl mb-1 sm:mb-2">✈️</div>
-          <div class="font-semibold text-slate-900 text-sm">Itinerario visual</div>
-          <div class="text-[11px] sm:text-xs text-slate-500">Vuelos con logos y horarios claros</div>
-        </div>
-        <div class="bg-white border border-slate-200 rounded-xl p-3 sm:p-4 text-center">
-          <div class="text-xl sm:text-2xl mb-1 sm:mb-2">💰</div>
-          <div class="font-semibold text-slate-900 text-sm">Comisiones claras</div>
-          <div class="text-[11px] sm:text-xs text-slate-500">Precio final + margen real interno</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Tu catálogo de paquetes como tienda online</h2>
-    <p>Cada agencia elige el estilo visual de su marketplace. Tus clientes entran, eligen un paquete y cotizan sin salir de tu web. El lead llega directo al CRM.</p>
-    <MarketplaceDemo client:load />
-  </section>
-
-  <section>
-    <h2>Del cliente al CRM, sin perder nada</h2>
-    <p>Cuando un visitante cotiza un paquete, su solicitud aparece instantáneamente en tu panel con todos los datos: destino, pasajeros, habitación, fecha preferida y contacto.</p>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6 not-prose">
-      <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
-        <div class="text-2xl mb-2">🛒</div>
-        <div class="font-semibold text-slate-900 text-sm">Cliente entra</div>
-        <div class="text-xs text-slate-500">Desde tu web o redes sociales</div>
-      </div>
-      <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
-        <div class="text-2xl mb-2">📦</div>
-        <div class="font-semibold text-slate-900 text-sm">Elige paquete</div>
-        <div class="text-xs text-slate-500">Navega tu catálogo</div>
-      </div>
-      <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
-        <div class="text-2xl mb-2">📝</div>
-        <div class="font-semibold text-slate-900 text-sm">Cotiza</div>
-        <div class="text-xs text-slate-500">Pasajeros, habitación y fecha</div>
-      </div>
-      <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
-        <div class="text-2xl mb-2">📩</div>
-        <div class="font-semibold text-slate-900 text-sm">Deja datos</div>
-        <div class="text-xs text-slate-500">Email y WhatsApp</div>
-      </div>
-      <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
-        <div class="text-2xl mb-2">🧑‍💼</div>
-        <div class="font-semibold text-slate-900 text-sm">Llega al CRM</div>
-        <div class="text-xs text-slate-500">Con el paquete y datos</div>
-      </div>
-      <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
-        <div class="text-2xl mb-2">🤝</div>
-        <div class="font-semibold text-slate-900 text-sm">Vos cerrás</div>
-        <div class="text-xs text-slate-500">Contactás y vendés</div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>CRM integrado para agencias de viajes</h2>
-    <p>Todas las cotizaciones, clientes y pagos en un solo lugar. Sabés en qué estado está cada venta, cuánto falta cobrar y cuándo seguir a cada cliente.</p>
-    <ul>
-      <li>Leads automáticos desde el marketplace.</li>
-      <li>Estados de cotización: nueva, enviada, vendida, pagada.</li>
-      <li>Historial de pagos y saldos pendientes.</li>
-      <li>Recordatorios de seguimiento para vendedores.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>¿Preferís una demostración con un asesor?</h2>
-    <p>Cuando creés tu cuenta, te vamos a ofrecer una demo guiada gratis para que aproveches Quotix al máximo desde el primer día.</p>
-    <a href="/precios" class="inline-flex items-center justify-center px-8 py-3.5 bg-magenta hover:bg-magenta-500 text-white font-semibold rounded-full transition-all shadow-lg hover:shadow-xl">
-      Ver planes y probar gratis
-      <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-    </a>
-  </section>
-
-  <section class="not-prose">
-    <div class="bg-gradient-to-br from-navy via-navy-800 to-navy-700 rounded-2xl p-8 md:p-10 text-white text-center shadow-lg relative overflow-hidden">
-      <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-magenta/20 rounded-full blur-2xl"></div>
-      <div class="absolute bottom-0 left-0 -mb-4 -ml-4 w-20 h-20 bg-lime/10 rounded-full blur-2xl"></div>
-      <div class="relative z-10">
-        <div class="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-lime text-sm font-semibold mb-4">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          Agencias que ya usan Quotix
-        </div>
-        <h2 class="text-2xl md:text-3xl font-bold mb-4 leading-tight !text-white !border-transparent">Más de 150 agencias en toda Latinoamérica ya usan Quotix</h2>
-        <p class="text-slate-300 text-lg mb-8 leading-relaxed max-w-2xl mx-auto !text-slate-300">
-          Desde agencias independientes hasta operadoras con múltiples vendedores, todos ahorran horas en cotizaciones y cierran más ventas con PDF profesionales y un CRM hecho para viajes.
+      <div class="ql-container ql-hero-inner">
+        <div class="ql-logo">Quotix</div>
+        <h1 class="ql-hero-title">¿Tu agencia vende viajes o administra caos?</h1>
+        <p class="ql-hero-subtitle">
+          Las agencias que usan Quotix cotizan en 5 min, captan leads automático y cierran más ventas sin perder nada en el camino.
         </p>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
-          <div class="bg-white/5 border border-white/10 rounded-xl p-4">
-            <div class="text-3xl font-black text-lime mb-1">150+</div>
-            <div class="text-sm text-slate-300">Agencias activas</div>
-          </div>
-          <div class="bg-white/5 border border-white/10 rounded-xl p-4">
-            <div class="text-3xl font-black text-lime mb-1">12 países</div>
-            <div class="text-sm text-slate-300">Latinoamérica y España</div>
-          </div>
-          <div class="bg-white/5 border border-white/10 rounded-xl p-4">
-            <div class="text-3xl font-black text-lime mb-1">50.000+</div>
-            <div class="text-sm text-slate-300">Cotizaciones generadas</div>
-          </div>
-          <div class="bg-white/5 border border-white/10 rounded-xl p-4">
-            <div class="text-3xl font-black text-lime mb-1">4.8/5</div>
-            <div class="text-sm text-slate-300">Valoración promedio</div>
+        <div class="ql-hero-ctas">
+          <a href="/precios" class="ql-btn ql-btn-primary">Ver planes →</a>
+          <a href="/precios" class="ql-btn ql-btn-secondary">Ver demo gratis</a>
+        </div>
+        <p class="ql-hero-micro">⚡ Setup en 10 min. Sin tarjeta. 7 días gratis.</p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: EL PROBLEMA -->
+    <section class="ql-section ql-section-dark" id="problema">
+      <div class="ql-container">
+        <h2 class="ql-section-title reveal">Hoy tu día se pierde en...</h2>
+        <div class="ql-problem-grid">
+          <article class="ql-card reveal" style="transition-delay: 0.1s;">
+            <div class="ql-card-icon">📝</div>
+            <h3>40 min por presupuesto</h3>
+            <p>Word. Excel. Copiar y pegar. Tu marca no se ve profesional.</p>
+          </article>
+          <article class="ql-card reveal" style="transition-delay: 0.2s;">
+            <div class="ql-card-icon">📱</div>
+            <h3>WhatsApp explotado</h3>
+            <p>¿Cuánto sale a Madrid? ¿Y con hotel? Respondés lo mismo 20 veces.</p>
+          </article>
+          <article class="ql-card reveal" style="transition-delay: 0.3s;">
+            <div class="ql-card-icon">😵‍💫</div>
+            <h3>Clientes perdidos</h3>
+            <p>El lead quedó en el chat. Te olvidaste de seguirlo. La venta se fue a otro lado.</p>
+          </article>
+        </div>
+        <p class="ql-problem-close reveal">Esto no es vender. Es sobrevivir.</p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: EL FLUJO -->
+    <section class="ql-section ql-section-alt" id="flujo">
+      <div class="ql-container">
+        <h2 class="ql-section-title reveal">Quotix conecta todo en un solo sistema</h2>
+
+        <div class="ql-flow">
+          <svg class="ql-flow-line desktop" viewBox="0 0 1100 80" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M 60 40 L 1040 40" fill="none" stroke="#bf3480" stroke-width="2" stroke-dasharray="1000" stroke-dashoffset="1000"/>
+          </svg>
+          <svg class="ql-flow-line mobile" viewBox="0 0 80 460" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M 40 30 L 40 430" fill="none" stroke="#bf3480" stroke-width="2" stroke-dasharray="500" stroke-dashoffset="500"/>
+          </svg>
+
+          <div class="ql-flow-grid">
+            <div class="ql-flow-step reveal" style="transition-delay: 0.1s;">
+              <div class="ql-flow-circle">👤</div>
+              <h3>Cliente entra</h3>
+              <p>Desde tu web o redes</p>
+            </div>
+            <div class="ql-flow-step reveal" style="transition-delay: 0.25s;">
+              <div class="ql-flow-circle">📦</div>
+              <h3>Elige paquete</h3>
+              <p>Tu catálogo, tus precios</p>
+            </div>
+            <div class="ql-flow-step reveal" style="transition-delay: 0.4s;">
+              <div class="ql-flow-circle">📄</div>
+              <h3>Cotiza</h3>
+              <p>PDF profesional con tu marca</p>
+            </div>
+            <div class="ql-flow-step reveal" style="transition-delay: 0.55s;">
+              <div class="ql-flow-circle">📥</div>
+              <h3>Deja datos</h3>
+              <p>Lead capturado</p>
+            </div>
+            <div class="ql-flow-step reveal" style="transition-delay: 0.7s;">
+              <div class="ql-flow-circle">👨‍💼</div>
+              <h3>Llega al CRM</h3>
+              <p>Todo organizado</p>
+            </div>
+            <div class="ql-flow-step reveal" style="transition-delay: 0.85s;">
+              <div class="ql-flow-circle">💰</div>
+              <h3>Vos cerrás</h3>
+              <p>Seguimiento hasta el pago</p>
+            </div>
           </div>
         </div>
-        <div class="grid md:grid-cols-3 gap-4 text-left">
-          <div class="bg-white/5 border border-white/10 rounded-xl p-5">
-            <p class="text-slate-200 text-sm italic mb-3 !text-slate-200">"Pasamos de mandar presupuestos en Word a PDFs con la marca de la agencia en minutos. Los clientes cierran más rápido."</p>
-            <div class="text-xs text-slate-400 !text-slate-400">— Agencia de viajes, Buenos Aires</div>
+
+        <p class="ql-flow-tagline reveal">Un recorrido. Sin fugas.</p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: LOS 3 PILARES -->
+    <section class="ql-section ql-section-dark" id="pilares">
+      <div class="ql-container">
+        <h2 class="ql-section-title reveal">Un sistema. Tres herramientas.</h2>
+        <p class="ql-section-subtitle reveal">Cada una resuelve lo que te quema tiempo hoy:</p>
+
+        <div class="ql-pillars-grid">
+          <article class="ql-pillar reveal" style="transition-delay: 0.1s;">
+            <span class="ql-pillar-number">01</span>
+            <h3>Cotizador</h3>
+            <p class="ql-pillar-hook">De 40 min a 5 min por presupuesto.</p>
+            <ul>
+              <li>Copiás datos de Amadeus</li>
+              <li>O cargás todo desde cero</li>
+              <li>PDF con tu logo y colores</li>
+              <li>Comisiones claras</li>
+            </ul>
+            <a href="/cotizador-pdf-agencias-viajes" class="ql-pillar-link">Ver comparación PDF →</a>
+          </article>
+
+          <article class="ql-pillar reveal" style="transition-delay: 0.2s;">
+            <span class="ql-pillar-number">02</span>
+            <h3>Marketplace</h3>
+            <p class="ql-pillar-hook">Tu catálogo como tienda online, sin programar.</p>
+            <ul>
+              <li>Cargás paquetes con fotos</li>
+              <li>Quotix arma tu landing</li>
+              <li>Link para web/bio/WhatsApp</li>
+              <li>El cliente cotiza solo</li>
+            </ul>
+            <a href="/web-paquetes-turisticos" class="ql-pillar-link">Ver ejemplo de catálogo →</a>
+          </article>
+
+          <article class="ql-pillar reveal" style="transition-delay: 0.3s;">
+            <span class="ql-pillar-number">03</span>
+            <h3>CRM</h3>
+            <p class="ql-pillar-hook">Ningún lead se pierde. Ningún seguimiento se olvida.</p>
+            <ul>
+              <li>Leads desde marketplace</li>
+              <li>Estados: nuevo → vendido</li>
+              <li>Pagos y saldos</li>
+              <li>Recordatorios automáticos</li>
+            </ul>
+            <a href="/crm-agencias-viajes" class="ql-pillar-link">Ver panel de CRM →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: SOCIAL PROOF -->
+    <section class="ql-section ql-section-dark" id="social">
+      <div class="ql-container">
+        <h2 class="ql-section-title reveal">Agencias que ya dejaron de perder tiempo</h2>
+
+        <div class="ql-testimonials">
+          <article class="ql-testimonial reveal" style="transition-delay: 0.1s;">
+            <span class="ql-quote" aria-hidden="true">"</span>
+            <p>Pasamos de mandar presupuestos en Word a PDFs con la marca de la agencia en minutos.</p>
+            <footer>Operadora turística, Buenos Aires</footer>
+          </article>
+          <article class="ql-testimonial reveal" style="transition-delay: 0.2s;">
+            <span class="ql-quote" aria-hidden="true">"</span>
+            <p>El marketplace nos trae leads sin que tengamos que estar preguntando precios por WhatsApp todo el día.</p>
+            <footer>Agencia de viajes, México</footer>
+          </article>
+          <article class="ql-testimonial reveal" style="transition-delay: 0.3s;">
+            <span class="ql-quote" aria-hidden="true">"</span>
+            <p>El CRM nos permite saber en qué está cada cotización. No volvimos a perder una venta.</p>
+            <footer>Agencia familiar, Colombia</footer>
+          </article>
+        </div>
+
+        <div class="ql-stats reveal">
+          <div class="ql-stat">
+            <div class="ql-stat-number" data-target="150" data-suffix="+">0</div>
+            <div class="ql-stat-label">Agencias</div>
           </div>
-          <div class="bg-white/5 border border-white/10 rounded-xl p-5">
-            <p class="text-slate-200 text-sm italic mb-3 !text-slate-200">"El marketplace nos trae leads sin que tengamos que estar preguntando precios por WhatsApp todo el día."</p>
-            <div class="text-xs text-slate-400 !text-slate-400">— Operadora turística, México</div>
-          </div>
-          <div class="bg-white/5 border border-white/10 rounded-xl p-5">
-            <p class="text-slate-200 text-sm italic mb-3 !text-slate-200">"El CRM nos permite saber en qué está cada cotización y cuánto falta cobrar. No volvimos a perder una venta."</p>
-            <div class="text-xs text-slate-400 !text-slate-400">— Agencia familiar, Colombia</div>
+          <div class="ql-stat">
+            <div class="ql-stat-number" data-target="12" data-suffix="">0</div>
+            <div class="ql-stat-label">Países</div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <h2>Preguntas frecuentes</h2>
-    <details>
-      <summary>¿El PDF lleva marca de Quotix? <span class="text-magenta">▼</span></summary>
-      <p>No. El PDF lleva el logo, nombre y colores de tu agencia. Quotix es invisible para tu cliente.</p>
-    </details>
-    <details>
-      <summary>¿Qué es el marketplace de paquetes? <span class="text-magenta">▼</span></summary>
-      <p>Es una vitrina web donde publicás tus paquetes turísticos. Tus clientes eligen un destino, cotizan y dejan sus datos. Ese lead llega automáticamente a tu CRM.</p>
-    </details>
-    <details>
-      <summary>¿Puedo usar mi propio dominio? <span class="text-magenta">▼</span></summary>
-      <p>Sí. Los planes superiores permiten asociar tu dominio propio para que el marketplace y el panel respondan en tu marca.</p>
-    </details>
-    <details>
-      <summary>¿Cómo funciona la demo guiada? <span class="text-magenta">▼</span></summary>
-      <p>Cuando creás tu cuenta, el panel te ofrece una demo guiada gratis. Completás tu WhatsApp y fecha preferida, y un asesor se contacta para confirmar y mostrarte la plataforma por videollamada.</p>
-    </details>
-    <details>
-      <summary>¿Qué pasa después de los 7 días gratis? <span class="text-magenta">▼</span></summary>
-      <p>Elegís el plan que se ajuste a tu agencia o cancelás sin costo. No te pedimos tarjeta durante la prueba.</p>
-    </details>
-  </section>
+    <!-- SECCIÓN 6: PRECIOS -->
+    <section class="ql-section ql-section-gradient" id="precios">
+      <div class="ql-container">
+        <h2 class="ql-section-title reveal">Empezá gratis. Escalá cuando crezcas.</h2>
+
+        <div class="ql-pricing-grid">
+          <article class="ql-pricing-card reveal" style="transition-delay: 0.1s;">
+            <h3>Inicial</h3>
+            <div class="ql-price">$XX<span>/mes</span></div>
+            <ul class="ql-features">
+              <li class="yes">Cotizador PDF</li>
+              <li class="yes">Marketplace (5 paquetes)</li>
+              <li class="yes">CRM básico</li>
+              <li class="no">Dominio propio</li>
+            </ul>
+            <a href="/precios" class="ql-btn ql-btn-primary">Probar 7 días gratis</a>
+          </article>
+
+          <article class="ql-pricing-card featured reveal" style="transition-delay: 0.2s;">
+            <span class="ql-badge">Más popular</span>
+            <h3>Profesional</h3>
+            <div class="ql-price">$XX<span>/mes</span></div>
+            <ul class="ql-features">
+              <li class="yes">Todo lo del Inicial</li>
+              <li class="yes">Marketplace ilimitado</li>
+              <li class="yes">Dominio propio</li>
+              <li class="yes">Múltiples vendedores</li>
+              <li class="yes">Reportes avanzados</li>
+            </ul>
+            <a href="/precios" class="ql-btn ql-btn-primary">Probar 7 días gratis</a>
+          </article>
+        </div>
+
+        <p class="ql-pricing-tagline reveal">⚡ 7 días gratis. Sin tarjeta. Cancelás cuando quieras.</p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 7: FAQ -->
+    <section class="ql-section ql-section-dark" id="faq">
+      <div class="ql-container">
+        <h2 class="ql-section-title reveal">Preguntas frecuentes</h2>
+
+        <div class="ql-faq reveal">
+          <details class="ql-faq-item">
+            <summary>¿El PDF lleva marca de Quotix? <span class="ql-arrow">▼</span></summary>
+            <div class="ql-faq-answer">
+              <p>No. El PDF lleva el logo, nombre y colores de tu agencia. Quotix es invisible para tu cliente.</p>
+            </div>
+          </details>
+          <details class="ql-faq-item">
+            <summary>¿Necesito saber usar Amadeus? <span class="ql-arrow">▼</span></summary>
+            <div class="ql-faq-answer">
+              <p>No. Podés cotizar desde cero sin Amadeus. Si lo usás, mejor.</p>
+            </div>
+          </details>
+          <details class="ql-faq-item">
+            <summary>¿Qué es el marketplace? <span class="ql-arrow">▼</span></summary>
+            <div class="ql-faq-answer">
+              <p>Es tu catálogo de paquetes como una tienda online. El cliente elige, cotiza y deja datos.</p>
+            </div>
+          </details>
+          <details class="ql-faq-item">
+            <summary>¿Puedo usar mi dominio? <span class="ql-arrow">▼</span></summary>
+            <div class="ql-faq-answer">
+              <p>Sí, en el plan Profesional.</p>
+            </div>
+          </details>
+          <details class="ql-faq-item">
+            <summary>¿Y si no me gusta después de probar? <span class="ql-arrow">▼</span></summary>
+            <div class="ql-faq-answer">
+              <p>Cancelás sin costo. No te pedimos tarjeta durante la prueba.</p>
+            </div>
+          </details>
+          <details class="ql-faq-item">
+            <summary>¿Cuánto tarda en estar listo? <span class="ql-arrow">▼</span></summary>
+            <div class="ql-faq-answer">
+              <p>10 minutos. Cargás tu logo, subís un paquete y ya tenés tu landing.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 8: CTA FINAL + FOOTER -->
+    <section class="ql-section ql-section-cta" id="cta-final">
+      <div class="ql-container">
+        <h2 class="ql-section-title reveal">Dejá de perder ventas por falta de tiempo.</h2>
+        <p class="ql-section-subtitle reveal">Quotix es gratis por 7 días. En 10 minutos ya tenés tu primer cotización.</p>
+        <a href="/precios" class="ql-btn ql-btn-primary ql-btn-xl pulse reveal">Empezar gratis →</a>
+        <p class="ql-cta-micro reveal">Sin tarjeta. Sin compromiso.</p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
 
   <style is:global>
-    .feature-content .marketplace-demo-scope p {
-      font-size: inherit;
-      line-height: inherit;
-      color: inherit;
-      margin-bottom: 0;
+    :root {
+      --ql-bg: #0a0f1c;
+      --ql-bg-alt: #0f172a;
+      --ql-card: rgba(30, 41, 59, 0.6);
+      --ql-card-solid: #1e293b;
+      --ql-card-hover: #334155;
+      --ql-text: #ffffff;
+      --ql-text-secondary: #cbd5e1;
+      --ql-text-muted: #94a3b8;
+      --ql-accent: #bf3480;
+      --ql-accent-hover: #d9469a;
+      --ql-accent-light: #e879ab;
+      --ql-lime: #d4f542;
+      --ql-lime-dark: #0a0f1c;
+      --ql-success: #22C55E;
+      --ql-border: rgba(255,255,255,0.1);
     }
-    .feature-content .marketplace-demo-scope h2 {
-      margin-top: 0;
-      padding-bottom: 0;
-      border-bottom: none;
+
+    .ql-page {
+      background: var(--ql-bg);
+      color: var(--ql-text);
+      overflow-x: hidden;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
     }
-    .preview-tab.active {
-      background-color: #bf3480;
-      color: white;
+
+    .ql-page *,
+    .ql-page *::before,
+    .ql-page *::after {
+      box-sizing: border-box;
     }
-    .preview-panel {
-      transition: opacity 0.4s ease, transform 0.4s ease;
-      opacity: 0;
-      pointer-events: none;
+
+    .ql-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .ql-container {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .ql-container {
+        padding-left: 48px;
+        padding-right: 48px;
+      }
+    }
+
+    .ql-section {
+      padding: 80px 0;
+    }
+
+    @media (min-width: 1024px) {
+      .ql-section {
+        padding: 120px 0;
+      }
+    }
+
+    .ql-section-dark { background: var(--ql-bg); }
+    .ql-section-alt { background: var(--ql-bg-alt); }
+    .ql-section-gradient {
+      background:
+        radial-gradient(ellipse at top, rgba(191, 52, 128, 0.10) 0%, transparent 60%),
+        var(--ql-bg);
+    }
+
+    .ql-section-title {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      line-height: 1.2;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .ql-section-subtitle {
+      font-size: 1rem;
+      color: var(--ql-text-secondary);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 48px;
+      line-height: 1.6;
+    }
+
+    /* Buttons */
+    .ql-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      border: none;
+      cursor: pointer;
+      min-height: 56px;
+    }
+
+    .ql-btn-primary {
+      background: var(--ql-accent);
+      color: #FFFFFF !important;
+    }
+
+    .ql-btn-primary:hover {
+      background: var(--ql-accent-hover);
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(191, 52, 128, 0.3);
+    }
+
+    .ql-btn-secondary {
+      background: transparent;
+      color: var(--ql-accent) !important;
+      border: 1.5px solid var(--ql-accent);
+    }
+
+    .ql-btn-secondary:hover {
+      background: rgba(191, 52, 128, 0.1);
+    }
+
+    .ql-btn-xl {
+      min-height: 64px;
+      font-size: 1.2rem;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    @media (max-width: 767px) {
+      .ql-btn {
+        width: 100%;
+      }
+    }
+
+    /* HERO */
+    .ql-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 96px 0 64px;
+      background: var(--ql-bg);
+    }
+
+    .ql-hero-bg {
       position: absolute;
       inset: 0;
-      transform: translateY(10px);
+      pointer-events: none;
+      overflow: hidden;
     }
-    .preview-panel:not(.hidden) {
-      opacity: 1;
-      pointer-events: auto;
+
+    .ql-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+    }
+
+    .ql-hero-inner {
       position: relative;
+      z-index: 1;
+    }
+
+    .ql-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--ql-accent);
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .ql-hero-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+
+    .ql-hero-subtitle {
+      font-size: 1rem;
+      color: var(--ql-text-secondary);
+      max-width: 600px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .ql-hero-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 640px) {
+      .ql-hero-ctas {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+
+    .ql-hero-micro {
+      font-size: 0.875rem;
+      color: var(--ql-text-muted);
+      margin: 0;
+    }
+
+    /* PROBLEMA */
+    .ql-problem-grid {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .ql-problem-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .ql-card {
+      background: var(--ql-card);
+      border: 1px solid var(--ql-border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .ql-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+      border-color: rgba(191, 52, 128, 0.4);
+    }
+
+    .ql-card-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .ql-card h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .ql-card p {
+      color: var(--ql-text-secondary);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .ql-problem-close {
+      text-align: center;
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--ql-accent-light);
+      margin: 0;
+    }
+
+    /* FLUJO */
+    .ql-flow {
+      position: relative;
+      margin: 48px 0 32px;
+    }
+
+    .ql-flow-line {
+      position: absolute;
+      top: 28px;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      opacity: 0.5;
+      z-index: 0;
+      transition: stroke-dashoffset 1.2s ease;
+    }
+
+    .ql-flow-line.mobile {
+      display: none;
+    }
+
+    .ql-flow-line.drawn path {
+      stroke-dashoffset: 0;
+    }
+
+    @media (max-width: 1023px) {
+      .ql-flow-line.desktop { display: none; }
+      .ql-flow-line.mobile {
+        display: block;
+        top: 0;
+        left: 28px;
+        width: 60px;
+        height: 100%;
+      }
+    }
+
+    .ql-flow-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (min-width: 768px) {
+      .ql-flow-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .ql-flow-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 16px;
+      }
+    }
+
+    .ql-flow-step {
+      text-align: center;
+    }
+
+    .ql-flow-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--ql-card);
+      border: 1px solid var(--ql-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 12px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .ql-flow-step:hover .ql-flow-circle {
+      transform: scale(1.08);
+      border-color: var(--ql-accent);
+    }
+
+    .ql-flow-step h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .ql-flow-step p {
+      font-size: 0.875rem;
+      color: var(--ql-text-secondary);
+      margin: 0;
+    }
+
+    .ql-flow-tagline {
+      text-align: center;
+      font-size: 1.125rem;
+      color: var(--ql-accent-light);
+      margin: 32px 0 0;
+      font-weight: 600;
+    }
+
+    /* PILARES */
+    .ql-pillars-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    @media (min-width: 1024px) {
+      .ql-pillars-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .ql-pillar:nth-child(2) {
+        transform: translateY(40px);
+      }
+    }
+
+    .ql-pillar {
+      position: relative;
+      background: var(--ql-card);
+      border: 1px solid transparent;
+      border-radius: 20px;
+      padding: 32px;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .ql-pillar:hover {
+      border-color: var(--ql-accent);
+      transform: translateY(-4px);
+    }
+
+    @media (min-width: 1024px) {
+      .ql-pillar:nth-child(2):hover {
+        transform: translateY(36px);
+      }
+    }
+
+    .ql-pillar-number {
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--ql-text);
+      opacity: 0.06;
+      line-height: 1;
+    }
+
+    .ql-pillar h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .ql-pillar-hook {
+      font-size: 1.1rem;
+      color: var(--ql-accent) !important;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .ql-pillar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+    }
+
+    .ql-pillar li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 12px;
+      color: var(--ql-text-secondary);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .ql-pillar li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--ql-lime);
+      font-weight: 700;
+    }
+
+    .ql-pillar-link {
+      color: var(--ql-accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      position: relative;
+    }
+
+    .ql-pillar-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 1px;
+      background: var(--ql-accent);
+      transition: width 0.2s ease;
+    }
+
+    .ql-pillar-link:hover::after {
+      width: 100%;
+    }
+
+    /* SOCIAL PROOF */
+    .ql-testimonials {
+      display: grid;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    @media (min-width: 768px) {
+      .ql-testimonials {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .ql-testimonial {
+      position: relative;
+      background: var(--ql-card);
+      border: 1px solid var(--ql-border);
+      border-radius: 16px;
+      padding: 28px;
+      overflow: hidden;
+      backdrop-filter: blur(4px);
+    }
+
+    .ql-testimonial .ql-quote {
+      position: absolute;
+      top: 8px;
+      left: 16px;
+      font-size: 4rem;
+      line-height: 1;
+      color: var(--ql-lime);
+      opacity: 0.2;
+      font-family: Georgia, serif;
+    }
+
+    .ql-testimonial p {
+      font-size: 1.1rem;
+      font-style: italic;
+      line-height: 1.6;
+      margin: 0 0 16px;
+      position: relative;
+      z-index: 1;
+      color: var(--ql-text-secondary);
+    }
+
+    .ql-testimonial footer {
+      font-size: 0.875rem;
+      color: var(--ql-text-muted);
+    }
+
+    .ql-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .ql-stat {
+      text-align: center;
+    }
+
+    .ql-stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--ql-lime);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .ql-stat-label {
+      font-size: 0.875rem;
+      color: var(--ql-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* PRECIOS */
+    .ql-pricing-grid {
+      display: grid;
+      gap: 24px;
+      max-width: 800px;
+      margin: 0 auto 24px;
+    }
+
+    @media (min-width: 768px) {
+      .ql-pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .ql-pricing-card {
+      position: relative;
+      background: var(--ql-card);
+      border: 1px solid var(--ql-border);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(4px);
+    }
+
+    .ql-pricing-card.featured {
+      border-color: var(--ql-accent);
+      box-shadow: 0 16px 48px rgba(191, 52, 128, 0.12);
+    }
+
+    .ql-badge {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: var(--ql-lime);
+      color: var(--ql-lime-dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 999px;
+    }
+
+    .ql-pricing-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .ql-price {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      color: var(--ql-text);
+    }
+
+    .ql-price span {
+      font-size: 1rem;
+      color: var(--ql-text-muted);
+      font-weight: 500;
+    }
+
+    .ql-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      flex: 1;
+    }
+
+    .ql-features li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 14px;
+      font-size: 1rem;
+      color: var(--ql-text-secondary);
+    }
+
+    .ql-features li.yes::before {
+      content: '✅';
+      position: absolute;
+      left: 0;
+      top: -1px;
+      font-size: 0.9rem;
+    }
+
+    .ql-features li.no {
+      color: var(--ql-text-muted);
+      text-decoration: line-through;
+    }
+
+    .ql-features li.no::before {
+      content: '❌';
+      position: absolute;
+      left: 0;
+      top: -1px;
+      font-size: 0.9rem;
+      opacity: 0.5;
+    }
+
+    .ql-pricing-tagline {
+      text-align: center;
+      color: var(--ql-text-muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* FAQ */
+    .ql-faq {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .ql-faq-item {
+      border-bottom: 1px solid var(--ql-border);
+    }
+
+    .ql-faq-item summary {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      font-weight: 700;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .ql-faq-item summary:hover {
+      color: var(--ql-accent-light);
+    }
+
+    .ql-faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .ql-arrow {
+      transition: transform 0.3s ease;
+      color: var(--ql-accent);
+      font-size: 0.75rem;
+    }
+
+    .ql-faq-item[open] .ql-arrow {
+      transform: rotate(180deg);
+    }
+
+    .ql-faq-answer {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .ql-faq-item[open] .ql-faq-answer {
+      max-height: 200px;
+      padding-bottom: 20px;
+    }
+
+    .ql-faq-answer p {
+      color: var(--ql-text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* CTA FINAL */
+    .ql-section-cta {
+      text-align: center;
+      background:
+        radial-gradient(ellipse at center, rgba(191, 52, 128, 0.12) 0%, transparent 70%),
+        var(--ql-bg);
+      padding: 100px 0;
+    }
+
+    .ql-section-cta .ql-section-title {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+    }
+
+    .ql-cta-micro {
+      color: var(--ql-text-muted);
+      font-size: 0.875rem;
+      margin-top: 16px;
+    }
+
+    /* PULSE */
+    @keyframes ql-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(191, 52, 128, 0.4); }
+      50% { box-shadow: 0 0 0 12px rgba(191, 52, 128, 0); }
+    }
+
+    .ql-btn.pulse {
+      animation: ql-pulse 3s ease-in-out infinite;
+    }
+
+    /* Reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .ql-btn.pulse {
+        animation: none;
+      }
+      .ql-flow-line path {
+        stroke-dashoffset: 0;
+      }
     }
   </style>
 
   <script is:inline>
     (function() {
-      const tabs = document.querySelectorAll('.preview-tab');
-      const panels = document.querySelectorAll('.preview-panel');
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          const target = tab.dataset.target;
-          tabs.forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
-          panels.forEach(p => {
-            if (p.id === 'preview-' + target) {
-              p.classList.remove('hidden');
-            } else {
-              p.classList.add('hidden');
+      // Scroll reveal
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      // Flow line draw
+      const flowSection = document.getElementById('flujo');
+      if (flowSection) {
+        const lineObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              document.querySelectorAll('.ql-flow-line').forEach(line => line.classList.add('drawn'));
+              lineObserver.unobserve(entry.target);
             }
           });
+        }, { threshold: 0.3 });
+        lineObserver.observe(flowSection);
+      }
+
+      // Counter animation
+      const counters = document.querySelectorAll('.ql-stat-number');
+      const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.dataset.target, 10);
+            const suffix = el.dataset.suffix || '';
+            const duration = 1500;
+            const startTime = performance.now();
+
+            function update(now) {
+              const progress = Math.min((now - startTime) / duration, 1);
+              const ease = 1 - Math.pow(1 - progress, 3);
+              el.textContent = Math.floor(ease * target) + suffix;
+              if (progress < 1) requestAnimationFrame(update);
+            }
+            requestAnimationFrame(update);
+            countObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counters.forEach(counter => countObserver.observe(counter));
+
+      // FAQ: only one open at a time + smooth height
+      const faqItems = document.querySelectorAll('.ql-faq-item');
+      faqItems.forEach(item => {
+        item.addEventListener('toggle', () => {
+          if (item.open) {
+            faqItems.forEach(other => {
+              if (other !== item && other.open) other.open = false;
+            });
+          }
         });
       });
     })();
   </script>
-</FeatureLayout>
+</MainLayout>
