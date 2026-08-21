@@ -720,6 +720,7 @@ const schema = JSON.stringify({
       padding: 24px;
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
       backdrop-filter: blur(4px);
+      will-change: transform;
     }
     .ql-card:hover {
       transform: translateY(-4px);
@@ -1004,10 +1005,10 @@ const schema = JSON.stringify({
       0%, 100% { box-shadow: 0 0 0 0 rgba(191, 52, 128, 0.4); }
       50% { box-shadow: 0 0 0 12px rgba(191, 52, 128, 0); }
     }
-    .ql-btn.pulse { animation: ql-pulse 3s ease-in-out infinite; }
+    .ql-btn.pulse { animation: ql-pulse 3s ease-in-out infinite; will-change: box-shadow; }
 
     /* Reveal animations */
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); will-change: opacity, transform; }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
     @media (prefers-reduced-motion: reduce) {
